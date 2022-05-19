@@ -4,9 +4,8 @@
   "description": "Front end capstone project",
   "main": "./client/src/App.jsx",
   "scripts": {
-    "server-dev": "npx nodemon --watch server server/index.js",
-    "client-dev": "webpack --watch",
-    "build": "webpack --config webpack.config.js -w"
+    "server-dev": "nodemon server/index.js",
+    "client-dev": "webpack --watch"
   },
   "repository": {
     "type": "git",
