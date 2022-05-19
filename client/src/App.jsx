@@ -1,8 +1,13 @@
 import React from 'react';
 
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
+
 function App() {
   return (
-    <div>Hello World</div>
+    <div>
+      <div>Hello World</div>
+      <RatingsAndReviews />
+    </div>
   );
 }
 
