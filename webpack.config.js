@@ -4,6 +4,7 @@ const path = require('path');
 const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
 
 const config = {
+  mode: "development",
   entry: [
     './client/src/index.jsx',
   ],
@@ -14,11 +15,16 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        test: /\.m?(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
   },
   devServer: {
     static: {
