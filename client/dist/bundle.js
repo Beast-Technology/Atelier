@@ -70,9 +70,6 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
-<<<<<<< HEAD
-eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@babel/preset-env' imported from /Users/johnong/galvanize/front-end-capstone/babel-virtual-resolve-base.js\\n    at new NodeError (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:2669:5)\\n    at packageResolve (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:3325:9)\\n    at moduleResolve (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:3359:18)\\n    at defaultResolve (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:3398:13)\\n    at /Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:3421:14\\n    at Generator.next (<anonymous>)\\n    at asyncGeneratorStep (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:63:103)\\n    at _next (/Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:65:194)\\n    at /Users/johnong/galvanize/front-end-capstone/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:65:364\\n    at new Promise (<anonymous>)\");\n\n//# sourceURL=webpack://product-details-page/./client/src/index.jsx?");
-=======
 /***/ "./node_modules/scheduler/cjs/scheduler.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
@@ -90,7 +87,6 @@ eval("/**\n * @license React\n * scheduler.development.js\n *\n * Copyright (c) 
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ \"./node_modules/scheduler/cjs/scheduler.development.js\");\n}\n\n\n//# sourceURL=webpack://product-details-page/./node_modules/scheduler/index.js?");
->>>>>>> 518c6da1c5971623f3ef28fe2ecb494dc659b8f5
 
 /***/ })
 
