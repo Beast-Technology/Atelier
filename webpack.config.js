@@ -1,10 +1,9 @@
-const webpack = require('webpack');
 const path = require('path');
 
 const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
 
-const config = {
-  mode: "development",
+module.exports = {
+  mode: 'development',
   entry: [
     './client/src/index.jsx',
   ],
@@ -25,12 +24,5 @@ const config = {
         }
       }
     ]
-  },
-  devServer: {
-    static: {
-      directory: distPath,
-    },
-  },
+  }
 };
-
-module.exports = config;
