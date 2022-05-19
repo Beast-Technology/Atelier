@@ -20,26 +20,26 @@
   "homepage": "https://github.com/Beast-Technology/front-end-capstone#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "jest": "^28.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
     "babel": "^6.23.0",
+    "babel-loader": "^8.2.5",
     "babel-preset-env": "^1.7.0",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "express": "^4.18.1",
-    "jest": "^28.1.0",
     "nodemon": "^2.0.16",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "webpack-dev": "^1.1.1"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.17.12",
-    "@babel/preset-react": "^7.17.12",
-    "babel-loader": "^8.2.5",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev": "^1.1.1"
   }
 }
