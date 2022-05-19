@@ -1,22 +1,21 @@
-const webpack = require('webpack');
 const path = require('path');
 
 const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
 
-const config = {
-  mode: "development",
+module.exports = {
+  mode: 'development',
   entry: [
     './client/src/index.jsx',
   ],
   output: {
     path: distPath,
-    filename: 'bundle.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
       {
         test: /\.m?(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -25,12 +24,5 @@ const config = {
         }
       }
     ]
-  },
-  devServer: {
-    static: {
-      directory: distPath,
-    },
-  },
+  }
 };
-
-module.exports = config;
