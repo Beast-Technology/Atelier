@@ -16,10 +16,12 @@ function ProductOverview() {
         Authorization: AUTHORIZATION
       },
       params: {
-        product_id: 40344
+        product_id: 40344,
+        count: 100,
       }
     })
       .then(response => {
+        console.log(response);
         setReviews(response.data.results);
       })
       .catch(err => {
