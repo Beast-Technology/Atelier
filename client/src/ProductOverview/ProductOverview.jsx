@@ -3,7 +3,6 @@ import axios from 'axios';
 import StarRating from './StarRating.jsx';
 
 const API_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews';
-const AUTHORIZATION = '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';
 
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
