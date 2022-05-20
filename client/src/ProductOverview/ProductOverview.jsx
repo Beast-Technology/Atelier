@@ -6,12 +6,6 @@ const API_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
 function ProductOverview() {
 
-  axios.request({
-    url: API_URL,
-    method: 'get',
-
-  })
-
   return (
     <div>
       Product Overview
