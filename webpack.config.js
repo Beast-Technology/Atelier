@@ -3,7 +3,6 @@ const path = require('path');
 const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
 
 module.exports = {
-  targetL 'node',
   mode: 'development',
   entry: [
     './client/src/index.jsx',
