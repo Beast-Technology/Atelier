@@ -20,14 +20,12 @@ function ProductOverview() {
       }
     })
       .then(response => {
-        console.log(response.data.results);
         setReviews(response.data.results);
       })
       .catch(err => {
         console.error(err);
       });
   }, []);
-
 
   return (
     <div>
