@@ -1,5 +1,13 @@
 node_modules
+<<<<<<< HEAD
 .env
+=======
+
+.gitignore
+
+>>>>>>> 62d1215 (Implementing hooks)
 .DS_Store
+
 .eslintrc
-client/dist/main.js
+
+client/dist
