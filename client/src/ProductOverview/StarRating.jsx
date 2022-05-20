@@ -10,7 +10,7 @@ function StarRating({reviews}) {
   return (
     <div>
       <h1>Star Rating</h1>
-      <span>Star Average: {starAvg}</span>
+      <span>Star Average: {starAvg} Number of Reviews: {reviews.length}</span>
     </div>
   )
 }
