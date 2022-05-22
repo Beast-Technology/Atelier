@@ -7,7 +7,7 @@ import WriteReview from './WriteReview.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
 function RatingsAndReviews() {
-  const [reviews, useReviews] = useState();
+  const [reviews, useReviews] = useState([]);
 
   useEffect(() => {
     axios.get('/reviews', {
@@ -18,7 +18,6 @@ function RatingsAndReviews() {
       }
     })
       .then((res) => {
-        console.log(res.data)
         useReviews(res.data)
       })
       .catch((err) => {console.log(err)})
@@ -26,9 +25,11 @@ function RatingsAndReviews() {
 
   return (
     <section>
+    {console.log("RatingsAndReviews:", reviews.results)}
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
-      <ReviewsList />
+      <h3>ReviewsList</h3>
+      <ReviewsList reviews={reviews}/>
       <ProductBreakdown />
       <RatingBreakdown />
       <WriteReview />
