@@ -2,25 +2,20 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx';
 
-const API_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews';
-
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     axios.request({
-      url: API_URL,
+      url: '/reviews',
       method: 'get',
-      headers: {
-        Authorization: AUTHORIZATION
-      },
       params: {
         product_id: 40344,
         count: 100,
       }
     })
       .then(response => {
-        console.log(response);
+        console.log(response.data);
         setReviews(response.data.results);
       })
       .catch(err => {
