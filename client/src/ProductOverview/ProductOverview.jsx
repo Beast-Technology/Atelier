@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx';
 import ProductCategory from './ProductCategory.jsx';
+import ProductTitle from './ProductTitle.jsx';
 
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
@@ -37,6 +38,7 @@ function ProductOverview() {
   return (
     <div>
       Product Overview
+      <ProductTitle title={product.name}/>
       <ProductCategory category={product.category}/>
       <StarRating reviews={reviews}/>
     </div>
