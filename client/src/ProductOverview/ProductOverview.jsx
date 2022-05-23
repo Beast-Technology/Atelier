@@ -8,7 +8,7 @@ import ImageGallery from './ImageGallery/ImageGallery.jsx';
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
-  const [style, setStyle] = useState({photos: []});
+  const [style, setStyle] = useState({photos: [], skus: {}});
   const [styles, setStyles] = useState([]);
   const productID = 40344;
 
@@ -68,7 +68,7 @@ function ProductOverview() {
           styles={styles}
           setStyle={setStyle}
         />
-        <AddToCart />
+        <AddToCart style={style}/>
       </div>
     </div>
   )

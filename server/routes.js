@@ -1,8 +1,8 @@
-const controllers = require('./controllers');
+const controllers = require('./controllers/');
 const router = require('express').Router();
 
-router.get('/reviews', controllers.reviews.get);
-router.get('/products/:product_id', controllers.products.get);
-router.get('/products/:prduct_id/styles', controllers.styles.get);
+router.get('/reviews', controllers.overview.overview);
+router.get('/products/:product_id', controllers.overview.products);
+router.get('/products/:prduct_id/styles', controllers.overview.styles);
 
 module.exports = router;

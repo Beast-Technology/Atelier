@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <ProductOverview />
-      {/* <RatingsAndReviews /> */}
-      {/* <QuestionsAndAnswers /> */}
-      {/* <RelatedItemsContainer /> */}
+      <RatingsAndReviews />
+      <QuestionsAndAnswers />
+      <RelatedItemsContainer />
     </div>
   );
 }
