@@ -8,7 +8,7 @@ import ImageGallery from './ImageGallery/ImageGallery.jsx';
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
-  const [style, setStyle] = useState({photos: [], skus: {}});
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: '', size: ''}}});
   const [styles, setStyles] = useState([]);
   const productID = 40344;
 
@@ -33,7 +33,7 @@ function ProductOverview() {
       method: 'get',
     })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setProduct(response.data);
       })
   }, []);
@@ -68,7 +68,7 @@ function ProductOverview() {
           styles={styles}
           setStyle={setStyle}
         />
-        <AddToCart style={style}/>
+        <AddToCart skus={style.skus}/>
       </div>
     </div>
   )

@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-export default function QuantitySelector({style}) {
-  const [skus, setSkus] = useState({});
-
+export default function QuantitySelector({sku}) {
 
   return (
     <select>
