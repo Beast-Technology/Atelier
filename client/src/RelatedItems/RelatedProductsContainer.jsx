@@ -20,10 +20,9 @@ const axios = require('axios');
 
 
 function getRelated(item_id, callback) {
-  axios.get('/products/related', {
-    params: {
-      product_id: item_id
-    }
+  axios.request({
+    url: `/products/${item_id}/related`,
+    method: 'GET',
   })
   .then((response)=> {
     // console.log("data came back for getRelated", response);
@@ -48,48 +47,49 @@ function RelatedProductsContainer() {
       let promiseArray = [];
       for (let product of response.data) {
         // console.log(product);
-        promiseArray.push(axios.get('/products/', {
-          params: {
-            product_id: product
-          }
-        }))
+        promiseArray.push(
+          axios.request({
+            url: `/products/${product}`,
+            method: 'GET',
+          })
+          )
 
-        Promise.all(promiseArray)
-        .then((responses)=> {
-          // console.log('relatedItems', relatedItems)
-          // console.log('responses', responses)
-          setState(prevState => responses)
-        })
-      }
-    });
-  }, [])
-
-
-
+          Promise.all(promiseArray)
+          .then((responses)=> {
+            // console.log('relatedItems', relatedItems)
+            // console.log('responses', responses)
+            setState(prevState => responses)
+          })
+        }
+      });
+    }, [])
 
 
-  return (
-    <div  id="RelatedProductsContainer" style={{
-      display: "flex",
 
-      // TODO: Use CSS to clear the content :after
-      // content: "",
-      // display: "table",
-      // clear: "both"
+
+
+    return (
+      <div  id="RelatedProductsContainer" style={{
+        display: "flex",
+
+        // TODO: Use CSS to clear the content :after
+        // content: "",
+        // display: "table",
+        // clear: "both"
       }}>
 
-    {
-      (relatedItems || []).map(relatedItem=> {
-        // console.log(relatedItem.data)
-        return <RelatedProductsCard relatedItem={relatedItem.data} key={relatedItem.data.id}/>
-      })
+      {
+        (relatedItems || []).map(relatedItem=> {
+          // console.log(relatedItem.data)
+          return <RelatedProductsCard relatedItem={relatedItem.data} key={relatedItem.data.id}/>
+        })
+      }
+      </div>
+      )
     }
-    </div>
-    )
-  }
 
 
-  // RelatedProductsContainer.propTypes = propTypes;
-  // RelatedProductsContainer.defaultProps = defaultProps;
+    // RelatedProductsContainer.propTypes = propTypes;
+    // RelatedProductsContainer.defaultProps = defaultProps;
 
-  export default RelatedProductsContainer;
+    export default RelatedProductsContainer;
