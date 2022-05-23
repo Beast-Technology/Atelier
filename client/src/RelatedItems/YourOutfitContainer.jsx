@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // TODO: Import other components
-import YourOutfitcard from './YourOutfitcard.jsx';
+import YourOutfitCard from './YourOutfitcard.jsx';
 
 
 
@@ -11,14 +11,12 @@ function YourOutfitContainer() {
   return (
     <div id="YourOutfitContainer">
       {/* TODO: Add map here  */}
-      <YourOutfitcard />
+      <YourOutfitCard />
     </div>
   );
 }
 
 
-// YourOutfitContainer.propTypes = propTypes;
-// YourOutfitContainer.defaultProps = defaultProps;
 
 export default YourOutfitContainer;
 
