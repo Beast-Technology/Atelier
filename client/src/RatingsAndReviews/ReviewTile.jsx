@@ -1,21 +1,28 @@
 import React from 'react';
 
-function ReviewTile({review}) {
+function ReviewTile({ review }) {
+
   return (
     <td id="reviewTile">
       <div>
-      {review.rating}
+      Rating: {review.rating}
         <div>
-          {review.reviewer_name}
-          {review.date}
+          Username: {review.reviewer_name}
+          <br />
+          Date Posted: {review.date}
         </div>
       </div>
-      <h4>{review.summary}</h4>
-      <p>{review.body}</p>
+      <h4>Summary: {review.summary}</h4>
+      <p>Review: {review.body}</p>
       {review.recommend ? <div>I recommend this product</div> : <div></div>}
       {/* if response is true return else leave out */}
-      <h4>{review.response}</h4>
-      <button>{review.helpfulness}</button>
+      {review.response ? <h4>Response: {review.response}</h4> : <div></div>}
+      <div>
+        <div>Was this review helpful?</div>
+        <button>Yes</button>
+        <div>{review.helpfulness}</div>
+        <br />
+      </div>
     </td>
   );
 }
