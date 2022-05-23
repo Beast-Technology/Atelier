@@ -1,11 +1,11 @@
 import React from 'react';
 import _ from 'underscore';
 
-export default function SizeSelector({skus, setSize}) {
+export default function SizeSelector({skus, setSku}) {
   return (
-    <select>
+    <select onChange={(e) => setSku(skus[e.target.value])}>
       {_.map(skus, ({size}, sku) => (
-        <option>{size}</option>
+        <option key={sku} value={sku}>{size}</option>
       ))}
     </select>
   )

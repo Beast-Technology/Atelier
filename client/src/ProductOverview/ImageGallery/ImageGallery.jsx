@@ -20,7 +20,7 @@ export default function ImageGallery({photos}) {
       {viewPhoto === null ? '' : (<img width='400' src={viewPhoto.url}></img>)}
       <div style={thumbnails}>
         {photos.map(photo => (
-          <img src={photo.thumbnail_url}></img>
+          <img key={photo.thumbnail_url} src={photo.thumbnail_url}></img>
         ))}
       </div>
 

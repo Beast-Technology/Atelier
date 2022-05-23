@@ -8,7 +8,7 @@ import ImageGallery from './ImageGallery/ImageGallery.jsx';
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
-  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: '', size: ''}}});
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
   const productID = 40344;
 
