@@ -7,8 +7,8 @@ import ReviewButtons from './ReviewButtons.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
 function RatingsAndReviews() {
-  const [reviews, useReviews] = useState([]);
-  const [meta, useMeta] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [meta, setMeta] = useState([]);
 
   useEffect(() => {
     axios.get('/reviews', {
@@ -19,7 +19,7 @@ function RatingsAndReviews() {
       }
     })
       .then((res) => {
-        useReviews(res.data)
+        setReviews(res.data)
       })
       .catch((err) => {console.log(err)})
   },[])
@@ -31,7 +31,7 @@ function RatingsAndReviews() {
       }
     })
       .then((res) => {
-        useMeta(res.data)
+        setMeta(res.data)
       })
       .catch((err) => {console.log(err)})
   },[])
@@ -43,11 +43,11 @@ function RatingsAndReviews() {
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <h3>--ReviewsList--</h3>
-      <ReviewsList reviews={reviews} />
-      <h3>--ProductBreakdown--</h3>
-      <ProductBreakdown meta={meta}/>
+      <ReviewsList reviews={reviews} meta={meta}/>
       <h3>--RatingBreakdown--</h3>
       <RatingBreakdown />
+      <h3>--ProductBreakdown--</h3>
+      <ProductBreakdown meta={meta}/>
       <h3>--ReviewButtons--</h3>
       <ReviewButtons />
       {/* Keyword search low priority */}
