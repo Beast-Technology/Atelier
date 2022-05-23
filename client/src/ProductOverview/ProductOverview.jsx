@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import StarRating from './StarRating.jsx';
-import ProductCategory from './ProductCategory.jsx';
-import ProductTitle from './ProductTitle.jsx';
+import ProductInformation from './ProductInformation/ProductInformation.jsx';
+import AddToCart from './AddToCart/AddToCart.jsx';
+import StyleSelector from './StyleSelector/StyleSelector.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
 
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
+  const [style, setStyle] = useState({photos: []});
+  const [styles, setStyles] = useState([]);
   const productID = 40344;
 
   useEffect(() => {
@@ -19,7 +22,7 @@ function ProductOverview() {
       }
     })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setReviews(response.data.results);
       })
   }, []);
@@ -35,12 +38,38 @@ function ProductOverview() {
       })
   }, []);
 
+  useEffect(() => {
+    axios.request({
+      url: `/products/${productID}/styles`,
+      method: 'get',
+    })
+      .then(response => {
+        console.log(response.data.results[0]);
+        setStyle(response.data.results.find(style => style['default?']));
+        setStyles(response.data.results);
+      })
+  }, [])
+
+  const containers = {
+    display: 'flex',
+  }
+
   return (
-    <div>
-      Product Overview
-      <ProductTitle title={product.name}/>
-      <ProductCategory category={product.category}/>
-      <StarRating reviews={reviews}/>
+    <div style={containers}>
+      <ImageGallery photos={style.photos}/>
+      <div style={{border: '1px solid red'}}>
+        <ProductInformation
+          style={style}
+          product={product}
+          reviews={reviews}
+        />
+        <StyleSelector
+          name={style.name}
+          styles={styles}
+          setStyle={setStyle}
+        />
+        <AddToCart />
+      </div>
     </div>
   )
 }
