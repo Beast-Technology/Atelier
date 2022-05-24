@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { DatePosted } from '../helper/Date.jsx';
 
 function ReviewTile({ review }) {
   const [clicked, setClicked] = useState(false);
   const [helpful, setHelpful] = useState(review.helpfulness);
   const [report, setReport] = useState(false);
   const [summary, setSummary] = useState(review.summary);
+  const date = DatePosted(review.date)
 
   if (summary.length > 60) {
     setSummary(summary.slice(0, 60) + "...");
@@ -21,7 +23,7 @@ function ReviewTile({ review }) {
   }
 
   const onClickReport = () => {
-    alert("Report Recieved")
+    alert("Report Recieved");
     setReport(true);
   }
 
@@ -33,7 +35,7 @@ function ReviewTile({ review }) {
           {/* If it's a user add a checkmark next to their name */}
           Username: {review.reviewer_name}
           <br />
-          Date Posted: {review.date.slice(0, 10)}
+          Date Posted: {date}
         </div>
       </div>
       <div>

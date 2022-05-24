@@ -15,7 +15,7 @@ function RatingsAndReviews() {
       params: {
         product_id: 40344,
         page: 1,
-        count: 5
+        count: 2
       }
     })
       .then((res) => {
@@ -38,7 +38,7 @@ function RatingsAndReviews() {
 
   return (
     <section>
-    {console.log("RatingsAndReviews:", reviews.results)}
+    {console.log("RatingsAndReviews:", reviews.count)}
     {console.log("ProductBreakdown:", meta)}
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}

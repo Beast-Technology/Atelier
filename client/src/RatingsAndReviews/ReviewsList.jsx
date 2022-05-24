@@ -6,6 +6,7 @@ import ReviewTile from './ReviewTile.jsx';
 function ReviewsList({ reviews, meta }) {
   const [totalReviews, setTotalReviews] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [count, setCount] = useState(reviews.count)
   const onClick = () => setIsActive(!isActive);
 
   useEffect(() => {
@@ -14,6 +15,9 @@ function ReviewsList({ reviews, meta }) {
     }
   },[meta])
 
+  const onClickMoreReviews = () => {
+    setCount(count + 2)
+  }
 
   return (
     <div>
@@ -34,7 +38,7 @@ function ReviewsList({ reviews, meta }) {
           }
         </tbody>
       </table>
-      <button>More Reviews</button>
+      <button onClick={onClickMoreReviews}>More Reviews</button>
       <button>Add A Review</button>
     </div>
   );
