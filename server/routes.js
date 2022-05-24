@@ -11,7 +11,8 @@ router.get('/products/:product_id/related', controllers.relatedItems.related);
 
 // -- Questions and Answers -- //
 router.get('/qa/questions', controllers.qanda.questions);
-router.put('/qa/questions/:question_id/helpful', controllers.qanda.setQHelpful)
+router.put('/qa/questions/:question_id/helpful', controllers.qanda.setQHelpful);
+router.put('/qa/answers/:answer_id/helpful', controllers.qanda.setAHelpful);
 
 // -- Ratings and Reviews -- //
 router.get('/reviews/page/count/product_id', controllers.reviews.data);
