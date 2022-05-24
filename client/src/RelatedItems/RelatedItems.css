@@ -1,0 +1,132 @@
+
+/* ------------------------ MAIN ------------------------ */
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+/* ------------------------ RelatedProductsContainer ------------------------ */
+
+/* RelatedProductsContainer */
+#RelatedProductsContainer {
+  display: flex
+}
+
+/* TODO: add functionality to not show child elemnts after max width allowed on page */
+/* #RelatedProductsContainer::after {
+  display: flex;
+  content: "";
+  display: "table";
+  clear: "both";
+  background-color: #4CAF50;
+} */
+
+
+/* ------------------------ RelatedProductsCard/YourOutfitcard ------------------------ */
+
+.RelatedProductsCard, .OutfitProductsCard {
+  position: relative;
+  margin: 10px;
+  height: 260px;
+  width: 200px;
+  min-width: 200px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
+  padding: 8px;
+  background-color: #f1f1f1;
+  display: grid;
+  align-content: space-between;
+}
+
+.card-img {
+  height: 150px;
+  width: 100%;
+  padding: 0 0 5px;
+}
+
+.card-starButton {
+  position: absolute;
+  right:15px;
+  top:9px;
+  width:25px;
+  height:25px;
+  border: none;
+  font-size: 19px;
+  background-color: rgb(255 255 255 / 0);
+
+  /* // TODO: add hover and click effect in CSS */
+}
+
+.card-removeButton {
+  position: absolute;
+  right:15px;
+  top:15px;
+  width:25px;
+  height:25px;
+  font-size: 14px;
+  background-color: rgb(255 255 255 / 0%);
+  box-shadow: rgb(0 0 0 / 2%) 2px 2px 3px;
+  border-radius:50px;
+  /* // TODO: add hover and click effect in CSS */
+
+}
+.card-category {
+  font-size: 12px;
+  padding: 0 0 5px;
+}
+.card-name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 0 5px;
+}
+
+.card-price {
+  font-size: 14px;
+  padding: 0 0 5px;
+}
+
+
+
+/* ------------------------ YourOutfitContainer ------------------------ */
+
+#addButtonCard-plus {
+  font-size: 80px;
+  padding: 0 0 5px;
+}
+#addButtonCard-button {
+  font-size: 18px;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+
+}
+
+#addButtonCard {
+  position: relative;
+  margin: 10px;
+  height: 260px;
+  width: 200px;
+  min-width: 200px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
+  padding: 8px;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#YourOutfitContainer {
+  display: flex
+
+}
+/* TODO: add functionality to not show child elemnts after max width allowed on page */
+/* #YourOutfitContainer::after {
+  display: flex;
+  content: "";
+  display: "table";
+  clear: "both";
+  background-color: #4CAF50;
+} */
