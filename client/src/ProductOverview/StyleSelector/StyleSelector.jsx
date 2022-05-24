@@ -22,14 +22,14 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
       }}>
         {styles.map((style, index) => {
           return style.style_id === selectedStyle.style_id ?
-            (<>
-              <span style={{position: 'absolute'}}>✅</span>
+            (<div>
+              <i style={{position: 'absolute'}}>✅</i>
               <img
                 src={style.photos[0].thumbnail_url}
                 width='100'
                 height='100'>
               </img>
-            </>)
+            </div>)
           : (
               <img
                 onClick={() => setStyle(style)}

@@ -10,23 +10,9 @@ import ImageGallery from './ImageGallery/ImageGallery.jsx';
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
-  // const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
-
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
   const productID = 40346;
-
-  const mockStyle = {
-    photos: [],
-    skus: {
-      0: {quantity: 3, size: 'XS'},
-      2: {quantity: 0, size: 'S'},
-      3: {quantity: 2, size: 'M'},
-      4: {quantity: 0, size: 'L'},
-      5: {quantity: 3, size: 'XL'},
-      6: {quantity: 0, size: 'XXL'}
-    }
-  }
-  const [style, setStyle] = useState(mockStyle);
 
   useEffect(() => {
     axios.request({
