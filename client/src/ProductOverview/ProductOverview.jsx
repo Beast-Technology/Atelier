@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ProductInformation from './ProductInformation/ProductInformation.jsx';
+import SocialMedia from './SocialMedia.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
@@ -8,9 +9,23 @@ import ImageGallery from './ImageGallery/ImageGallery.jsx';
 function ProductOverview() {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
-  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+  // const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+
   const [styles, setStyles] = useState([]);
   const productID = 40346;
+
+  const mockStyle = {
+    photos: [],
+    skus: {
+      0: {quantity: 3, size: 'XS'},
+      2: {quantity: 0, size: 'S'},
+      3: {quantity: 2, size: 'M'},
+      4: {quantity: 0, size: 'L'},
+      5: {quantity: 3, size: 'XL'},
+      6: {quantity: 0, size: 'XXL'}
+    }
+  }
+  const [style, setStyle] = useState(mockStyle);
 
   useEffect(() => {
     axios.request({
@@ -33,7 +48,7 @@ function ProductOverview() {
       method: 'get',
     })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setProduct(response.data);
       })
   }, []);
@@ -44,7 +59,7 @@ function ProductOverview() {
       method: 'get',
     })
       .then(response => {
-        console.log(response.data.results[0]);
+        // console.log(response.data.results[0]);
         setStyle(response.data.results.find(style => style['default?']));
         setStyles(response.data.results);
       })
@@ -63,12 +78,13 @@ function ProductOverview() {
           product={product}
           reviews={reviews}
         />
-        <StyleSelector
+        <SocialMedia />
+        {/* <StyleSelector
           name={style.name}
           styles={styles}
           setStyle={setStyle}
-        />
-        <AddToCart skus={style.skus}/>
+        /> */}
+        {/* <AddToCart skus={style.skus}/> */}
       </div>
     </div>
   )

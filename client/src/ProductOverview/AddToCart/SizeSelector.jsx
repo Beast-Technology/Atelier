@@ -4,11 +4,14 @@ import _ from 'underscore';
 export default function SizeSelector({skus, setSku}) {
   return (
     <select onChange={(e) => setSku(skus[e.target.value])}>
+      <option selected hidden disabled>SELECT SIZE</option>
       {_.map(skus, ({quantity, size}, sku) => {
         return quantity > 0 ? (
           <option key={sku} value={sku}>{size}</option>
         ) : ''
       })}
+      {_.every(skus, sku => sku.quantity === 0) ?
+        (<option selected disabled>OUT OF STOCK</option>) : ''}
     </select>
   )
 }

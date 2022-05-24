@@ -1,28 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import Carousel, {CarouselItem} from './Carousel.jsx';
+// import Carousel, {CarouselItem} from './Carousel.jsx';
+
+const thumbnails = {
+  position: 'absolute',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '5px',
+  margin: '5px'
+}
+
+const viewStyle = {
+  height: '800px',
+  width: '800px',
+  overflow: 'hidden'
+}
 
 export default function ImageGallery({photos}) {
-  const [viewPhoto, setViewPhoto] = useState(null)
+  const [viewPhoto, setViewPhoto] = useState(null);
 
   useEffect(() => {
     if (photos[0] !== undefined) {
       setViewPhoto(photos[0])
     }
   }, [photos])
-
-  const thumbnails = {
-    position: 'absolute',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '5px',
-    margin: '5px'
-  }
-
-  const viewStyle = {
-    height: '800px',
-    width: '800px',
-    overflow: 'hidden'
-  }
 
   return (
     <div style={{display: 'flex'}}>

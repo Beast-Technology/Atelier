@@ -3,8 +3,10 @@ import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 
 export default function AddToCart({skus}) {
-  const [sku, setSku] = useState(skus[0]);
+  const [sku, setSku] = useState(null);
   const [qty, setQty] = useState(1);
+
+  console.log(skus);
 
   useEffect(() => {
     for(let sku_id in skus) {
@@ -16,7 +18,7 @@ export default function AddToCart({skus}) {
   return(
     <div>
       <SizeSelector skus={skus} setSku={setSku}/>
-      <QuantitySelector sku={sku} setQty={setQty}/>
+      {/* <QuantitySelector sku={sku} setQty={setQty}/> */}
       <button>Add To Cart</button>
     </div>
   )
