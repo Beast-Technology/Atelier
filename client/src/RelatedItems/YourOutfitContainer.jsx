@@ -10,7 +10,6 @@ function YourOutfitContainer() {
 
   return (
     <div id="YourOutfitContainer">
-      YourOutfitContainer
       {/* TODO: Add map here  */}
       <YourOutfitcard />
     </div>

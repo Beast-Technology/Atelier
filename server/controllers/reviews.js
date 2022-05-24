@@ -1,29 +1,30 @@
-const express = require('express');
-const path = require('path');
-require('dotenv').config()
 const axios = require('axios');
+require("dotenv").config();
 
-const app = express();
-const port = 3000;
+const {API_URL, TOKEN} = process.env;
+axios.defaults.baseURL = API_URL;
+axios.defaults.headers.common['Authorization'] = TOKEN;
 
-// Logging and parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Router
-const router = require('./routes.js');
-
-// Set up our routes
-app.use(router);
-
-// Serve the client files
-app.use(express.static(path.join(__dirname, '/../client/dist')));
-
-
-// Set up what we are listening on
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+module.exports = {
+  data: (req, res) => {
+    axios.get(req.originalUrl)
+      .then(response => {
+        res.send(response.data);
+      })
+      .catch(err => {
+        res.send(err);
+      })
+  },
+  meta: (req, res) => {
+    axios.get(req.originalUrl)
+      .then(response => {
+        res.send(response.data);
+      })
+      .catch(err => {
+        res.send(err);
+      })
+  }
+}
 
 // app.get('/reviews', (req, res) => {
 //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', {
