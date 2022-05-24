@@ -54,6 +54,19 @@ p {
   color: #fff;
 }
 
+/* Helper styles */
+
+.style-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.style-underline:hover {
+  color: #c2255c;
+}
+
+
+
 /* QASearch */
 
 .qa-form {

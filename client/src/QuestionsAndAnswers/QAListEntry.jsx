@@ -1,5 +1,6 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
+import Helpful from './Helpful.jsx';
 
 export default function QAListEntry({q}) {
   return (
@@ -11,7 +12,8 @@ export default function QAListEntry({q}) {
           <p className="question-title">{q.question_body}</p>
 
           <div className="question-actions">
-            <span className="helpful">Helpful? Yes ({q.question_helpfulness})</span>
+            <Helpful count={q.question_helpfulness} />
+            |
             <span className="underline">Add Answers</span>
           </div>
         </div>

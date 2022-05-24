@@ -1,4 +1,5 @@
 import React from 'react';
+import Helpful from './Helpful.jsx';
 
 export default function AnswerListEntry({a}) {
   return (
@@ -8,7 +9,7 @@ export default function AnswerListEntry({a}) {
       <div className="answer-info">
         <span>by {a.answerer_name}, {a.date}</span>
         |
-        <span className="helpful">Helpful? Yes ({a.helpfulness})</span>
+        <Helpful count={a.helpfulness} />
         |
         <span>Report</span>
       </div>
