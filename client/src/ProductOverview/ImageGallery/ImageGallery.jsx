@@ -10,8 +10,8 @@ const thumbnails = {
 }
 
 const viewStyle = {
-  height: '800px',
-  width: '800px',
+  height: '600px',
+  width: '600px',
   overflow: 'hidden'
 }
 
@@ -37,8 +37,8 @@ export default function ImageGallery({photos}) {
             key={photo.thumbnail_url}
             src={photo.thumbnail_url}
             onClick={() => setViewPhoto(photo)}
-            width='100'
-            height='100'
+            width='50'
+            height='50'
           ></img>
         ))}
       </div>
