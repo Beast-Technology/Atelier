@@ -1,18 +1,23 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-export default function QAListEntry() {
+export default function QAListEntry({q}) {
   return (
     <li>
       <div className="question">
-        <p className="question-title">Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <div className="question-actions">
-          <span className="helpful">Helpful? Yes (25)</span>
-          <span className="underline">Add Answers</span>
+        <p>Q:</p>
+
+        <div className="question-container">
+          <p className="question-title">{q.question_body}</p>
+
+          <div className="question-actions">
+            <span className="helpful">Helpful? Yes ({q.question_helpfulness})</span>
+            <span className="underline">Add Answers</span>
+          </div>
         </div>
       </div>
 
-      <AnswerList />
+      <AnswerList answers={q.answers} />
     </li>
   )
 }

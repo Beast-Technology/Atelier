@@ -1,14 +1,14 @@
 import React from 'react';
 
-export default function AnswerListEntry() {
+export default function AnswerListEntry({a}) {
   return (
     <li className="answer-content">
-      <p className="answer-text">Fusce augue eros, laoreet et scelerisque non, pretium sit amet augue. In hac habitasse platea dictumst. Ut dui nunc, iaculis et magna non, feugiat aliquam elit.</p>
+      <p className="answer-text">{a.body}</p>
 
       <div className="answer-info">
-        <span>by User1234, January 1, 2019</span>
+        <span>by {a.answerer_name}, {a.date}</span>
         |
-        <span className="helpful">Helpful? Yes (25)</span>
+        <span className="helpful">Helpful? Yes ({a.helpfulness})</span>
         |
         <span>Report</span>
       </div>

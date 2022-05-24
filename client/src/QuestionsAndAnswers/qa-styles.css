@@ -90,8 +90,15 @@ p {
 
 .question {
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+.question-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .question-title {
@@ -110,6 +117,8 @@ p {
   text-decoration: underline;
 }
 
+/* ANSWERS */
+
 .answer {
   display: flex;
   gap: 12px;
@@ -118,19 +127,26 @@ p {
 .answers-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .answer-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 24px;
+  max-height: 50vh;
+  overflow: auto;
 }
 
 .answer-content {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.answer-text {
+  font-weight: 500;
 }
 
 .answer-info {

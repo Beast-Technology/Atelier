@@ -7,11 +7,10 @@ export default function QAList() {
   const [qs, setQs] = useState([]);
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: 40345 } })
+    axios.get('/qa/questions', { params: { product_id: 40355, count: 5 } })
       .then(res => {
         console.log('qa list:', res.data.results);
         setQs(res.data.results);
-        console.log('qs:', qs);
         })
       .catch(err => { alert(err) })
   }, [])
@@ -19,8 +18,7 @@ export default function QAList() {
   return (
     <div>
       <ul className="qa-list">
-        <QAListEntry />
-        <QAListEntry />
+        {qs.map((q, index) => <QAListEntry key={index} q={q} />)}
       </ul>
 
       <div className="qa-actions">
