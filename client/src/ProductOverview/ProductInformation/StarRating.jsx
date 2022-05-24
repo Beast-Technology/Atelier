@@ -9,7 +9,7 @@ function StarRating({reviews}) {
 
   return (
     <div>
-      <p>Star Average: {starAvg}</p>
+      <p>Star Average: {starAvg.toFixed(2)}</p>
       <a href="">Read All Reviews</a>
     </div>
   )

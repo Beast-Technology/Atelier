@@ -10,7 +10,7 @@ function ProductOverview() {
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
-  const productID = 40344;
+  const productID = 40346;
 
   useEffect(() => {
     axios.request({
@@ -33,7 +33,7 @@ function ProductOverview() {
       method: 'get',
     })
       .then(response => {
-        // console.log(response.data);
+        console.log(response.data);
         setProduct(response.data);
       })
   }, []);
@@ -57,7 +57,7 @@ function ProductOverview() {
   return (
     <div style={containers}>
       <ImageGallery photos={style.photos}/>
-      <div style={{border: '1px solid red'}}>
+      <div>
         <ProductInformation
           style={style}
           product={product}

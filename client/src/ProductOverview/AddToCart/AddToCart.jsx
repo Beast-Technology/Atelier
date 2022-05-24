@@ -4,7 +4,7 @@ import QuantitySelector from './QuantitySelector.jsx';
 
 export default function AddToCart({skus}) {
   const [sku, setSku] = useState(skus[0]);
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     for(let sku_id in skus) {
@@ -17,7 +17,7 @@ export default function AddToCart({skus}) {
     <div>
       <SizeSelector skus={skus} setSku={setSku}/>
       <QuantitySelector sku={sku} setQty={setQty}/>
-      <div>Add to Cart</div>
+      <button>Add To Cart</button>
     </div>
   )
 }

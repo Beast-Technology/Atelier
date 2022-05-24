@@ -12,15 +12,34 @@ export default function ImageGallery({photos}) {
 
   const thumbnails = {
     position: 'absolute',
-    border: '2px blue solid'
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '5px',
+    margin: '5px'
+  }
+
+  const viewStyle = {
+    height: '800px',
+    width: '800px',
+    overflow: 'hidden'
   }
 
   return (
-    <div>
-      {viewPhoto === null ? '' : (<img width='400' src={viewPhoto.url}></img>)}
+    <div style={{display: 'flex'}}>
+      <div style={viewStyle}>
+        {viewPhoto === null ? '' :
+        (<img src={viewPhoto.url}></img>)}
+      </div>
       <div style={thumbnails}>
         {photos.map(photo => (
-          <img key={photo.thumbnail_url} src={photo.thumbnail_url}></img>
+          <img
+            style={{border: '2px white solid'}}
+            key={photo.thumbnail_url}
+            src={photo.thumbnail_url}
+            onClick={() => setViewPhoto(photo)}
+            width='100'
+            height='100'
+          ></img>
         ))}
       </div>
 
