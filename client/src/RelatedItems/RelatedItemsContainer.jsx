@@ -9,9 +9,10 @@ function RelatedItemsContainer() {
 
   return (
     <section id="RelatedItemsContainer">
-      RelatedItemsContainer
+
       <RelatedProductsContainer />
       <br />
+      YourOutfitContainer
       <YourOutfitContainer />
     </section>
   );
