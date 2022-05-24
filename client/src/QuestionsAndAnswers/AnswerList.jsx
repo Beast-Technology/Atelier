@@ -9,7 +9,7 @@ export default function AnswerList() {
         <AnswerListEntry />
       </ul>
 
-      <span className="btn-action">LOAD MORE ANSWERS</span>
+      <span href="" className="btn-action">LOAD MORE ANSWERS</span>
     </div>
   )
 }
