@@ -1,8 +1,15 @@
+const axios = require('axios');
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
 
 export default function QAListEntry({q}) {
+  function setHelpful() {
+    axios.put(`/qa/questions/${q.question_id}/helpful`)
+      .then(() => {console.log('success')})
+      .catch((err) => {alert(err)});
+  }
+
   return (
     <li>
       <div className="question">
@@ -12,7 +19,7 @@ export default function QAListEntry({q}) {
           <p className="question-title">{q.question_body}</p>
 
           <div className="question-actions">
-            <Helpful count={q.question_helpfulness} />
+            <Helpful count={q.question_helpfulness} onSetHelpful={setHelpful} />
             |
             <span className="underline">Add Answers</span>
           </div>
