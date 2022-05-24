@@ -16,7 +16,7 @@ export default function AnswerListEntry({a}) {
       <div className="answer-info">
         <span>by {a.answerer_name}, {a.date}</span>
         |
-        <Helpful count={a.helpfulness} onSetHelpful={markAnswerHelpful} />
+        <Helpful count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
         <span>Report</span>
       </div>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-export default function Helpful({count, onSetHelpful}) {
+export default function Helpful({count, onMarkHelpful}) {
   const [localCount, setLocalCount] = useState(count);
   const [isClicked, setClicked] = useState(false);
 
   function handleClick() {
     setLocalCount(localCount + 1);
     setClicked(true);
-    onSetHelpful();
+    onMarkHelpful();
   }
 
   return (

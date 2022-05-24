@@ -4,7 +4,7 @@ import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
 
 export default function QAListEntry({q}) {
-  function setHelpful() {
+  function markQuestionHelpful() {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
@@ -19,7 +19,7 @@ export default function QAListEntry({q}) {
           <p className="question-title">{q.question_body}</p>
 
           <div className="question-actions">
-            <Helpful count={q.question_helpfulness} onSetHelpful={setHelpful} />
+            <Helpful count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
             <span className="underline">Add Answers</span>
           </div>
