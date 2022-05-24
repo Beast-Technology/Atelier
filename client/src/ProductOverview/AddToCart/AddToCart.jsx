@@ -6,20 +6,14 @@ export default function AddToCart({skus}) {
   const [sku, setSku] = useState(null);
   const [qty, setQty] = useState(1);
 
-  console.log(skus);
-
   useEffect(() => {
-    for(let sku_id in skus) {
-      setSku(skus[sku_id]);
-      return;
-    }
+    setSku(null);
   }, [skus])
 
   return(
     <div>
       <SizeSelector skus={skus} setSku={setSku}/>
-      {/* <QuantitySelector sku={sku} setQty={setQty}/> */}
-      <button>Add To Cart</button>
+      <QuantitySelector sku={sku} setQty={setQty}/>
     </div>
   )
 }

@@ -10,20 +10,22 @@ export default function QuantitySelector({sku, setQty}) {
   );
 
   const skuSelected = (
-    <select
-      onChange={(e) => setQty(e.target.value)}
-    >
-      {sku ? [...Array(sku.quantity)].map((e, i) => {
-        return i ? (<option key={i}>{i}</option>)
-          : '';
-      }) : (<option>OUT OF STOCK</option>)}
-    </select>
+    <div>
+      <select
+        onChange={(e) => setQty(e.target.value)}
+      >
+        {sku ? [...Array(sku.quantity)].map((e, i) => {
+          return (i === 0 || i > 15) ? '' : (<option key={i}>{i}</option>);
+        }) : (<option>OUT OF STOCK</option>)}
+      </select>
+      <button>Add To Cart</button>
+    </div>
   );
 
   return (
-    <div>
+    <span>
       {sku ? skuSelected : skuNotSelected}
-    </div>
+    </span>
   )
 }
 

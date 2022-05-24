@@ -2,7 +2,7 @@ import React from 'react';
 import StarRating from './StarRating.jsx';
 
 export default function ProductInformation({style, product, reviews}) {
-  const {category, name, default_price} = product;
+  const {category, name, default_price, slogan} = product;
   const {original_price, sale_price} = style;
 
   return (
