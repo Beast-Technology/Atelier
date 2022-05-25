@@ -16,7 +16,7 @@ function RatingsAndReviews() {
       params: {
         product_id: 40344,
         page: 1,
-        count: 5
+        count: 2
       }
     })
       .then((res) => {
