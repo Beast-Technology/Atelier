@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import './Carousel.css';
+// import './Carousel.css';
 
 export const CarouselItem = ({photo, children, width}) => {
   const style = {

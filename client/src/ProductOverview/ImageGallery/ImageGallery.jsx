@@ -1,8 +1,22 @@
 import React, {useState, useEffect} from 'react';
-import Carousel, {CarouselItem} from './Carousel.jsx';
+// import Carousel, {CarouselItem} from './Carousel.jsx';
+
+const thumbnails = {
+  position: 'absolute',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '5px',
+  margin: '5px'
+}
+
+const viewStyle = {
+  height: '800px',
+  width: '800px',
+  overflow: 'hidden'
+}
 
 export default function ImageGallery({photos}) {
-  const [viewPhoto, setViewPhoto] = useState(null)
+  const [viewPhoto, setViewPhoto] = useState(null);
 
   useEffect(() => {
     if (photos[0] !== undefined) {
@@ -10,17 +24,22 @@ export default function ImageGallery({photos}) {
     }
   }, [photos])
 
-  const thumbnails = {
-    position: 'absolute',
-    border: '2px blue solid'
-  }
-
   return (
-    <div>
-      {viewPhoto === null ? '' : (<img width='400' src={viewPhoto.url}></img>)}
+    <div style={{display: 'flex'}}>
+      <div style={viewStyle}>
+        {viewPhoto === null ? '' :
+        (<img src={viewPhoto.url}></img>)}
+      </div>
       <div style={thumbnails}>
         {photos.map(photo => (
-          <img src={photo.thumbnail_url}></img>
+          <img
+            style={{border: '2px white solid'}}
+            key={photo.thumbnail_url}
+            src={photo.thumbnail_url}
+            onClick={() => setViewPhoto(photo)}
+            width='100'
+            height='100'
+          ></img>
         ))}
       </div>
 
