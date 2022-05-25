@@ -1,6 +1,7 @@
 const axios = require('axios');
 import React from 'react';
 import Helpful from './Helpful.jsx';
+import ReportButton from './ReportButton.jsx';
 
 export default function AnswerListEntry({a}) {
   function markAnswerHelpful() {
@@ -18,7 +19,8 @@ export default function AnswerListEntry({a}) {
         |
         <Helpful count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
-        <span>Report</span>
+        {/* <span>Report</span> */}
+        <ReportButton />
       </div>
     </li>
   )
