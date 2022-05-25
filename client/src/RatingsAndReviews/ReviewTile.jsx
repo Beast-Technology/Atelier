@@ -35,7 +35,12 @@ function ReviewTile({ review }) {
         </span>
       </div>
       <div>
-        <h4 className="reviewSummary">{summary.slice(0, 60)}</h4>
+        {summary.length > 60 ?
+        <div>
+          <h4 className="reviewSummary">{`${summary.slice(0, 60)}...`}</h4>
+          <div>{summary.slice(60)}</div>
+        </div>
+          : <h4 className="reviewSummary">{summary}</h4> }
         <div>
           <p className="reviewBody">{review.body}</p>
           {/* Add photo section here as well */}
