@@ -9,7 +9,7 @@ module.exports = {
   questions: (req, res) => {
     console.log('req.query:', req.query);
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.query.product_id}&count=${req.query.count}`, {headers: { 'Authorization': `${process.env.TOKEN}` }})
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.query.product_id}&count=${req.query.count || 2}&page=${req.query.page || 1}`, {headers: { 'Authorization': `${process.env.TOKEN}` }})
       .then((response) => {res.status(200).send(response.data)})
       .catch((err) => {res.status(400).send(err)});
   },

@@ -65,7 +65,11 @@ p {
   color: #c2255c;
 }
 
-
+/* SECTION Q AND A */
+/* .section-qanda {
+  max-height: 100vh;
+  overflow: auto;
+} */
 
 /* QASearch */
 
@@ -99,6 +103,9 @@ p {
   flex-direction: column;
   gap: 32px;
   margin-bottom: 40px;
+  max-height: 60vh;
+  overflow: auto;
+  padding: 16px 24px;
 }
 
 .question {

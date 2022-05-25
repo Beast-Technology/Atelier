@@ -7,17 +7,26 @@ const axios = require('axios');
 
 function QuestionsAndAnswers() {
   const [qs, setQs] = useState([]);
-  // const [displayQs, setDisplayQs] = useState([]);
+  const [nextPage, setNextPage] = useState(2);
+
+  function getTwoMore() {
+    axios.get('/qa/questions', { params: { product_id: 40355, page: nextPage} })
+      .then(res => { setQs([...qs, ...res.data.results]) })
+      .then(() => { setNextPage(nextPage + 1) })
+      .catch(err => { alert(err) });
+  }
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: 40355, count: 5 } })
-      .then(res => {setQs(res.data.results)})
+    axios.get('/qa/questions', { params: { product_id: 40355, count: 3} })
+      .then(res => {
+        setQs(res.data.results);
+      })
       .catch(err => { alert(err) })
   }, [])
 
   return (
-    <section>
-      <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
+    <section className="section-qanda">
+      <h2 onClick={getTwoMore} className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch />
       <QAList qs={qs}/>
     </section>
