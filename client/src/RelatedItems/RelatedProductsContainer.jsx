@@ -6,7 +6,9 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 
 
 
-function RelatedProductsContainer({ relatedItems, showModal, setShow }) {
+function RelatedProductsContainer({
+  relatedItems, showModal, setShow, setClickedItem,
+}) {
   // TODO: add function to update related items/provide a modal from clicking on specific card
 
 
@@ -21,6 +23,7 @@ function RelatedProductsContainer({ relatedItems, showModal, setShow }) {
           key={relatedItem.data.id}
           showModal={showModal}
           setShow={setShow}
+          setClickedItem={setClickedItem}
         />
       ))
       }

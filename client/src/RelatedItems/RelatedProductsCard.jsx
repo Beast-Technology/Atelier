@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import CompareModal from './CompareModal.jsx';
+import React, { } from 'react';
 
 
-function RelatedProductsCard({ relatedItem, showModal, setShow }) {
-  function showModel() {
+function RelatedProductsCard({ relatedItem, setShow, setClickedItem }) {
+  function handleModal() {
     setShow(true);
   }
-
+  function handleClickedItem(item) {
+    setClickedItem(item);
+  }
 
   return (
 
     <div className="RelatedProductsCard">
-      <CompareModal showModal={showModal} />
       <img className="card-img" src="" alt="" />
       <button
         className="card-starButton"
         onClick={() => {
-          showModel(true);
+          handleModal();
+          handleClickedItem(relatedItem);
         }}
         type="button"
       >

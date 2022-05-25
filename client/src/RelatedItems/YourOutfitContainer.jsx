@@ -37,7 +37,7 @@ function YourOutfitContainer({ productID, relatedItems, currentProduct }) {
   } else {
     addButtonDiv = (<div />);
   }
-  console.log(yourOutfitItems);
+  // console.log(yourOutfitItems);
 
   return (
     <div id="YourOutfitContainer">

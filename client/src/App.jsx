@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <ProductOverview />
-      <RatingsAndReviews />
+      {/* <RatingsAndReviews /> */}
       <QuestionsAndAnswers />
       <RelatedItems />
     </div>

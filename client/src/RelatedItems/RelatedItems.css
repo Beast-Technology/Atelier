@@ -1,5 +1,6 @@
 
 /* ------------------------ MAIN ------------------------ */
+
 .button {
   transition-duration: 0.4s;
 }
@@ -31,7 +32,7 @@
 .RelatedProductsCard, .OutfitProductsCard {
   position: relative;
   margin: 10px;
-  height: 260px;
+  height: 300px;
   width: 200px;
   min-width: 200px;
   box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
@@ -54,7 +55,7 @@
   width:25px;
   height:25px;
   /* border: none; */
-  font-size: 19px;
+  font-size: 1.5rem;
   background-color: rgb(255 255 255 / 0);
   border-radius:50px;
 
@@ -75,17 +76,17 @@
 
 }
 .card-category {
-  font-size: 12px;
+  font-size: 1.1rem;
   padding: 0 0 5px;
 }
 .card-name {
-  font-size: 15px;
+  font-size: 1.4rem;
   font-weight: bold;
   padding: 0 0 5px;
 }
 
 .card-price {
-  font-size: 14px;
+  font-size: 1.3rem;
   padding: 0 0 5px;
 }
 
@@ -108,7 +109,7 @@
 #addButtonCard {
   position: relative;
   margin: 10px;
-  height: 260px;
+  height: 300px;
   width: 200px;
   min-width: 200px;
   box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
@@ -132,6 +133,7 @@
   background-color: #4CAF50;
 } */
 
+/* ------------------------ Modal ------------------------ */
 
 
 .modalCard {
@@ -141,8 +143,9 @@
   transform: translate(-50%, -50%);
   z-index: 1;
 
-  width: 535px;
-  height: 360px;
+  width: 700px;
+  height: 250px;
+  border-radius: 56px;
 
   background-color: rgb(214 210 210 / 90%);
 
@@ -150,4 +153,18 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+
+/* ------------------------ Table ------------------------ */
+
+table {
+
+  width: 90%;
+  height: 90%;
+}
+
+td {
+  column-width: 150px;
+  text-align: center;
 }
