@@ -1,7 +1,8 @@
 import React from 'react';
 import QAListEntry from './QAListEntry.jsx';
 
-export default function QAList({qs}) {
+export default function QAList({qs, next, onHandleLoad}) {
+
   return (
     <div>
       <ul className="qa-list">
@@ -9,7 +10,7 @@ export default function QAList({qs}) {
       </ul>
 
       <div className="qa-actions">
-        <a className="btn btn-outline">MORE ANSWERED QUESTIONS</a>
+        {next !== 0 && <a onClick={onHandleLoad} className="btn btn-outline">MORE ANSWERED QUESTIONS</a>}
         <a className="btn btn-primary">ADD A QUESTION +</a>
       </div>
     </div>
