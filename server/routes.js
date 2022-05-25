@@ -1,5 +1,5 @@
-const controllers = require('./controllers/');
 const router = require('express').Router();
+const controllers = require('./controllers/index.js');
 
 // -- Overview -- //
 router.get('/reviews', controllers.overview.overview);
@@ -15,12 +15,11 @@ router.put('/qa/questions/:question_id/helpful', controllers.qanda.setQHelpful);
 router.put('/qa/answers/:answer_id/helpful', controllers.qanda.setAHelpful);
 
 // -- Ratings and Reviews -- //
-router.get('/reviews/page/count/product_id', controllers.reviews.data);
-router.get('/reviews/meta/product_id', controllers.reviews.meta);
+router.get('/reviews/', controllers.reviews.data);
+router.get('/reviews/meta/', controllers.reviews.meta);
 
 
 module.exports = router;
-
 
 
 
