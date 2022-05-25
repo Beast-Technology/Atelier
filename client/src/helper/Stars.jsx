@@ -25,7 +25,7 @@ export const StarRating = ({ totalStars, stars }) => {
     <div className="star-rating">
       {[...Array(totalStars)].map((n, i) => (
         stars > i ?
-        <div className="star selected"/> : <div className="star"/>
+        <div className="star selected" key={i}/> : <div className="star" key={i}/>
       ))}
     </div>
   );

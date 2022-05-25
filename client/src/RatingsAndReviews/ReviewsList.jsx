@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { StarRatingSelect } from '../helper/Stars.jsx';
 
 import ReviewTile from './ReviewTile.jsx';
 
@@ -53,7 +54,7 @@ function ReviewsList({ reviews, meta }) {
     return (
       <form>
         <label className="reviewForm">
-          Overall Rating: <input type="text" />
+          Overall Rating: <StarRatingSelect totalStars={5}/>
           Do you recommend this product: <input type="text" />
           Characteristics: <input type="text" />
           Review Summary: <input type="text" />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DatePosted } from '../helper/Date.jsx';
-import { StarRatingSelect, StarRating } from '../helper/Stars.jsx';
+import { StarRating } from '../helper/Stars.jsx';
 
 function ReviewTile({ review }) {
   const [clicked, setClicked] = useState(false);
