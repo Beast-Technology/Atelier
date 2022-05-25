@@ -6,10 +6,8 @@ export const DatePosted = (value) => {
   const options = {year: 'numeric', month: 'long', day: 'numeric' };
 
   return (
-    <div>
+    <>
       {event.toLocaleDateString(undefined, options)}
-    </div>
+    </>
   )
 }
-
-export default DatePosted;
