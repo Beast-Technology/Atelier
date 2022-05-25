@@ -10,19 +10,20 @@ const thumbnails = {
 }
 
 const viewStyle = {
-  height: '800px',
-  width: '800px',
+  height: '600px',
+  width: '600px',
   overflow: 'hidden'
 }
 
 export default function ImageGallery({photos}) {
   const [viewPhoto, setViewPhoto] = useState(null);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (photos[0] !== undefined) {
-      setViewPhoto(photos[0])
+      setViewPhoto(photos[index])
     }
-  }, [photos])
+  }, [index, photos])
 
   return (
     <div style={{display: 'flex'}}>
@@ -31,16 +32,33 @@ export default function ImageGallery({photos}) {
         (<img src={viewPhoto.url}></img>)}
       </div>
       <div style={thumbnails}>
-        {photos.map(photo => (
-          <img
-            style={{border: '2px white solid'}}
-            key={photo.thumbnail_url}
-            src={photo.thumbnail_url}
-            onClick={() => setViewPhoto(photo)}
-            width='100'
-            height='100'
-          ></img>
-        ))}
+        {photos.map((photo, i) => {
+          return index === i ?
+            (
+              <img
+                  style={{border: '4px green solid'}}
+                  key={photo.thumbnail_url}
+                  src={photo.thumbnail_url}
+                  onClick={() => {
+                    setIndex(i);
+                  }}
+                  width='50'
+                  height='50'
+                ></img>
+            )
+            : (
+                <img
+                  style={{border: '2px white solid'}}
+                  key={photo.thumbnail_url}
+                  src={photo.thumbnail_url}
+                  onClick={() => {
+                    setIndex(i);
+                  }}
+                  width='50'
+                  height='50'
+                ></img>
+              )
+        } )}
       </div>
 
       {/* <Carousel>
