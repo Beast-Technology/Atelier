@@ -24,11 +24,8 @@ export const StarRating = ({ totalStars, stars }) => {
   return (
     <div className="star-rating">
       {[...Array(totalStars)].map((n, i) => (
-        <Star
-          key={i}
-          selected={i < starsSelected}
-          onClick={() => selectStar(i + 1)}
-        />
+        stars > i ?
+        <div className="star selected"/> : <div className="star"/>
       ))}
     </div>
   );

@@ -28,7 +28,7 @@ function ReviewTile({ review }) {
   return (
     <td id="reviewTile">
       <div className="tileRow1">
-      <StarRating totalStars={5} />
+      <StarRating totalStars={5} stars={review.rating}/>
         <span>
           {/* If it's a user add a checkmark next to their name */}
           {review.reviewer_name}, {date}
