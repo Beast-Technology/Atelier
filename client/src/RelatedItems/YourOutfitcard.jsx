@@ -1,21 +1,19 @@
 import React from 'react';
 
 
-
-
 function YourOutfitcard() {
-  // const [count, setCount] = useState(0);
 
   return (
-    <div id="YourOutfitcard">
-      YourOutfitcard
+    <div className="OutfitProductsCard">
+    <img className="card-img" src={""} />
+    <button className="card-removeButton"> x </button>
+    <div className="card-category">{"relatedItem.category"}</div>
+    <div className="card-name">{"relatedItem.name"}</div>
+    <div className="card-price">${parseInt(100)}</div>
+    <div className="card-stars">★★★★★</div>
     </div>
-  );
-}
+    );
+  }
 
-
-// RelatedItemsContainer.propTypes = propTypes;
-// RelatedItemsContainer.defaultProps = defaultProps;
-
-export default YourOutfitcard;
+  export default YourOutfitcard;
 
