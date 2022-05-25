@@ -1,20 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import QAListEntry from './QAListEntry.jsx';
 
-const axios = require('axios');
-
-export default function QAList() {
-  const [qs, setQs] = useState([]);
-
-  useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: 40355, count: 5 } })
-      .then(res => {
-        console.log('qa list:', res.data.results);
-        setQs(res.data.results);
-        })
-      .catch(err => { alert(err) })
-  }, [])
-
+export default function QAList({qs}) {
   return (
     <div>
       <ul className="qa-list">
@@ -26,6 +13,5 @@ export default function QAList() {
         <a className="btn btn-primary">ADD A QUESTION +</a>
       </div>
     </div>
-
   )
 }
