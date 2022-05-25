@@ -15,7 +15,7 @@ router.put('/qa/questions/:question_id/helpful', controllers.qanda.setQHelpful);
 router.put('/qa/answers/:answer_id/helpful', controllers.qanda.setAHelpful);
 
 // -- Ratings and Reviews -- //
-router.get('/reviews/', controllers.reviews.data);
+// router.get('/reviews/', controllers.reviews.data);
 router.get('/reviews/meta/', controllers.reviews.meta);
 
 
