@@ -2,10 +2,6 @@ import React, {useEffect} from 'react';
 
 export default function StyleSelector({selectedStyle, styles, setStyle}) {
 
-  useEffect(() => {
-    console.log('StyleSelector useEffect')
-  }, [selectedStyle])
-
   return (
     <div>
       <div>
