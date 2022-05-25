@@ -1,73 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { StarRatingSelect } from '../helper/Stars.jsx';
 
 import ReviewTile from './ReviewTile.jsx';
+import AddReview from './AddReview.jsx';
 
-function ReviewsList({ reviews, meta }) {
+function ReviewsList({ reviews, meta, onClick }) {
   const [totalReviews, setTotalReviews] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [count, setCount] = useState(reviews.count)
   const [addReview, setAddReview] = useState(false);
 
   useEffect(() => {
     if (meta.recommended) {
       setTotalReviews(Number(meta.recommended.false) + Number(meta.recommended.true))
     }
-  },[meta])
-
-  const onClick = () => setIsActive(!isActive);
-
-  const onClickMoreReviews = () => {
-    setCount(count + 2)
-  };
-
-  const onClickAddReview = () => {
-    setAddReview(!addReview)
-  };
+  }, [meta]);
 
   if (addReview === false) {
     return (
       <div>
         <h3>
-          {totalReviews} reviews, sorted by
-          <button onClick={onClick}>
-            <span>Relative</span>
-          </button>
+          <div className="totalReviews">
+          <span>{`${totalReviews} reviews, sorted by`}</span>
+          <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
+          <span className="material-symbols-outlined">expand_more</span>
+          </div>
         </h3>
-        <table>
+        <table className="reviewsList">
           <tbody>
             {
               (reviews.results || []).map((review, index) => (
                 <tr>
-                  <ReviewTile review={review} key={index}/>
+                  <ReviewTile review={review} key={index} />
                 </tr>
               ))
             }
           </tbody>
         </table>
-        <button onClick={onClickMoreReviews}>More Reviews</button>
-        <button onClick={onClickAddReview}>Add A Review</button>
+        <span className="moreReviews" onClick={onClick}>More Reviews</span>
+        <span className="addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</span>
       </div>
     );
-  } else {
-    return (
-      <form>
-        <label className="reviewForm">
-          Overall Rating: <StarRatingSelect totalStars={5}/>
-          Do you recommend this product: <input type="text" />
-          Characteristics: <input type="text" />
-          Review Summary: <input type="text" />
-          Review Body: <input type="text" />
-          Upload photos: <input type="text" />
-          Username: <input type="text" />
-          Email: <input type="text" />
-        </label>
-        <button>Cancel</button>
-        <input type="submit" value="Submit" />
-      </form>
-    )
   }
+  return <AddReview />;
 }
 
 export default ReviewsList;

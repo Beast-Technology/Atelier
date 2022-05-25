@@ -4,47 +4,10 @@
   box-sizing: border-box;
 }
 
-/* Review Tile */
-#reviewTile {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1%;
-  border-bottom: 1px black solid;
-  background-color: rgb(248, 246, 243);
-  margin-bottom: 1%;
-}
-
-.tileRow1 {
-  display: flex;
-  justify-content: space-between;
-}
-
-.reviewSummary {
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-.reviewBody {
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-.recommendProduct {
-  padding-bottom: 2%;
-}
-
-/* Review List */
-
-.reviewForm {
-  display: flex;
-  flex-direction: column;
-}
-
 /* Stars Function */
 .star-rating {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .star {
@@ -80,4 +43,111 @@
 
 .star.selected {
   background-color: goldenrod;
+}
+
+/* Review Tile */
+#reviewTile {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1%;
+  border-bottom: 1px black solid;
+  background-color: rgb(248, 246, 243);
+  margin-bottom: 1%;
+  text-align: left;
+}
+
+.tileRow1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewSummary {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.reviewBody {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.recommendProduct {
+  padding-bottom: 2%;
+}
+
+#reviewTile .buttons{
+  border-bottom: 1px black solid;
+  padding-left: 2px;
+}
+
+#reviewTile .reported{
+  color: rgb(216, 25, 25);
+  border-bottom: none;
+  padding-left: 2px;
+}
+
+#reviewTile .buttons:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+/* Review List */
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.reviewForm {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: column;
+}
+
+.reviewForm input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sorter {
+  padding-left: 2px;
+  border-bottom: 1px black solid;
+}
+
+.sorter:hover {
+  cursor: pointer;
+}
+
+.moreReviews, .addReviews {
+  border: 1px black solid;
+  background-color: rgb(248, 246, 243);
+  padding: 7px;
+  display: inline-block;
+}
+
+.addReviews {
+  margin-left: 1rem;
+}
+
+.moreReviews, .addReviews:hover {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  position: relative;
+  font-size: 20px;
+}
+
+.totalReviews {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
