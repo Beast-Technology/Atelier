@@ -1,5 +1,5 @@
-const controllers = require('./controllers/');
 const router = require('express').Router();
+const controllers = require('./controllers/index.js');
 
 // -- Overview -- //
 router.get('/reviews', controllers.overview.overview);
@@ -15,7 +15,6 @@ router.get('/reviews/meta/', controllers.reviews.meta);
 
 
 module.exports = router;
-
 
 
 
