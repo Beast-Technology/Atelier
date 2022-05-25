@@ -21,7 +21,6 @@ function ReviewTile({ review }) {
   }
 
   const onClickReport = () => {
-    alert("Report Recieved");
     setReport(true);
   }
 
@@ -51,10 +50,10 @@ function ReviewTile({ review }) {
       {review.response ? <h4>Response: {review.response}</h4> : <div></div>}
       <div>
         <div>Was this review helpful?</div>
-        <button onClick={clicked ? console.log("Clicked Already") : onClickHelpfulYes}>Yes</button> {helpful}
-        <button onClick={clicked ? console.log("Clicked Already") : onClickHelpfulNo}>No</button> {notHelpful}
+        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulYes}>Yes</span> {helpful}
+        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulNo}>No</span> {notHelpful}
         {/* Report wasn't not listed in Atelier Docs */}
-        {report ? <> Reported</> : <button onClick={onClickReport}>Report</button>}
+        {report ? <span className="reported">Reported</span> : <span className="buttons" onClick={onClickReport}>Report</span>}
         <br />
       </div>
     </td>
