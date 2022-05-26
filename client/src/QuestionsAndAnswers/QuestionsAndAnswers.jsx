@@ -45,7 +45,7 @@ function QuestionsAndAnswers() {
   }, [qs, displayQs])
 
   return (
-    <section className="section-qanda">
+    <section data-testid="sec-qna" className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch />
       <QAList qs={displayQs} next={nextCount} onHandleLoad={handleLoad} />
