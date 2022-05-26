@@ -32,10 +32,11 @@ function QuestionsAndAnswers() {
 
   useEffect(() => {
     axios.get('/qa/questions', { params: { product_id: chosenId, count: 100 } })
-      .then((res) => {
-        setQAData(res.data.results);
-        setQs(res.data.results);
-        setDisplayQs(res.data.results.slice(0, 2));
+      .then((res) => res.data.results.sort((a, b) => b.question_helpfulness - a.question_helpfulness))
+      .then((sortedResults) => {
+        setQAData(sortedResults);
+        setQs(sortedResults);
+        setDisplayQs(sortedResults.slice(0, 2));
       })
       .catch((err) => { alert(err); });
   }, []);
