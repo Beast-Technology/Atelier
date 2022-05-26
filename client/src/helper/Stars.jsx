@@ -20,7 +20,6 @@ export const StarRatingSelect = ({ totalStars }) => {
 };
 
 export const StarRating = ({ totalStars, stars }) => {
-  const [starsSelected, selectStar] = useState(0);
   return (
     <div className="star-rating">
       {[...Array(totalStars)].map((n, i) => (

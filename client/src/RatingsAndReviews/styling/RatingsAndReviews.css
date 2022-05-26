@@ -10,10 +10,43 @@
   flex-wrap: wrap;
 }
 
+.reviewForm .star {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  background-color: grey;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+  clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+}
+
 .star {
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: grey;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -53,6 +86,8 @@
   border-bottom: 1px black solid;
   background-color: rgb(248, 246, 243);
   margin-bottom: 1%;
+  max-width: 60vw;
+  min-width: 60vw;
   text-align: left;
 }
 
@@ -98,23 +133,8 @@
   flex-direction: column;
   gap: 24px;
   max-height: 50vh;
+  width:auto;
   overflow: auto;
-}
-
-.reviewForm {
-  display: flex;
-  border: 1px black solid;
-  flex-direction: column;
-}
-
-.reviewForm input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 
 .sorter {
@@ -150,4 +170,76 @@
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+/* Add Reviews */
+.reviewForm {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: column;
+  gap: 24px;
+  max-width: fit-content;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.reviewForm input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Rating Breakdown */
+.ratingBreakdown {
+  margin-right: 2rem;
+}
+
+.rbRow1 {
+  display: flex;
+}
+
+.rbRow1 .decimal{
+  font-size: 4rem;
+  padding-right: 1rem;
+  font-weight: 900;
+}
+
+.progress {
+  width: 8rem;
+  border: 1px solid gray;
+  height: 1rem;
+  margin-top: auto;
+}
+
+.progress .progress__bar {
+  height: 100%;
+  background-color: gray;
+}
+
+.starBar {
+  display: flex;
+}
+
+.starBar span{
+  border-bottom: 1px black solid;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.starBar span:hover{
+  cursor: pointer;
+  color: blue;
+}
+
+.breakRecommend {
+  font-size: 1rem;
+}
+
+/* Ratings And Reviews */
+.mainPage {
+  display: flex;
 }
