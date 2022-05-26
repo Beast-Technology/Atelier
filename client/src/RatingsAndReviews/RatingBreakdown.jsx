@@ -35,18 +35,6 @@ function RatingBreakdown({ meta }) {
   };
 
   useEffect(() => {
-    if (meta.ratings) {
-      setTotalStars(totalStarsFunction(meta.ratings));
-    }
-  }, [meta]);
-
-  useEffect(() => {
-    if (meta.ratings) {
-      setDivideTotalStars(divideTotalStarsFunction(meta.ratings));
-    }
-  }, [meta]);
-
-  useEffect(() => {
     if (meta.recommended) {
       setRecommended(getPercentRec(meta.recommended));
     }
@@ -65,6 +53,8 @@ function RatingBreakdown({ meta }) {
       };
 
       setStarRatings(result);
+      setTotalStars(totalStarsFunction(meta.ratings));
+      setDivideTotalStars(divideTotalStarsFunction(meta.ratings));
     }
   }, [meta]);
 
