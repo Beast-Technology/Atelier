@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Stars from './styling/Stars.jsx';
 
-function ProductBreakdown() {
+function ProductBreakdown({ meta }) {
+  const [characteristics, setCharacterisitics] = useState({});
   return (
     <div className="productBreakdown">
       <div className="prodChar">
@@ -19,9 +21,84 @@ function ProductBreakdown() {
         <div className="prodRating">
           <div>poor</div>
           <div>great</div>
-          <img src={arrowDown} alt="arrowDown" />
         </div>
       </div>
+      <div className="prodChar">
+        <span>Size</span>
+        <div className="prodBars">
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+        </div>
+        <div className="prodRating">
+          <div>too small</div>
+          <div>perfect</div>
+          <div>too big</div>
+        </div>
+      </div>
+      <div className="prodChar">
+        <span>Quality</span>
+        <div className="prodBars">
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+        </div>
+        <div className="prodRating">
+          <div>poor</div>
+          <div>great</div>
+        </div>
+      </div>
+      <div className="prodChar">
+        <span>Length</span>
+        <div className="prodBars">
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+        </div>
+        <div className="prodRating">
+          <div>too small</div>
+          <div>perfect</div>
+          <div>too big</div>
+        </div>
+      </div>
+      <div className="prodChar">
+        <span>Fit</span>
+        <div className="prodBars">
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+          <div className="progress">
+            <div className="progress__bar"></div>
+          </div>
+        </div>
+        <div className="prodRating">
+          <div>too small</div>
+          <div>perfect</div>
+          <div>too big</div>
+        </div>
+      </div>
+      <Stars rating={4.25} />
     </div>
   );
 }
