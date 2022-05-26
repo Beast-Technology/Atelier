@@ -6,7 +6,7 @@
   "scripts": {
     "server-dev": "nodemon server/index.js",
     "client-dev": "webpack --watch",
-    "test": "jest --silent --watch",
+    "test-silent": "jest --silent --watch",
     "test-loud": "jest --watch"
   },
   "repository": {

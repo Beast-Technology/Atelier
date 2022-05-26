@@ -6,7 +6,6 @@ function RelatedProductsCard({ relatedItem, setShow, setClickedItem }) {
     setShow(true);
   }
   function handleClickedItem(item) {
-    console.log(item);
     setClickedItem(item);
   }
 

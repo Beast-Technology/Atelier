@@ -22,7 +22,6 @@ afterEach(() => {
 it("Junsu's first test example", () => {
   act(() => {
     render(<SizeSelector />, container);
-    expect(document.getElementsByTagName('select')).toBe(null);
   });
-
+  expect(document.getElementsByTagName('select')).toBe(null);
 })
