@@ -10,6 +10,39 @@
   flex-wrap: wrap;
 }
 
+.reviewForm .star {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  background-color: grey;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+  clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+}
+
 .star {
   cursor: pointer;
   width: 1rem;
@@ -53,6 +86,7 @@
   border-bottom: 1px black solid;
   background-color: rgb(248, 246, 243);
   margin-bottom: 1%;
+  max-width: 60vh;
   text-align: left;
 }
 
@@ -101,22 +135,6 @@
   overflow: auto;
 }
 
-.reviewForm {
-  display: flex;
-  border: 1px black solid;
-  flex-direction: column;
-}
-
-.reviewForm input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 .sorter {
   padding-left: 2px;
   border-bottom: 1px black solid;
@@ -150,4 +168,25 @@
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+/* Add Reviews */
+.reviewForm {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: column;
+  gap: 24px;
+  max-width: fit-content;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.reviewForm input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
