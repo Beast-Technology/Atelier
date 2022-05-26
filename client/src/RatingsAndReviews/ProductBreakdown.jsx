@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Stars from './styling/Stars.jsx';
 
 function ProductBreakdown({ meta }) {
   const [characteristics, setCharacterisitics] = useState({});
@@ -98,7 +97,6 @@ function ProductBreakdown({ meta }) {
           <div>too big</div>
         </div>
       </div>
-      <Stars rating={4.25} />
     </div>
   );
 }

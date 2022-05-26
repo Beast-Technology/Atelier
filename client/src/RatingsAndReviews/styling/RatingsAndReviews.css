@@ -83,6 +83,14 @@
   background-color: goldenrod;
 }
 
+path {
+  background-color: blue;
+}
+
+.starTest {
+  shape-rendering: crispEdges;
+}
+
 /* Review Tile */
 #reviewTile {
   display: flex;
@@ -112,6 +120,8 @@
 }
 
 .recommendProduct {
+  display: flex;
+  align-items: flex-end;
   padding-bottom: 2%;
 }
 
@@ -129,6 +139,28 @@
 #reviewTile .buttons:hover {
   color: blue;
   cursor: pointer;
+}
+
+#reviewTile .check {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-right: 1rem;
+  padding-top: 2px;
+}
+
+#reviewTile .tileBotRow {
+  font-size: 1.2rem;
+}
+
+#reviewTile .nameDate {
+  display: flex;
+  font-size: 1.4rem;
+}
+
+#reviewTile .verified {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-right: 2px;
 }
 
 /* Review List */
@@ -173,7 +205,7 @@
 
 .totalReviews {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   align-items: center;
 }
 
@@ -204,6 +236,11 @@
   margin-right: 2rem;
 }
 
+.ratingBreakdown svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
 .rbRow1 {
   display: flex;
 }
@@ -228,7 +265,9 @@
 }
 
 .starBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-top: 1rem;
 }
 
 .starBar span{
@@ -251,6 +290,10 @@
 .productBreakdown {
   margin-top: 2rem;
   margin-right: 2rem;
+}
+
+.productBreakdown span {
+  font-size: 1.2rem;
 }
 
 .productBreakdown .progress {
@@ -283,4 +326,5 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 1rem;
+  margin-bottom: 2px;
 }

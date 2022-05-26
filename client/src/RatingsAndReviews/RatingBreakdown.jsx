@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StarRating } from '../helper/Stars.jsx';
+import { Stars } from '../helper/Stars.jsx';
 
 function RatingBreakdown({ meta }) {
   const [totalStars, setTotalStars] = useState(0);
@@ -62,12 +62,12 @@ function RatingBreakdown({ meta }) {
     <div className="ratingBreakdown">
       <span className="rbRow1">
         <span className="decimal">{starDecimal}</span>
-        <StarRating totalStars={5} stars={Math.round((totalStars / divideTotalStars) * 5)} />
+        <Stars rating={(totalStars / divideTotalStars) * 5} />
       </span>
       <span className="breakRecommend">
         {`${recommended}% of reviews recommended this product`}
       </span>
-      <div>
+      <div className="progressBarContainer">
         <div className="starBar">
           <span>5 stars</span>
           <div className="progress">
