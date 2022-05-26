@@ -20,9 +20,9 @@ function ReviewsList({ reviews, meta, onClick }) {
       <div>
         <h3>
           <div className="totalReviews">
-          <span>{`${totalReviews} reviews, sorted by`}</span>
-          <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
-          <span className="material-symbols-outlined">expand_more</span>
+            <span>{`${totalReviews} reviews, sorted by`}</span>
+            <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
+            <span className="material-symbols-outlined">expand_more</span>
           </div>
         </h3>
         <table className="reviewsList">

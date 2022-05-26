@@ -46,14 +46,17 @@ function RatingsAndReviews() {
     <section>
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
-      <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />
-      <h3>--RatingBreakdown--</h3>
-      <RatingBreakdown meta={meta} />
-      <h3>--ProductBreakdown--</h3>
-      <ProductBreakdown meta={meta} />
-      <h3>--ReviewButtons--</h3>
-      <ReviewButtons />
-      {/* Keyword search low priority */}
+      <div className="mainPage">
+        <div>
+          <RatingBreakdown meta={meta} />
+          <h3>--ProductBreakdown--</h3>
+          <ProductBreakdown meta={meta} />
+        </div>
+        <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />
+        {/* <h3>--ReviewButtons--</h3>
+        <ReviewButtons />
+        Keyword search low priority */}
+      </div>
     </section>
   );
 }

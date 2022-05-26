@@ -13,16 +13,16 @@ function ReviewTile({ review }) {
   const onClickHelpfulYes = () => {
     setHelpful(helpful + 1);
     setClicked(true);
-  }
+  };
 
   const onClickHelpfulNo = () => {
     setNotHelpful(notHelpful + 1);
     setClicked(true);
-  }
+  };
 
   const onClickReport = () => {
     setReport(true);
-  }
+  };
 
   return (
     <td id="reviewTile">
@@ -34,8 +34,8 @@ function ReviewTile({ review }) {
         </span>
       </div>
       <div>
-        {summary.length > 60 ?
-        <div>
+        {summary.length > 60
+          ? <div>
           <h4 className="reviewSummary">{`${summary.slice(0, 60)}...`}</h4>
           <div>{summary.slice(60)}</div>
         </div>
