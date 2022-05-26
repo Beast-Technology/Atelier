@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1653523964863" clover="3.2.0">
+  <project timestamp="1653523964863" name="All files">
+    <metrics statements="4" coveredstatements="1" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="1" elements="12" coveredelements="3" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1"/>
+    <file name="SizeSelector.jsx" path="/Users/admin/Documents/School_Documents/Online_Classes/Hack_Reactor/GIT_REPOS/GROUP_PROJECTS/front-end-capstone/client/src/ProductOverview/AddToCart/SizeSelector.jsx">
+      <metrics statements="4" coveredstatements="1" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="1"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="13" count="0" type="cond" truecount="1" falsecount="1"/>
+    </file>
+  </project>
+</coverage>

@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-// import renderer from 'react-test-renderer';
 import {act} from 'react-dom/test-utils';
 
 import SizeSelector from './SizeSelector.jsx';
@@ -23,6 +22,7 @@ afterEach(() => {
 it("Junsu's first test example", () => {
   act(() => {
     render(<SizeSelector />, container);
+    expect(document.getElementsByTagName('select')).toBe(null);
   });
-  expect(document.getElementsByTagName('select')).toBe(null);
+
 })

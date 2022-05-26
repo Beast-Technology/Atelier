@@ -40,7 +40,7 @@ function RelatedItems() {
   const [relatedItems, setRelatedItem] = useState([]);
   const [currentProduct, setProduct] = useState({});
   const [showModal, setShow] = useState(false);
-  const [clickedItem, setClickedItem] = useState([]);
+  const [clickedItem, setClickedItem] = useState({});
   // const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   // const [styles, setStyles] = useState([]);
 
