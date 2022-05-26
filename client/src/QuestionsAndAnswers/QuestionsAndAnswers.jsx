@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QASearch from './QASearch.jsx';
 import QAList from './QAList.jsx';
+import AddQuestionModal from './AddQuestionModal/AddQuestionModal.jsx';
 import './qa-styles.css';
 
 const axios = require('axios');
@@ -50,6 +51,8 @@ function QuestionsAndAnswers() {
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch keyword={keyword} setKeyword={setKeyword} />
       <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} />
+
+      <AddQuestionModal />
     </section>
   );
 }
