@@ -40,7 +40,19 @@
   background-color: #f1f1f1;
   display: grid;
   align-content: space-between;
+  border-radius: 17px;
 }
+.RelatedProductsCard:hover {
+  box-shadow: rgba(211, 14, 14, 0.667) 0px 4px 8px 0px;
+}
+.OutfitProductsCard:hover {
+  box-shadow: rgba(211, 83, 14, 0.667) 0px 4px 8px 0px;
+}
+.RelatedProductsCard:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
 
 .card-img {
   height: 150px;
