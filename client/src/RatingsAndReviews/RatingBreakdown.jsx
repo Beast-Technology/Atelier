@@ -60,7 +60,6 @@ function RatingBreakdown({ meta }) {
 
   return (
     <div className="ratingBreakdown">
-      {console.log(starRatings)}
       <span className="rbRow1">
         <span className="decimal">{starDecimal}</span>
         <StarRating totalStars={5} stars={Math.round((totalStars / divideTotalStars) * 5)} />
@@ -76,7 +75,6 @@ function RatingBreakdown({ meta }) {
           </div>
         </div>
         <div className="starBar">
-          {console.log(starRatings)}
           <span>4 stars</span>
           <div className="progress">
             <div className="progress__bar" style={{width: `${starRatings[3]}%`}}></div>
@@ -101,8 +99,6 @@ function RatingBreakdown({ meta }) {
           </div>
         </div>
       </div>
-      {console.log('RatingBreakdown:', meta)}
-      {console.log('totalStars:', divideTotalStars)}
     </div>
   );
 }

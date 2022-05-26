@@ -180,6 +180,7 @@
   gap: 24px;
   max-width: fit-content;
   max-height: 50vh;
+  min-width: 60vw;
   overflow: auto;
 }
 
@@ -213,11 +214,12 @@
   border: 1px solid gray;
   height: 1rem;
   margin-top: auto;
+  background-color: rgb(160, 157, 157);
 }
 
 .progress .progress__bar {
   height: 100%;
-  background-color: gray;
+  background-color: rgb(6, 109, 6);
 }
 
 .starBar {

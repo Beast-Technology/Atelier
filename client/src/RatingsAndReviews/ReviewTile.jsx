@@ -4,11 +4,11 @@ import { StarRating } from '../helper/Stars.jsx';
 
 function ReviewTile({ review }) {
   const [clicked, setClicked] = useState(false);
-  const [helpful, setHelpful] = useState(review.helpfulness);
+  const [helpful, setHelpful] = useState(null || review.helpfulness);
   const [notHelpful, setNotHelpful] = useState(0);
   const [report, setReport] = useState(false);
-  const [summary, setSummary] = useState(review.summary);
-  const date = DatePosted(review.date)
+  const [summary, setSummary] = useState(null || review.summary);
+  const date = DatePosted(review.date);
 
   const onClickHelpfulYes = () => {
     setHelpful(helpful + 1);
