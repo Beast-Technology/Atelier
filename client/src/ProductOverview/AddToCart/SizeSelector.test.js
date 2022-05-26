@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-// import renderer from 'react-test-renderer';
 import {act} from 'react-dom/test-utils';
 
 import SizeSelector from './SizeSelector.jsx';
