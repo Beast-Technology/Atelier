@@ -27,7 +27,7 @@
 } */
 
 
-/* ------------------------ RelatedProductsCard/YourOutfitcard ------------------------ */
+/* ---------------- RelatedProductsCard/YourOutfitcard/alreadyInOutfitCard ---------------- */
 
 .RelatedProductsCard, .OutfitProductsCard {
   position: relative;
@@ -40,7 +40,19 @@
   background-color: #f1f1f1;
   display: grid;
   align-content: space-between;
+  border-radius: 17px;
 }
+.RelatedProductsCard:hover {
+  box-shadow: rgba(211, 14, 14, 0.667) 0px 4px 8px 0px;
+}
+.OutfitProductsCard:hover {
+  box-shadow: rgba(211, 83, 14, 0.667) 0px 4px 8px 0px;
+}
+.RelatedProductsCard:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
 
 .card-img {
   height: 150px;
@@ -54,14 +66,24 @@
   top:9px;
   width:25px;
   height:25px;
-  /* border: none; */
+  border: none;
   font-size: 1.5rem;
   background-color: rgb(255 255 255 / 0);
   border-radius:50px;
-
-  /* // TODO: add hover and click effect in CSS */
+  text-shadow: 1px 1px 3px black;
+  font-size: 20px;
 }
+.card-starButton:focus { outline: none; }
 
+.card-starButton:hover {
+  color: rgb(233, 7, 146);
+
+}
+.card-starButton:active {
+  transform: scale(0.90);
+
+
+}
 .card-removeButton {
   position: absolute;
   right:15px;
@@ -72,8 +94,14 @@
   background-color: rgb(255 255 255 / 0%);
   box-shadow: rgb(0 0 0 / 2%) 2px 2px 3px;
   border-radius:50px;
-  /* // TODO: add hover and click effect in CSS */
 
+}
+
+.card-removeButton:hover {
+  color: rgb(233, 7, 146);
+}
+.card-removeButton:active {
+  transform: scale(0.90);
 }
 .card-category {
   font-size: 1.1rem;
@@ -90,7 +118,28 @@
   padding: 0 0 5px;
 }
 
+#alreadyInOutfitCard {
+  margin: 10px;
+  height: 300px;
+  width: 200px;
+  min-width: 200px;
+  padding: 8px;
+  background-color: #b38a8a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 17px;
 
+}
+#alreadyInOutfitCard:hover {
+
+
+  background: #e0ddd8;
+  font-weight: bold;
+
+}
 
 /* ------------------------ YourOutfitContainer ------------------------ */
 
@@ -167,4 +216,15 @@ table {
 td {
   column-width: 150px;
   text-align: center;
+}
+
+.fadeOut{
+  opacity:0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+
+}
+.fadeIn{
+  opacity:1;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+
 }
