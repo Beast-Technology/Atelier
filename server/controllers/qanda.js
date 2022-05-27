@@ -26,5 +26,12 @@ module.exports = {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.params.answer_id}/helpful`, {headers: { 'Authorization': `${process.env.TOKEN}` }})
       .then(() => {res.status(200).send('success')})
       .catch((err) => {res.status(400).send(err)});
+  },
+
+  addQuestions: (req, res) => {
+    console.log('Post a question:', req.body);
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`, req.body)
+      .then(() => {res.status(201).send('success')})
+      .catch((err) => {res.status(400).send(err)});
   }
 }
