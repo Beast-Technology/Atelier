@@ -168,6 +168,7 @@ textarea::placeholder {
 .underline {
   color: #c2255c;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* ANSWERS */
