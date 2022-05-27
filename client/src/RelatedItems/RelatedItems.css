@@ -43,21 +43,26 @@
   border-radius: 17px;
 }
 .RelatedProductsCard:hover {
-  box-shadow: rgba(211, 14, 14, 0.667) 0px 4px 8px 0px;
+  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
 }
 .OutfitProductsCard:hover {
-  box-shadow: rgba(211, 83, 14, 0.667) 0px 4px 8px 0px;
+  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
 }
 .RelatedProductsCard:active {
-  transform: scale(0.98);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* transform: scale(0.98); */
+  box-shadow: rgb(211 14 14 / 67%) 0px 4px 8px 0px;
 }
 
+.card-img-container {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
 
 .card-img {
   height: 150px;
   width: 100%;
-  padding: 0 0 5px;
+  object-fit: cover;
 }
 
 .card-starButton {
@@ -73,7 +78,7 @@
   text-shadow: 1px 1px 3px black;
   font-size: 20px;
 }
-.card-starButton:focus { outline: none; }
+
 
 .card-starButton:hover {
   color: rgb(233, 7, 146);

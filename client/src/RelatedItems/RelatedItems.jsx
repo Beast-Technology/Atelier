@@ -37,15 +37,15 @@ function getRelated(itemID, callback) {
 // }
 
 function RelatedItems() {
-  const [productID, setProductID] = useState(40346);
+  const [productID, setProductID] = useState(40346); // TODO: Remove and place into APP
   const [currentProduct, setProduct] = useState({});
   const [relatedItems, setRelatedItem] = useState([]);
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
-
   const [clickedItem, setClickedItem] = useState({});
+  const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: '' }] });
 
-  const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: 'https://images.unsplash.com/photo-1514866726862-0f081731e63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80' }] });
+  const [metaObject, setMeta] = useState({ 40344: [{ meta: '' }] }); // TODO: Remove and place into APP
 
   // --testConsole.logs-- //
 
@@ -58,7 +58,7 @@ function RelatedItems() {
   // console.log('yourOutfitItems', yourOutfitItems);
 
 
-  // --getCurrentProductInfo-- //
+  // --getCurrentProductInfo-- // // TODO: Remove and place into APP
 
   useEffect(() => {
     axios.request({
@@ -105,26 +105,27 @@ function RelatedItems() {
   // --getPhotos- //
 
   useEffect(() => {
-    const stylePromiseArray = [];
-    const allPhotosArray = yourOutfitItems.concat(relatedItems);
-    // console.log('allPhotosArray', allPhotosArray);
-    for (const allPhotosProduct of allPhotosArray) {
-      // console.log('allPhotosProduct', allPhotosProduct);
+    const PromiseArray = [];
+    const allCardsArray = yourOutfitItems.concat(relatedItems);
+    // console.log('allCardsArray', allCardsArray);
+    for (const allCardsProduct of allCardsArray) {
+      // console.log('allCardsProduct', allCardsProduct);
 
-      const styleID = allPhotosProduct.id;
-      stylePromiseArray.push(
+      const styleID = allCardsProduct.id;
+      PromiseArray.push(
         axios.request({
           url: `/products/${styleID}/styles`,
           method: 'GET',
         }),
       );
     }
-    Promise.all(stylePromiseArray)
+    Promise.all(PromiseArray)
       .then((responses) => {
         const responseObj = {};
         for (const styleItems of responses) {
           const styleItemResultsArray = styleItems.data.results;
-          console.log(styleItemResultsArray.entries());
+          // console.log(styleItemResultsArray);
+          // console.log(styleItemResultsArray.entries());
           for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
             if (i === styleItemResultsArray.length - 1) {
               responseObj[styleItems.data.product_id] = styleItemResults.photos;
@@ -137,6 +138,51 @@ function RelatedItems() {
         setPhotos(responseObj);
       });
   }, [relatedItems, yourOutfitItems]);
+
+  // --getMetaInfo- // // TODO: Remove and place into APP
+
+  // useEffect(() => {
+  //   axios.get('/reviews/meta', {
+  //     params: {
+  //       product_id: productID,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setMeta(res.data);
+  //     })
+  //     .catch((err) => { console.log(err); });
+  // }, [productID]);
+
+  useEffect(() => {
+    const PromiseArray = [];
+    const allCardsArray = yourOutfitItems.concat(relatedItems);
+    // console.log('allCardsArray', allCardsArray);
+    for (const allCardsProduct of allCardsArray) {
+      // console.log('allCardsProduct', allCardsProduct);
+
+      const styleID = allCardsProduct.id;
+      PromiseArray.push(
+        axios.get('/reviews/meta', {
+          params: {
+            product_id: styleID,
+          },
+        }),
+      );
+    }
+    Promise.all(PromiseArray)
+      .then((responses) => {
+        const responseObj = {};
+        for (const styleItems of responses) {
+          // console.log(styleItems.data);
+          responseObj[styleItems.data.product_id] = styleItems.data;
+        }
+        // console.log('responseObj', responseObj);
+        setMeta(responseObj);
+      });
+  }, [relatedItems, yourOutfitItems]);
+
+
 
   const ref = useRef();
 
@@ -161,6 +207,7 @@ function RelatedItems() {
           setClickedItem={setClickedItem}
           setProductID={setProductID}
           photoObject={photoObject}
+          metaObject={metaObject}
         />
       </div>
       <br />
@@ -170,6 +217,7 @@ function RelatedItems() {
         yourOutfitItems={yourOutfitItems}
         setOutfitItem={setOutfitItem}
         photoObject={photoObject}
+        metaObject={metaObject}
       />
       <div>
         currentProduct:_
@@ -187,3 +235,32 @@ export default RelatedItems;
 
 
 
+// for (const allPhotosProduct of allPhotosArray) {
+//   // console.log('allPhotosProduct', allPhotosProduct);
+
+//   const styleID = allPhotosProduct.id;
+//   stylePromiseArray.push(
+//     axios.request({
+//       url: `/products/${styleID}/styles`,
+//       method: 'GET',
+//     }),
+//   );
+// }
+// Promise.all(stylePromiseArray)
+//   .then((responses) => {
+//     const responseObj = {};
+//     for (const styleItems of responses) {
+//       const styleItemResultsArray = styleItems.data.results;
+//       // console.log(styleItemResultsArray);
+//       // console.log(styleItemResultsArray.entries());
+//       for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
+//         if (i === styleItemResultsArray.length - 1) {
+//           responseObj[styleItems.data.product_id] = styleItemResults.photos;
+//         } else if (styleItemResults['default?'] === true) {
+//           responseObj[styleItems.data.product_id] = styleItemResults.photos;
+//         }
+//       }
+//     }
+//     // console.log(responseObj);
+//     setPhotos(responseObj);
+//   })

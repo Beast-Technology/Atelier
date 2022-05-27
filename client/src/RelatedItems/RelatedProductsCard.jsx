@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react';
-
+import ObjToRating from './Helper/ObjToRating.js';
+import { Stars } from '../helper/Stars.jsx';
 
 function RelatedProductsCard({
-  relatedItem, setShow, setClickedItem, setProductID, photoObject,
+  relatedItem, setShow, setClickedItem, setProductID, photoObject, metaObject,
 }) {
   const [photoSrc, setPhotoSrc] = useState('');
+  const [rating, setRating] = useState(0);
 
+  // console.log(photoObject);
+  // console.log(metaObject);
+
+  // ---set PhotoObject for single Card --- //
   useEffect(() => {
     if ((Object.keys(photoObject).length !== 0) && (photoObject[relatedItem.id] !== undefined)) {
       const photoURL = photoObject[relatedItem.id][0].thumbnail_url;
       if (photoURL !== null) {
         setPhotoSrc(() => photoURL);
       } else {
-        setPhotoSrc(() => 'https://i.pinimg.com/474x/65/0b/a7/650ba7347e2d8751c157b70d791123b8--geek-humour-friday-humor.jpg');
+        setPhotoSrc(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
       }
     }
   }, [photoObject, relatedItem]);
+
+  // ---set metaObject for single Card --- //
+
+  useEffect(() => {
+    if ((Object.keys(metaObject).length !== 0) && (metaObject[relatedItem.id] !== undefined)) {
+      setRating(ObjToRating(metaObject[relatedItem.id]));
+    }
+  }, [metaObject, relatedItem]);
 
   function handleModal() {
     setShow(true);
@@ -43,7 +57,9 @@ function RelatedProductsCard({
       onKeyPress={handleKeyPress}
       className="RelatedProductsCard"
     >
-      <img className="card-img" src={photoSrc} alt={relatedItem.name} />
+      <div className="card-img-container">
+        <img className="card-img" src={photoSrc} alt={relatedItem.name} />
+      </div>
       <button
         className="card-starButton"
         onClick={(e) => {
@@ -60,7 +76,7 @@ function RelatedProductsCard({
         $
         {parseInt(relatedItem.default_price, 10)}
       </div>
-      <div className="card-stars">★★★★★</div>
+      <Stars rating={rating} />
     </div>
   );
 }
