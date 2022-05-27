@@ -10,7 +10,7 @@ function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
       if (photoURL !== null) {
         setphotoSrcOutfit(() => photoURL);
       } else {
-        setphotoSrcOutfit(() => 'https://i.pinimg.com/474x/65/0b/a7/650ba7347e2d8751c157b70d791123b8--geek-humour-friday-humor.jpg');
+        setphotoSrcOutfit(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
       }
     }
   }, [photoObject, yourOutfitItem]);

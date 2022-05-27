@@ -124,7 +124,8 @@ function RelatedItems() {
         const responseObj = {};
         for (const styleItems of responses) {
           const styleItemResultsArray = styleItems.data.results;
-          console.log(styleItemResultsArray.entries());
+          console.log(styleItemResultsArray);
+          // console.log(styleItemResultsArray.entries());
           for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
             if (i === styleItemResultsArray.length - 1) {
               responseObj[styleItems.data.product_id] = styleItemResults.photos;

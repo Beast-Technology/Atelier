@@ -47,6 +47,10 @@ function YourOutfitContainer({
     }
     setAddButton(true);
   }
+
+  let isAre;
+
+
   let addButtonDiv;
   if (addButton) {
     addButtonDiv = (
@@ -59,16 +63,10 @@ function YourOutfitContainer({
         (e) => handleAddToOutfit(e)
       }
         >
-          Add
-          {' '}
-          <br />
-          {' '}
+          Add <br />
           {currentProduct.name}
-          {' '}
           <br />
-          {' '}
           to the Outfit
-
         </button>
       </div>
     );
@@ -77,8 +75,7 @@ function YourOutfitContainer({
       <div id="alreadyInOutfitCard">
         <div>
           {currentProduct.name}
-          {' '}
-          are in in your Outfit Collection
+          are in your Outfit Collection
         </div>
       </div>
     );

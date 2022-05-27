@@ -12,7 +12,7 @@ function RelatedProductsCard({
       if (photoURL !== null) {
         setPhotoSrc(() => photoURL);
       } else {
-        setPhotoSrc(() => 'https://i.pinimg.com/474x/65/0b/a7/650ba7347e2d8751c157b70d791123b8--geek-humour-friday-humor.jpg');
+        setPhotoSrc(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
       }
     }
   }, [photoObject, relatedItem]);
@@ -43,7 +43,9 @@ function RelatedProductsCard({
       onKeyPress={handleKeyPress}
       className="RelatedProductsCard"
     >
-      <img className="card-img" src={photoSrc} alt={relatedItem.name} />
+      <div className="card-img-container">
+        <img className="card-img" src={photoSrc} alt={relatedItem.name} />
+      </div>
       <button
         className="card-starButton"
         onClick={(e) => {
