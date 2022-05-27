@@ -7,7 +7,7 @@ import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 
 function App() {
   // Junsu: added this style globally
-  const style = {
+  const container = {
     border: '2px solid red',
     width: '1200px',
     margin: '48px auto',
@@ -16,6 +16,8 @@ function App() {
 
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+  const [styles, setStyles] = useState([]);
   const productID = 40346;
 
   useEffect(() => {
@@ -44,13 +46,28 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    axios.request({
+      url: `/products/${productID}/styles`,
+      method: 'get',
+    })
+      .then((response) => {
+        // console.log(response.data.results[0]);
+        setStyle(response.data.results.find((styleId) => styleId['default?']));
+        setStyles(response.data.results);
+      });
+  }, []);
+
 
 
   return (
-    <div style={style}>
+    <div style={container}>
       <ProductOverview
         reviews={reviews}
         product={product}
+        style={style}
+        styles={styles}
+        setStyle={setStyle}
       />
       <RatingsAndReviews />
       <QuestionsAndAnswers />

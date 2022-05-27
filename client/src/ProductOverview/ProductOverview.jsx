@@ -7,37 +7,7 @@ import AddToCart from './AddToCart/AddToCart.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 
-function ProductOverview({ reviews, product }) {
-
-  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
-  const [styles, setStyles] = useState([]);
-
-  const productID = 40346;
-
-
-  useEffect(() => {
-    axios.request({
-      url: `/products/${productID}`,
-      method: 'get',
-    })
-      .then((response) => {
-        // console.log(response.data);
-        setProduct(response.data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.request({
-      url: `/products/${productID}/styles`,
-      method: 'get',
-    })
-      .then((response) => {
-        // console.log(response.data.results[0]);
-        setStyle(response.data.results.find((styleId) => styleId['default?']));
-        setStyles(response.data.results);
-      });
-  }, []);
-
+function ProductOverview({ reviews, product, style, setStyle, styles }) {
   return (
     <div id="product-overview" style={{ border: '2px green solid' }}>
       <div style={{ display: 'flex' }}>
