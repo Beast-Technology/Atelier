@@ -99,10 +99,9 @@ function App() {
           url: `/products/${relatedItemId}`,
           method: 'get',
         })
-          .then((products) => products));
+          .then((result) => result.data));
         Promise.all(array)
           .then((values) => {
-            console.log(values);
             setRelatedItems(values);
           });
       });

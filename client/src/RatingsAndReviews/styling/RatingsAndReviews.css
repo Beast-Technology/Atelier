@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+/* Ratings And Reviews */
+.mainPage {
+  display: flex;
+}
+
 /* Stars Function */
 .star-rating {
   display: flex;
@@ -78,6 +83,14 @@
   background-color: goldenrod;
 }
 
+path {
+  background-color: blue;
+}
+
+.starTest {
+  shape-rendering: crispEdges;
+}
+
 /* Review Tile */
 #reviewTile {
   display: flex;
@@ -107,6 +120,8 @@
 }
 
 .recommendProduct {
+  display: flex;
+  align-items: flex-end;
   padding-bottom: 2%;
 }
 
@@ -124,6 +139,28 @@
 #reviewTile .buttons:hover {
   color: blue;
   cursor: pointer;
+}
+
+#reviewTile .check {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-right: 1rem;
+  padding-top: 2px;
+}
+
+#reviewTile .tileBotRow {
+  font-size: 1.2rem;
+}
+
+#reviewTile .nameDate {
+  display: flex;
+  font-size: 1.4rem;
+}
+
+#reviewTile .verified {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-right: 2px;
 }
 
 /* Review List */
@@ -168,7 +205,7 @@
 
 .totalReviews {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   align-items: center;
 }
 
@@ -180,6 +217,7 @@
   gap: 24px;
   max-width: fit-content;
   max-height: 50vh;
+  min-width: 60vw;
   overflow: auto;
 }
 
@@ -198,6 +236,11 @@
   margin-right: 2rem;
 }
 
+.ratingBreakdown svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
 .rbRow1 {
   display: flex;
 }
@@ -209,19 +252,22 @@
 }
 
 .progress {
-  width: 8rem;
+  width: 16rem;
   border: 1px solid gray;
   height: 1rem;
   margin-top: auto;
+  background-color: rgb(210, 207, 207);
 }
 
 .progress .progress__bar {
   height: 100%;
-  background-color: gray;
+  background-color: #4CBB17;
 }
 
 .starBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-top: 1rem;
 }
 
 .starBar span{
@@ -239,7 +285,46 @@
   font-size: 1rem;
 }
 
-/* Ratings And Reviews */
-.mainPage {
+/* Product Breakdown */
+
+.productBreakdown {
+  margin-top: 2rem;
+  margin-right: 2rem;
+}
+
+.productBreakdown span {
+  font-size: 1.2rem;
+}
+
+.productBreakdown .progress {
+  width: 8rem;
+  border: 1px solid gray;
+  height: .8rem;
+  margin-top: auto;
+  background-color: rgb(210, 207, 207);
+}
+
+.productBreakdown .progress .progress__bar {
+  height: 100%;
+  width: 0%;
+  background-color: rgb(6, 109, 6);
+}
+
+.prodChar {
   display: flex;
+  flex-direction: column;
+}
+
+.prodBars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.prodRating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 2px;
 }

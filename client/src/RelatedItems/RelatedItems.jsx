@@ -37,14 +37,23 @@ function getRelated(itemID, callback) {
 // }
 
 function RelatedItems({product, relatedItems}) {
-  // const [relatedItems, setRelatedItem] = useState([]); // Junsu: rep
-  // const [currentProduct, setProduct] = useState({});
+  const [productID, setProductID] = useState(40346);
   const [showModal, setShow] = useState(false);
-  const [clickedItem, setClickedItem] = useState({});
-  // const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
-  // const [styles, setStyles] = useState([]);
+  const [yourOutfitItems, setOutfitItem] = useState([]);
 
-  const productID = 40346;
+  const [clickedItem, setClickedItem] = useState({});
+
+  const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: 'https://images.unsplash.com/photo-1514866726862-0f081731e63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80' }] });
+
+  // --testConsole.logs-- //
+
+  // const productID = 40346;
+  // const productID = 40353;
+  // console.log('productID', productID);
+  // console.log('currentProduct', currentProduct);
+  // console.log('relatedItems', relatedItems);
+  // console.log('clickedItem', clickedItem);
+  // console.log('yourOutfitItems', yourOutfitItems);
 
 
   // --getCurrentProductInfo-- //
@@ -56,80 +65,82 @@ function RelatedItems({product, relatedItems}) {
     })
       .then((response) => {
       // console.log(response.data);
-        setProduct(response.data);
+
+        setProduct(() => ({ ...currentProduct, ...response.data }));
       });
-  }, []);
+  }, [productID]);
 
 
   // --getCurrentProductRelatedItems- //
 
-  // useEffect(() => {
-  //   getRelated(productID, (response) => {
-  //     // console.log('done w data:', response.data)
-  //     const promiseArray = [];
-  //     for (const product of response.data) {
-  //       // console.log(product);
-  //       promiseArray.push(
-  //         axios.request({
-  //           url: `/products/${product}`,
-  //           method: 'GET',
-  //         }),
-  //       );
+  useEffect(() => {
+    getRelated(productID, (response) => {
+      const relatedPromiseArray = [];
+      for (const product of response.data) {
+        relatedPromiseArray.push(
+          axios.request({
+            url: `/products/${product}`,
+            method: 'GET',
+          }),
+        );
+      }
+      Promise.all(relatedPromiseArray)
+        .then((responses) => {
+          const filteredArray = [];
+          const responseArray = [];
+          for (const reitems of responses) {
+            if ((filteredArray.indexOf(reitems.data.id) < 0) && (reitems.data.id !== productID)) {
+              filteredArray.push(reitems.data.id);
+              responseArray.push(reitems.data);
+            }
+          }
 
-  //       Promise.all(promiseArray)
-  //         .then((responses) => {
-  //           // console.log('relatedItems', relatedItems)
-  //           console.log('responses', responses)
-  //           setRelatedItem(responses);
-  //         });
-  //     }
-  //   });
-  // }, []);
+          setRelatedItem(responseArray);
+        });
+    });
+  }, [productID]);
 
-  // --getCurrentStyles- //
+  // --getPhotos- //
 
-  // useEffect(() => {
-  //   getProductStyles(productID, (response) => {
-  //     // console.log(response.data);
-  //     // console.log(response.data.results);
-  //     // console.log(response.data.results[0]);
-  //     setStyle(response.data.results.find((style) => style['default?']));
-  //     setStyles(response.data.results);
-  //   });
-  // }, []);
+  useEffect(() => {
+    const stylePromiseArray = [];
+    const allPhotosArray = yourOutfitItems.concat(relatedItems);
+    // console.log('allPhotosArray', allPhotosArray);
+    for (const allPhotosProduct of allPhotosArray) {
+      // console.log('allPhotosProduct', allPhotosProduct);
 
-
-  // --get/Update photos of each related item - //
-
-  // useEffect(() => {
-  //   for (const relatedItem of relatedItems) {
-  //     console.log('relatedItem', relatedItem);
-  //     getProductStyles(relatedItem.data.id, (response) => {
-  //       console.log(response.data.results);
-  //       // console.log(response.data.results.find((element) => element['default?']));
-
-  //       relatedItem.data = {
-  //         photos: response.data.results,
-  //       };
-
-  //     //   // console.log(response.data);
-  //     //   // console.log(response.data.results);
-  //     //   // console.log(response.data.results[0]);
-  //     //   setStyle(response.data.results.find((style) => style['default?']));
-  //     //   setStyles(response.data.results);
-  //     });
-  //   }
-  // }, [relatedItems]);
+      const styleID = allPhotosProduct.id;
+      stylePromiseArray.push(
+        axios.request({
+          url: `/products/${styleID}/styles`,
+          method: 'GET',
+        }),
+      );
+    }
+    Promise.all(stylePromiseArray)
+      .then((responses) => {
+        const responseObj = {};
+        for (const styleItems of responses) {
+          const styleItemResultsArray = styleItems.data.results;
+          console.log(styleItemResultsArray.entries());
+          for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
+            if (i === styleItemResultsArray.length - 1) {
+              responseObj[styleItems.data.product_id] = styleItemResults.photos;
+            } else if (styleItemResults['default?'] === true) {
+              responseObj[styleItems.data.product_id] = styleItemResults.photos;
+            }
+          }
+        }
+        // console.log(responseObj);
+        setPhotos(responseObj);
+      });
+  }, [relatedItems, yourOutfitItems]);
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    // console.log('You clicked outside');
     setShow(false);
   });
-
-
-  // { console.log(style.photos); }
 
   return (
     // Junsu: added style for CSS debugging purposes, delete later
@@ -137,25 +148,34 @@ function RelatedItems({product, relatedItems}) {
       <div id="unclickArea" ref={ref}>
         <CompareModal
           showModal={showModal}
-          currentProduct={product}
+          currentProduct={product} // Junsu: track
           clickedItem={clickedItem}
         />
 
         <RelatedProductsContainer
           productID={productID}
-          relatedItems={relatedItems}
+          relatedItems={relatedItems} // Junsu: track
           showModal={showModal}
           setShow={setShow}
           setClickedItem={setClickedItem}
+          setProductID={setProductID}
+          photoObject={photoObject}
         />
       </div>
       <br />
 
       <YourOutfitContainer
         productID={productID}
-        relatedItems={relatedItems}
-        currentProduct={product}
+        relatedItems={relatedItems} // Junsu: track
+        currentProduct={product} // Junsu: track
+        yourOutfitItems={yourOutfitItems}
+        setOutfitItem={setOutfitItem}
+        photoObject={photoObject}
       />
+      <div>
+        currentProduct:_
+        {product.name}
+      </div>
     </section>
   );
 }
