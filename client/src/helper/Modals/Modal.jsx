@@ -1,5 +1,5 @@
 import React from 'react';
-import './modal-addq-styles.css';
+import './modal-styles.css';
 
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
