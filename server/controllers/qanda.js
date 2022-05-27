@@ -33,5 +33,13 @@ module.exports = {
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`, req.body)
       .then(() => {res.status(201).send('success')})
       .catch((err) => {res.status(400).send(err)});
-  }
-}
+  },
+
+  addAnswers: (req, res) => {
+    console.log('Post an answer:', req.body);
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.body.question_id}/answers`, req.body)
+      .then(() => {res.status(201).send('success')})
+      .catch((err) => {res.status(400).send(err)});
+  },
+};
+
