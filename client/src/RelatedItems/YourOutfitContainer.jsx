@@ -6,7 +6,7 @@ import YourOutfitCard from './YourOutfitcard.jsx';
 
 
 function YourOutfitContainer({
-  currentProduct, yourOutfitItems, setOutfitItem, photoObject,
+  currentProduct, yourOutfitItems, setOutfitItem, photoObject, metaObject,
 }) {
   const [addButton, setAddButton] = useState(true);
   const [numArray, setOutfitNumArray] = useState([]);
@@ -48,7 +48,6 @@ function YourOutfitContainer({
     setAddButton(true);
   }
 
-  let isAre;
 
 
   let addButtonDiv;
@@ -63,20 +62,20 @@ function YourOutfitContainer({
         (e) => handleAddToOutfit(e)
       }
         >
-          Add <br />
-          {currentProduct.name}
-          <br />
-          to the Outfit
+          Add <br /> {currentProduct.name} <br /> to the Outfit
         </button>
       </div>
     );
   } else {
+    let isAre;
+    if (currentProduct.name[currentProduct.name.length - 1] === 's') {
+      isAre = 'are';
+    } else {
+      isAre = 'is';
+    }
     addButtonDiv = (
       <div id="alreadyInOutfitCard">
-        <div>
-          {currentProduct.name}
-          are in your Outfit Collection
-        </div>
+        <div> {currentProduct.name} {isAre} in your Outfit Collection </div>
       </div>
     );
   }
@@ -91,6 +90,7 @@ function YourOutfitContainer({
               key={yourOutfitItem.id}
               handleDeleteToOutfit={handleDeleteToOutfit}
               photoObject={photoObject}
+              metaObject={metaObject}
             />
           ))
           }

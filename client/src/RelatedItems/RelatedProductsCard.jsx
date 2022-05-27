@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
-
+import ObjToRating from './Helper/ObjToRating.js';
+import { Stars } from '../helper/Stars.jsx';
 
 function RelatedProductsCard({
-  relatedItem, setShow, setClickedItem, setProductID, photoObject,
+  relatedItem, setShow, setClickedItem, setProductID, photoObject, metaObject,
 }) {
   const [photoSrc, setPhotoSrc] = useState('');
+  const [rating, setRating] = useState(0);
 
+  // console.log(photoObject);
+  // console.log(metaObject);
+
+  // ---set PhotoObject for single Card --- //
   useEffect(() => {
     if ((Object.keys(photoObject).length !== 0) && (photoObject[relatedItem.id] !== undefined)) {
       const photoURL = photoObject[relatedItem.id][0].thumbnail_url;
@@ -16,6 +22,14 @@ function RelatedProductsCard({
       }
     }
   }, [photoObject, relatedItem]);
+
+  // ---set metaObject for single Card --- //
+
+  useEffect(() => {
+    if ((Object.keys(metaObject).length !== 0) && (metaObject[relatedItem.id] !== undefined)) {
+      setRating(ObjToRating(metaObject[relatedItem.id]));
+    }
+  }, [metaObject, relatedItem]);
 
   function handleModal() {
     setShow(true);
@@ -62,7 +76,7 @@ function RelatedProductsCard({
         $
         {parseInt(relatedItem.default_price, 10)}
       </div>
-      <div className="card-stars">★★★★★</div>
+      <Stars rating={rating} />
     </div>
   );
 }

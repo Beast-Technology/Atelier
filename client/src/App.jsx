@@ -7,9 +7,9 @@ import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 function App() {
   return (
     <div>
-      {/* <ProductOverview />
+      <ProductOverview />
       <RatingsAndReviews />
-      <QuestionsAndAnswers /> */}
+      <QuestionsAndAnswers />
       <RelatedItems />
     </div>
   );
