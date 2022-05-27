@@ -5,7 +5,6 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 function RelatedProductsContainer({
   relatedItems, showModal, setShow, setClickedItem, setProductID, photoObject, metaObject,
 }) {
-// console.log(metaObject);
   return (
 
     <div>

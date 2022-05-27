@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MetaContext } from '../../context.js';
 
-function StarRating({reviews}) {
+function StarRating() {
+  const { ratings } = useContext(MetaContext);
 
-  const starAvg = reviews.reduce((prev, curr) => {
-    const prevRate = prev.rating ? prev.rating : prev;
-    return prevRate + curr.rating;
-  }, 0)/reviews.length;
+  function average() {
+    console.log('StarRating.jsx rendered');
+    let sum = 0;
+    let total = 0;
+    Object.keys(ratings).forEach((rating) => {
+      sum += (parseInt(rating, 10) * parseInt(ratings[rating], 10));
+      total += parseInt(ratings[rating], 10);
+    });
+    return (sum / total).toFixed(2);
+  }
 
   return (
     <div>
-      <p>Star Average: {starAvg.toFixed(2)}</p>
+      <p>Star Average: {average()}</p>
       <a href="">Read All Reviews</a>
     </div>
   )

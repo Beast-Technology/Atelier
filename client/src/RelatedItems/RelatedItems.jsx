@@ -36,16 +36,12 @@ function getRelated(itemID, callback) {
 //     });
 // }
 
-function RelatedItems() {
-  const [productID, setProductID] = useState(40346); // TODO: Remove and place into APP
-  const [currentProduct, setProduct] = useState({});
-  const [relatedItems, setRelatedItem] = useState([]);
+function RelatedItems({product, relatedItems, productID, setProductID}) {
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
   const [clickedItem, setClickedItem] = useState({});
   const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: '' }] });
-
-  const [metaObject, setMeta] = useState({ 40344: [{ meta: '' }] }); // TODO: Remove and place into APP
+  const [metaObject, setMeta] = useState({ 40344: [{ meta: '' }] });
 
   // --testConsole.logs-- //
 
@@ -124,6 +120,7 @@ function RelatedItems() {
         const responseObj = {};
         for (const styleItems of responses) {
           const styleItemResultsArray = styleItems.data.results;
+
           // console.log(styleItemResultsArray);
           // console.log(styleItemResultsArray.entries());
           for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
@@ -191,17 +188,18 @@ function RelatedItems() {
   });
 
   return (
-    <section id="RelatedItems">
+    // Junsu: added style for CSS debugging purposes, delete later
+    <section style={{border: '2px purple solid'}} id="RelatedItems">
       <div id="unclickArea" ref={ref}>
         <CompareModal
           showModal={showModal}
-          currentProduct={currentProduct}
+          currentProduct={product} // Junsu: track
           clickedItem={clickedItem}
         />
 
         <RelatedProductsContainer
           productID={productID}
-          relatedItems={relatedItems}
+          relatedItems={relatedItems} // Junsu: track
           showModal={showModal}
           setShow={setShow}
           setClickedItem={setClickedItem}
@@ -213,7 +211,9 @@ function RelatedItems() {
       <br />
 
       <YourOutfitContainer
-        currentProduct={currentProduct}
+        productID={productID}
+        relatedItems={relatedItems} // Junsu: track
+        currentProduct={product} // Junsu: track
         yourOutfitItems={yourOutfitItems}
         setOutfitItem={setOutfitItem}
         photoObject={photoObject}
@@ -221,7 +221,7 @@ function RelatedItems() {
       />
       <div>
         currentProduct:_
-        {currentProduct.name}
+        {product.name}
       </div>
     </section>
   );
