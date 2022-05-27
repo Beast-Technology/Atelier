@@ -3,7 +3,6 @@ import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-// import AddQuestionModal from './QuestionsAndAnswers/AddQuestionModal/AddQuestionModal.jsx';
 import Modal from './QuestionsAndAnswers/AddQuestionModal/Modal.jsx';
 
 function App() {
@@ -11,12 +10,11 @@ function App() {
 
   return (
     <div>
-      {/* <ProductOverview /> */}
-      {/* <RelatedItems /> */}
+      <ProductOverview />
+      <RelatedItems />
       <QuestionsAndAnswers setModal={setModal} />
+      <RatingsAndReviews />
       <Modal modal={modal} />
-      {/* <AddQuestionModal /> */}
-      {/* <RatingsAndReviews /> */}
     </div>
   );
 }
