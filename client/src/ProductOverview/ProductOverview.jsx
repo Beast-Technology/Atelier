@@ -8,8 +8,11 @@ import AddToCart from './AddToCart/AddToCart.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 
-function ProductOverview({ product, style, setStyle, styles }) {
-
+function ProductOverview(
+  {
+    product, style, setStyle, styles,
+  },
+) {
   return (
     <div id="product-overview" style={{ border: '2px green solid' }}>
       <div style={{ display: 'flex' }}>

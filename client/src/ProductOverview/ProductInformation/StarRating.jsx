@@ -5,7 +5,7 @@ function StarRating() {
   const { ratings } = useContext(MetaContext);
 
   function average() {
-    console.log('average invoked');
+    console.log('StarRating.jsx rendered');
     let sum = 0;
     let total = 0;
     Object.keys(ratings).forEach((rating) => {
