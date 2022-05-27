@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import ObjToRating from './Helper/ObjToRating.js';
+import { Stars } from '../helper/Stars.jsx';
 
 
-function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
+function YourOutfitcard({
+  yourOutfitItem, handleDeleteToOutfit, photoObject, metaObject,
+}) {
   const [photoSrcOutfit, setphotoSrcOutfit] = useState('');
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     if ((Object.keys(photoObject).length !== 0) && (photoObject[yourOutfitItem.id] !== undefined)) {
@@ -14,6 +19,12 @@ function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
       }
     }
   }, [photoObject, yourOutfitItem]);
+
+  useEffect(() => {
+    if ((Object.keys(metaObject).length !== 0) && (metaObject[yourOutfitItem.id] !== undefined)) {
+      setRating(ObjToRating(metaObject[yourOutfitItem.id]));
+    }
+  }, [metaObject, yourOutfitItem]);
 
   return (
     <div className="OutfitProductsCard">
@@ -32,7 +43,7 @@ function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
         $
         {parseInt(yourOutfitItem.default_price, 10)}
       </div>
-      <div className="card-stars">★★★★★</div>
+      <Stars rating={rating} />
     </div>
   );
 }
