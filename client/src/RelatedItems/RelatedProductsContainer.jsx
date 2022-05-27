@@ -1,45 +1,36 @@
 
 import React from 'react';
-
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 
-
-
-
 function RelatedProductsContainer({
-  relatedItems, showModal, setShow, setClickedItem, setProductID,
+  relatedItems, showModal, setShow, setClickedItem, setProductID, photoObject,
 }) {
-  // TODO: add function to update related items/provide a modal from clicking on specific card
-
-
-  {
-    for (const reitems of relatedItems) {
-
-      // console.log("reitems", reitems.data.id)
-    }
-
-  }
+  // console.log(relatedItems);
   return (
+
     <div>
-    <div id="RelatedProductsContainer">
-    {
+      <div id="RelatedProductsContainer">
+        {
       (relatedItems || []).map((relatedItem) => (
         <RelatedProductsCard
-        relatedItem={relatedItem.data}
-        key={relatedItem.data.id}
-        showModal={showModal}
-        setShow={setShow}
-        setClickedItem={setClickedItem}
-        setProductID={setProductID}
+          relatedItem={relatedItem}
+          key={relatedItem.id}
+          showModal={showModal}
+          setShow={setShow}
+          setClickedItem={setClickedItem}
+          setProductID={setProductID}
+          photoObject={photoObject}
+
         />
-        ))
+
+      ))
       }
       </div>
-      </div>
-      );
-    }
+    </div>
+  );
+}
 
-    export default RelatedProductsContainer;
+export default RelatedProductsContainer;
 
 
 

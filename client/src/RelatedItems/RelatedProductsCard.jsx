@@ -1,31 +1,41 @@
-import React, { } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 function RelatedProductsCard({
-  relatedItem, setShow, setClickedItem, setProductID,
+  relatedItem, setShow, setClickedItem, setProductID, photoObject,
 }) {
+  const [photoSrc, setPhotoSrc] = useState('');
+
+  useEffect(() => {
+    if ((Object.keys(photoObject).length !== 0) && (photoObject[relatedItem.id] !== undefined)) {
+      const photoURL = photoObject[relatedItem.id][0].thumbnail_url;
+      if (photoURL !== null) {
+        setPhotoSrc(() => photoURL);
+      } else {
+        setPhotoSrc(() => 'https://i.pinimg.com/474x/65/0b/a7/650ba7347e2d8751c157b70d791123b8--geek-humour-friday-humor.jpg');
+      }
+    }
+  }, [photoObject, relatedItem]);
+
   function handleModal() {
     setShow(true);
   }
   function handleClickedItem(e, item) {
-    e.stopPropagation()
+    e.stopPropagation();
     setClickedItem(item);
   }
   function handleClickedCard(item) {
-    // console.log(item.id);
-
     setProductID(item.id);
   }
 
   // required accessibility feature (possible)
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
-      // console.log('enter press here! ');
       setProductID(relatedItem);
     }
   }
-  return (
 
+  return (
     <div
       onClick={() => { handleClickedCard(relatedItem); }}
       role="button"
@@ -33,7 +43,7 @@ function RelatedProductsCard({
       onKeyPress={handleKeyPress}
       className="RelatedProductsCard"
     >
-      <img className="card-img" src="" alt="" />
+      <img className="card-img" src={photoSrc} alt={relatedItem.name} />
       <button
         className="card-starButton"
         onClick={(e) => {
@@ -56,4 +66,6 @@ function RelatedProductsCard({
 }
 
 export default RelatedProductsCard;
+
+
 

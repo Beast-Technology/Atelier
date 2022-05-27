@@ -8,7 +8,7 @@
       "react/prop-types": 0,
       "max-len": [1, 150, 4],
       "no-console": "off",
-      "react/jsx-one-expression-per-line": ["enabled", { "allow": "single-child" }]
+      // "react/jsx-one-expression-per-line": ["enabled", { "allow": "single-child" }]
 
     }
   }
