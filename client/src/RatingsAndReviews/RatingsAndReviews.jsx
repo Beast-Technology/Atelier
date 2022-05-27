@@ -11,7 +11,7 @@ function RatingsAndReviews() {
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState([]);
   const [countUp, setCountUp] = useState(2);
-
+  // update page and concat instead of incrementing count
   useEffect(() => {
     axios.get('/reviews', {
       params: {
@@ -49,7 +49,6 @@ function RatingsAndReviews() {
       <div className="mainPage">
         <div>
           <RatingBreakdown meta={meta} />
-          <h3>--ProductBreakdown--</h3>
           <ProductBreakdown meta={meta} />
         </div>
         <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />

@@ -21,8 +21,10 @@ function ReviewsList({ reviews, meta, onClick }) {
         <h3>
           <div className="totalReviews">
             <span>{`${totalReviews} reviews, sorted by`}</span>
-            <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
-            <span className="material-symbols-outlined">expand_more</span>
+            <span>
+              <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
+              <span className="material-symbols-outlined" style={{ verticalAlign: 'middle' }}>expand_more</span>
+            </span>
           </div>
         </h3>
         <table className="reviewsList">
@@ -36,8 +38,9 @@ function ReviewsList({ reviews, meta, onClick }) {
             }
           </tbody>
         </table>
-        <span className="moreReviews" onClick={onClick}>More Reviews</span>
-        <span className="addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</span>
+        {/* should be a button eslint */}
+        <button className="moreReviews" onClick={onClick}>More Reviews</button>
+        <button className="addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</button>
       </div>
     );
   }
