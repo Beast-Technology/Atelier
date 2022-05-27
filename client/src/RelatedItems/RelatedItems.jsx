@@ -36,8 +36,8 @@ function getRelated(itemID, callback) {
 //     });
 // }
 
-function RelatedItems({product, relatedItems}) {
-  const [productID, setProductID] = useState(40346);
+function RelatedItems({product, relatedItems, productID, setProductID}) {
+
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
 

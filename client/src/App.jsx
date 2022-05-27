@@ -19,7 +19,7 @@ function App() {
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
-  const productID = 40346; // Junsu: this is the main product
+  const [productID, setProductID] = useState(40346);
 
   useEffect(() => {
     axios.request({
@@ -120,6 +120,8 @@ function App() {
       {/* <RatingsAndReviews /> */}
       {/* <QuestionsAndAnswers /> */}
       <RelatedItems
+        productID={productID}
+        setProductID={setProductID}
         product={product}
         relatedItems={relatedItems}
       />
