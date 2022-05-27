@@ -99,7 +99,6 @@ function RatingBreakdown({ meta }) {
           </div>
         </div>
       </div>
-      {console.log('RatingBreakdown:', meta)}
     </div>
   );
 }

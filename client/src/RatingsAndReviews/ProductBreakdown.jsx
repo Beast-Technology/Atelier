@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
 function ProductBreakdown({ meta }) {
-  const [characteristics, setCharacterisitics] = useState({});
+  const [comfort, setComfort] = useState(0);
+  const [size, setSize] = useState(0);
+  const [fit, setFit] = useState(0);
+  const [length, setLength] = useState(0);
+  const [quality, setQuality] = useState(0);
+
+  useEffect(() => {
+    // setComfort(meta.characteristics.comfort.value);
+    // setSize(meta.characteristics.size.value);
+    // setFit(meta.characteristics.fit.value);
+    // setLength(meta.characteristics.length.value);
+    // setQuality(meta.characteristics.quality.value);
+  }, [meta]);
+
+
   return (
     <div className="productBreakdown">
+      {console.log(meta.characteristics)}
       <div className="prodChar">
         <span>Comfort</span>
         <div className="prodBars">
