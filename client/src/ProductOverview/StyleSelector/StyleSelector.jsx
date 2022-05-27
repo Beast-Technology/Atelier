@@ -2,10 +2,6 @@ import React, {useEffect} from 'react';
 
 export default function StyleSelector({selectedStyle, styles, setStyle}) {
 
-  useEffect(() => {
-    console.log('StyleSelector useEffect')
-  }, [selectedStyle])
-
   return (
     <div>
       <div>
@@ -26,16 +22,16 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
               <i style={{position: 'absolute'}}>✅</i>
               <img
                 src={style.photos[0].thumbnail_url}
-                width='100'
-                height='100'>
+                width='50'
+                height='50'>
               </img>
             </div>)
           : (
               <img
                 onClick={() => setStyle(style)}
                 src={style.photos[0].thumbnail_url}
-                width='100'
-                height='100'>
+                width='50'
+                height='50'>
               </img>
             )
         })}

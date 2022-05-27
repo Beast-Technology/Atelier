@@ -5,7 +5,9 @@
   "main": "./client/src/App.jsx",
   "scripts": {
     "server-dev": "nodemon server/index.js",
-    "client-dev": "webpack --watch"
+    "client-dev": "webpack --watch",
+    "test-silent": "jest --silent --watch",
+    "test-loud": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -18,29 +20,33 @@
   },
   "homepage": "https://github.com/Beast-Technology/front-end-capstone#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "jest": "^28.1.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "underscore": "^1.13.3"
+    "axios": "0.27.2",
+    "dotenv": "16.0.1",
+    "express": "4.18.1",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "underscore": "1.13.3"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.17.12",
-    "@babel/preset-react": "^7.17.12",
-    "babel-loader": "^8.2.5",
-    "css-loader": "^6.7.1",
-    "eslint": "^8.16.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-airbnb": "^0.0.1-security",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "nodemon": "^2.0.16",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "@babel/preset-env": "7.18.2",
+    "@babel/preset-react": "7.17.12",
+    "@testing-library/react": "13.2.0",
+    "babel-jest": "28.1.0",
+    "babel-loader": "8.2.5",
+    "css-loader": "6.7.1",
+    "eslint": "8.16.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-airbnb": "0.0.1-security",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.30.0",
+    "eslint-plugin-react-hooks": "4.5.0",
+    "jest": "28.1.0",
+    "jest-environment-jsdom": "28.1.0",
+    "nodemon": "2.0.16",
+    "react-test-renderer": "18.1.0",
+    "style-loader": "3.3.1",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.9.2"
   }
 }
