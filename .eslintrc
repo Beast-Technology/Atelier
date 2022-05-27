@@ -6,7 +6,8 @@
       }],
       "no-multiple-empty-lines": [2, {"max": 4}],
       "react/prop-types": 0,
-      "max-len": [1, 150, 4]
+      "max-len": [1, 150, 4],
+      "linebreak-style":"off"
     }
   }
 
