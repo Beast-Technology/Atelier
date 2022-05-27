@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+
+import { MetaContext } from './context.js';
+
 
 function App() {
   // Junsu: added this style globally
@@ -22,6 +25,8 @@ function App() {
   const [productID, setProductID] = useState(40346);
   const [meta, setMeta] = useState({ ratings: { 1: '0' } });
 
+
+
   useEffect(() => {
     axios.get('/reviews/meta', {
       params: {
@@ -29,7 +34,7 @@ function App() {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setMeta(res.data);
       });
   }, [productID]);
@@ -109,17 +114,19 @@ function App() {
 
   return (
     <div style={container}>
-      <ProductOverview
-        meta={meta} // Junsu: to pass down ratings to Star Ratings
-        productID={productID}
-        product={product}
-        style={style}
-        styles={styles}
-        setStyle={setStyle}
-      />
-      {/* <RatingsAndReviews
-        meta={meta}
-      /> */}
+      <MetaContext.Provider value={meta}>
+        <ProductOverview
+          meta={meta}
+          productID={productID}
+          product={product}
+          style={style}
+          styles={styles}
+          setStyle={setStyle}
+        />
+        {/* <RatingsAndReviews
+          meta={meta}
+        /> */}
+      </MetaContext.Provider>
       {/* <QuestionsAndAnswers /> */}
       <RelatedItems
         productID={productID}

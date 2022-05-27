@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MetaContext } from '../../context.js';
 
-function StarRating({ meta }) {
-  const { ratings } = meta;
+function StarRating() {
+  const { ratings } = useContext(MetaContext);
 
   function average() {
     console.log('average invoked');

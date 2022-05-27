@@ -1,16 +1,15 @@
 import React from 'react';
 import StarRating from './StarRating.jsx';
 
-export default function ProductInformation({style, product, meta}) {
+export default function ProductInformation({style, product}) {
   const {category, name, default_price, slogan} = product;
   const {original_price, sale_price} = style;
 
 
 
-
   return (
     <div>
-      <StarRating meta={meta} />
+      <StarRating />
       <div>{category}</div>
       <div>{name}</div>
       {sale_price ?
