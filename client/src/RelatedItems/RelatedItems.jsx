@@ -36,9 +36,9 @@ function getRelated(itemID, callback) {
 //     });
 // }
 
-function RelatedItems() {
-  const [relatedItems, setRelatedItem] = useState([]);
-  const [currentProduct, setProduct] = useState({});
+function RelatedItems({product, relatedItems}) {
+  // const [relatedItems, setRelatedItem] = useState([]); // Junsu: rep
+  // const [currentProduct, setProduct] = useState({});
   const [showModal, setShow] = useState(false);
   const [clickedItem, setClickedItem] = useState({});
   // const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
@@ -63,28 +63,28 @@ function RelatedItems() {
 
   // --getCurrentProductRelatedItems- //
 
-  useEffect(() => {
-    getRelated(productID, (response) => {
-      // console.log('done w data:', response.data)
-      const promiseArray = [];
-      for (const product of response.data) {
-        // console.log(product);
-        promiseArray.push(
-          axios.request({
-            url: `/products/${product}`,
-            method: 'GET',
-          }),
-        );
+  // useEffect(() => {
+  //   getRelated(productID, (response) => {
+  //     // console.log('done w data:', response.data)
+  //     const promiseArray = [];
+  //     for (const product of response.data) {
+  //       // console.log(product);
+  //       promiseArray.push(
+  //         axios.request({
+  //           url: `/products/${product}`,
+  //           method: 'GET',
+  //         }),
+  //       );
 
-        Promise.all(promiseArray)
-          .then((responses) => {
-            // console.log('relatedItems', relatedItems)
-            // console.log('responses', responses)
-            setRelatedItem(responses);
-          });
-      }
-    });
-  }, []);
+  //       Promise.all(promiseArray)
+  //         .then((responses) => {
+  //           // console.log('relatedItems', relatedItems)
+  //           console.log('responses', responses)
+  //           setRelatedItem(responses);
+  //         });
+  //     }
+  //   });
+  // }, []);
 
   // --getCurrentStyles- //
 
@@ -132,11 +132,12 @@ function RelatedItems() {
   // { console.log(style.photos); }
 
   return (
-    <section id="RelatedItems">
+    // Junsu: added style for CSS debugging purposes, delete later
+    <section style={{border: '2px purple solid'}} id="RelatedItems">
       <div id="unclickArea" ref={ref}>
         <CompareModal
           showModal={showModal}
-          currentProduct={currentProduct}
+          currentProduct={product}
           clickedItem={clickedItem}
         />
 
@@ -153,7 +154,7 @@ function RelatedItems() {
       <YourOutfitContainer
         productID={productID}
         relatedItems={relatedItems}
-        currentProduct={currentProduct}
+        currentProduct={product}
       />
     </section>
   );

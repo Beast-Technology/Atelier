@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ProductInformation from './ProductInformation/ProductInformation.jsx';
 import ProductDescription from './ProductDescription.jsx';
 import SocialMedia from './SocialMedia.jsx';
@@ -29,8 +28,7 @@ function ProductOverview({ reviews, product, style, setStyle, styles }) {
       </div>
       <ProductDescription product={product} />
     </div>
-
-  )
+  );
 }
 
 export default ProductOverview;

@@ -14,11 +14,12 @@ function App() {
     padding: '32px',
   };
 
+  // Junsu: moved states to App
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
-  const productID = 40346;
+  const productID = 40346; // Junsu: this is the main product
 
   useEffect(() => {
     axios.request({
@@ -30,7 +31,6 @@ function App() {
       },
     })
       .then((response) => {
-        // console.log(response.data);
         setReviews(response.data.results);
       });
   }, []);
@@ -41,7 +41,6 @@ function App() {
       method: 'get',
     })
       .then((response) => {
-        // console.log(response.data);
         setProduct(response.data);
       });
   }, []);
@@ -52,12 +51,62 @@ function App() {
       method: 'get',
     })
       .then((response) => {
-        // console.log(response.data.results[0]);
         setStyle(response.data.results.find((styleId) => styleId['default?']));
         setStyles(response.data.results);
       });
   }, []);
 
+
+  // Junsu: this is how I'd do related products
+  // Alex: relatedItems info should prob live in RelatedItems module
+
+  const [relatedItemIds, setRelatedItemIds] = useState([]);
+  const [relatedItems, setRelatedItems] = useState([]);
+
+  /* Junsu: there's two ways of doing this, the one below combines it, but I'm
+   keeping these two useEffects because it might help when changing products */
+
+  // useEffect(() => {
+  //   axios.request({
+  //     url: `/products/${productID}/related`,
+  //     method: 'get',
+  //   })
+  //     .then((response) => {
+  //       setRelatedItemIds(response.data);
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   const array = relatedItemIds.map((relatedItemId) => axios.request({
+  //     url: `/products/${relatedItemId}`,
+  //     method: 'get',
+  //   })
+  //     .then((response) => response));
+  //   Promise.all(array)
+  //     .then((values) => {
+  //       console.log(values);
+  //       setRelatedItems(values);
+  //     });
+  // }, [relatedItemIds]);
+
+  useEffect(() => {
+    axios.request({
+      url: `/products/${productID}/related`,
+      method: 'get',
+    })
+      .then((response) => {
+        const array = response.data.map((relatedItemId) => axios.request({
+          url: `/products/${relatedItemId}`,
+          method: 'get',
+        })
+          .then((products) => products));
+        Promise.all(array)
+          .then((values) => {
+            console.log(values);
+            setRelatedItems(values);
+          });
+      });
+  }, []);
 
 
   return (
@@ -69,9 +118,12 @@ function App() {
         styles={styles}
         setStyle={setStyle}
       />
-      <RatingsAndReviews />
-      <QuestionsAndAnswers />
-      <RelatedItems />
+      {/* <RatingsAndReviews /> */}
+      {/* <QuestionsAndAnswers /> */}
+      <RelatedItems
+        product={product}
+        relatedItems={relatedItems}
+      />
     </div>
   );
 }
