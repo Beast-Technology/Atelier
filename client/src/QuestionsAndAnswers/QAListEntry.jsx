@@ -3,11 +3,16 @@ import React from 'react';
 import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
 
-export default function QAListEntry({q}) {
+export default function QAListEntry({ q, setModal }) {
   function markQuestionHelpful() {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+  }
+
+  function handleAddAnswer() {
+    setModal('adda');
+    document.getElementById('modal').style.display = 'block';
   }
 
   return (
@@ -21,7 +26,7 @@ export default function QAListEntry({q}) {
           <div className="question-actions">
             <Helpful count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
-            <span className="underline">Add Answers</span>
+            <span onClick={handleAddAnswer} className="underline">Add Answers</span>
           </div>
         </div>
       </div>

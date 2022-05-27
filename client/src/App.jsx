@@ -4,6 +4,7 @@ import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+import Modal from './helper/Modals/Modal.jsx';
 
 import { MetaContext } from './context.js';
 
@@ -39,6 +40,8 @@ function App() {
     getRelated(productID, setRelatedItems);
   }, [productID]);
 
+  const [modal, setModal] = useState('');
+
 
   return (
     <div style={container}>
@@ -51,13 +54,14 @@ function App() {
           meta={meta}
         />
       </MetaContext.Provider>
-      {/* <QuestionsAndAnswers /> */}
+      <QuestionsAndAnswers setModal={setModal} />
       <RelatedItems
         productID={productID}
         setProductID={setProductID}
         product={product}
         relatedItems={relatedItems}
       />
+      <Modal modal={modal} />
     </div>
   );
 }
