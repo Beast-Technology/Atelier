@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { getMeta, getProduct, getStyles, getRelated } from './axiosCalls.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
@@ -32,15 +31,8 @@ function App() {
     getMeta(productID, setMeta);
   }, [productID]);
 
-  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
-  const [styles, setStyles] = useState([]);
-  useEffect(() => {
-    getStyles(productID, setStyle, setStyles);
-  }, [productID]);
-
-
-  // Junsu: this is how I'd do related products
-  // Alex: relatedItems info should prob live in RelatedItems module
+  // Junsu: Alex, feel free to move this into your module RelatedItems. I think
+  // you're right that it doesn't need to be in the App
   const [relatedItems, setRelatedItems] = useState([]);
 
   useEffect(() => {
@@ -52,12 +44,8 @@ function App() {
     <div style={container}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
-          meta={meta}
           productID={productID}
           product={product}
-          style={style}
-          styles={styles}
-          setStyle={setStyle}
         />
         <RatingsAndReviews
           meta={meta}
