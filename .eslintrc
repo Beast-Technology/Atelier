@@ -9,7 +9,7 @@
       "max-len": [1, 150, 4],
       "no-console": "off",
       "linebreak-style": "off",
-      // "react/jsx-one-expression-per-line": ["enabled", { "allow": "single-child" }]
+      "react/jsx-one-expression-per-line": 0
 
     }
   }
