@@ -1,20 +1,21 @@
-const axios = require('axios');
 import React, { useState } from 'react';
 import './modal-addq-styles.css';
 
+const axios = require('axios');
+
 export default function AddQuestionModal() {
-  function handleClick(e) {
-    const modalMask = document.getElementById('modal');
-    if (e.target === modalMask) {
-      modalMask.style.display = 'none';
-    }
-  }
+  const product_id = 40333;
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const product_id = 40333;
+  // function handleClick(e) {
+  //   const modalMask = document.getElementById('modal');
+  //   if (e.target === modalMask) {
+  //     modalMask.style.display = 'none';
+  //   }
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +38,7 @@ export default function AddQuestionModal() {
   }
 
   return (
-    <div id="modal" className="modal" onClick={handleClick} >
+    // <div id="modal" className="modal" onClick={handleClick} >
       <div className="modal-box modal-addq">
         <header>
           <h3 className="heading heading-tertiary">Ask Your Questions</h3>
@@ -64,6 +65,6 @@ export default function AddQuestionModal() {
           </form>
         </main>
       </div>
-    </div>
+    // </div>
   )
 }

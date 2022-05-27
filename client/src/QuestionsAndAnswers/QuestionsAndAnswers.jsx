@@ -8,7 +8,7 @@ const axios = require('axios');
 
 const chosenId = 40333;
 
-function QuestionsAndAnswers() {
+function QuestionsAndAnswers({setModal}) {
   const [qaData, setQAData] = useState([]);
   const [qs, setQs] = useState([]);
   const [displayQs, setDisplayQs] = useState([]);
@@ -50,7 +50,7 @@ function QuestionsAndAnswers() {
     <section className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch keyword={keyword} setKeyword={setKeyword} />
-      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} />
+      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} />
 
       {/* <AddQuestionModal /> */}
     </section>

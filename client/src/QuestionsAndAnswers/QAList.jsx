@@ -1,15 +1,16 @@
 import React from 'react';
 import QAListEntry from './QAListEntry.jsx';
 
-export default function QAList({qs, qsLeft, onHandleLoad}) {
+export default function QAList({ qs, qsLeft, onHandleLoad, setModal }) {
   function handleClick() {
+    setModal('addq');
     document.getElementById('modal').style.display = 'block';
   }
 
   return (
     <div>
       <ul className="qa-list">
-        {qs.map((q, index) => <QAListEntry key={index} q={q} />)}
+        {qs.map((q, index) => <QAListEntry key={index} q={q} setModal={setModal} />)}
       </ul>
 
       <div className="qa-actions">
