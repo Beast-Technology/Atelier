@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+import React, {useState, useEffect} from 'react';
 import ProductInformation from './ProductInformation/ProductInformation.jsx';
 import ProductDescription from './ProductDescription.jsx';
 import SocialMedia from './SocialMedia.jsx';
@@ -6,7 +8,9 @@ import AddToCart from './AddToCart/AddToCart.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 
-function ProductOverview({ reviews, product, style, setStyle, styles }) {
+function ProductOverview({ meta, product, style, setStyle, styles }) {
+
+
   return (
     <div id="product-overview" style={{ border: '2px green solid' }}>
       <div style={{ display: 'flex' }}>
@@ -15,7 +19,7 @@ function ProductOverview({ reviews, product, style, setStyle, styles }) {
           <ProductInformation
             style={style}
             product={product}
-            reviews={reviews}
+            meta={meta}
           />
           <SocialMedia />
           <StyleSelector

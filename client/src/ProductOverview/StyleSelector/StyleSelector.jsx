@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 
-export default function StyleSelector({selectedStyle, styles, setStyle}) {
+function StyleSelector({selectedStyle, styles, setStyle}) {
 
   return (
     <div>
       <div>
-        <b>Style ></b> {selectedStyle.name}
+        <b>Style >s</b> {selectedStyle.name}
       </div>
       {/* <select onChange={(e) => setStyle(styles[e.target.value])}>
         {styles.map((style, index) => (
@@ -39,3 +39,5 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
     </div>
   )
 }
+
+export default StyleSelector;

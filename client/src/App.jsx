@@ -15,25 +15,24 @@ function App() {
   };
 
   // Junsu: moved states to App
-  const [reviews, setReviews] = useState([]);
+
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
   const [productID, setProductID] = useState(40346);
+  const [meta, setMeta] = useState({ ratings: { 1: '0' } });
 
   useEffect(() => {
-    axios.request({
-      url: '/reviews',
-      method: 'get',
+    axios.get('/reviews/meta', {
       params: {
         product_id: productID,
-        count: 100,
       },
     })
-      .then((response) => {
-        setReviews(response.data.results);
+      .then((res) => {
+        console.log(res.data);
+        setMeta(res.data);
       });
-  }, []);
+  }, [productID]);
 
   useEffect(() => {
     axios.request({
@@ -43,7 +42,7 @@ function App() {
       .then((response) => {
         setProduct(response.data);
       });
-  }, []);
+  }, [productID]);
 
   useEffect(() => {
     axios.request({
@@ -54,7 +53,7 @@ function App() {
         setStyle(response.data.results.find((styleId) => styleId['default?']));
         setStyles(response.data.results);
       });
-  }, []);
+  }, [productID]);
 
 
   // Junsu: this is how I'd do related products
@@ -105,19 +104,22 @@ function App() {
             setRelatedItems(values);
           });
       });
-  }, []);
+  }, [productID]);
 
 
   return (
     <div style={container}>
       <ProductOverview
-        reviews={reviews}
+        meta={meta} // Junsu: to pass down ratings to Star Ratings
+        productID={productID}
         product={product}
         style={style}
         styles={styles}
         setStyle={setStyle}
       />
-      {/* <RatingsAndReviews /> */}
+      {/* <RatingsAndReviews
+        meta={meta}
+      /> */}
       {/* <QuestionsAndAnswers /> */}
       <RelatedItems
         productID={productID}

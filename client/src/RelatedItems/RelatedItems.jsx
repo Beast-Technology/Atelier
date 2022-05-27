@@ -37,12 +37,9 @@ function getRelated(itemID, callback) {
 // }
 
 function RelatedItems({product, relatedItems, productID, setProductID}) {
-
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
-
   const [clickedItem, setClickedItem] = useState({});
-
   const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: 'https://images.unsplash.com/photo-1514866726862-0f081731e63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80' }] });
 
   // --testConsole.logs-- //
@@ -122,7 +119,7 @@ function RelatedItems({product, relatedItems, productID, setProductID}) {
         const responseObj = {};
         for (const styleItems of responses) {
           const styleItemResultsArray = styleItems.data.results;
-          console.log(styleItemResultsArray.entries());
+          // console.log(styleItemResultsArray.entries());
           for (const [i, styleItemResults] of styleItemResultsArray.entries()) {
             if (i === styleItemResultsArray.length - 1) {
               responseObj[styleItems.data.product_id] = styleItemResults.photos;
