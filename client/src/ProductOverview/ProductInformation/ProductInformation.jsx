@@ -7,7 +7,7 @@ export default function ProductInformation({style, product, reviews}) {
 
   return (
     <div>
-      {reviews.length === 0 ? '' : <StarRating reviews={reviews}/>}
+      {(!reviews || reviews.length === 0) ? '' : <StarRating reviews={reviews}/>}
       <div>{category}</div>
       <div>{name}</div>
       {sale_price ?

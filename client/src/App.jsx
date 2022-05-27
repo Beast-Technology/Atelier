@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+import Modal from './helper/Modals/Modal.jsx';
 
 function App() {
+  const [modal, setModal] = useState('');
+
   return (
     <div>
       <ProductOverview />
-      <RatingsAndReviews />
-      <QuestionsAndAnswers />
       <RelatedItems />
+      <QuestionsAndAnswers setModal={setModal} />
+      <RatingsAndReviews />
+      <Modal modal={modal} />
     </div>
   );
 }
