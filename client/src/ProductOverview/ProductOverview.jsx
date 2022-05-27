@@ -56,8 +56,15 @@ function ProductOverview() {
     display: 'flex',
   }
 
+  const section = {
+    border: '2px solid red',
+    width: '1200px',
+    margin: '48px auto',
+    padding: '32px'
+  }
+
   return (
-    <div>
+    <div style={section}>
       <div style={containers}>
         <ImageGallery photos={style.photos}/>
         <div>
