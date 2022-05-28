@@ -18,7 +18,9 @@ function RelatedProductsCard({
         if (defaultStyle === undefined) {
           [defaultStyle] = response.data.results;
         }
-        const url = defaultStyle.photos[0].thumbnail_url ? defaultStyle.photos[0].thumbnail_url : '';
+        const url = defaultStyle.photos[0].thumbnail_url
+          ? defaultStyle.photos[0].thumbnail_url
+          : 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png';
         setPhotoSrc(url);
       });
   }, [relatedItem.id]);

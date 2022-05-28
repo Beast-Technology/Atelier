@@ -7,7 +7,7 @@ import { Stars } from '../helper/Stars.jsx';
 function YourOutfitcard({
   yourOutfitItem, handleDeleteToOutfit, style,
 }) {
-  // Junsu: extract url from style and set it as state so it's decoupled from style state in App - ie pic won't change when changing style
+  // Junsu: extract url from style and set it as state so it's unlinked from style state in App - ie pic won't change when changing style
   const [photoSrcOutfit, setphotoSrcOutfit] = useState(style.photos[0].thumbnail_url);
   const rating = useContext(MetaContext);
 
