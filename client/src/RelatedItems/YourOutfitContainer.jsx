@@ -75,7 +75,7 @@ function YourOutfitContainer({
   }
 
   return (
-    <div id="YourOutfitContainer">
+    <div id="CardContainer">
       {
           (yourOutfitItems || []).map((yourOutfitItem) => (
             <YourOutfitCard

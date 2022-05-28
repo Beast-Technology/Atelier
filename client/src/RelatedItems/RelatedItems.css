@@ -10,24 +10,36 @@
   color: white;
 }
 
-/* ------------------------ RelatedProductsContainer ------------------------ */
+/* ------------------------ CardContainers ------------------------ */
 
 /* RelatedProductsContainer */
-#RelatedProductsContainer {
-  display: flex
+#CardContainer {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
 }
 
-/* TODO: add functionality to not show child elemnts after max width allowed on page */
-/* #RelatedProductsContainer::after {
-  display: flex;
-  content: "";
-  display: "table";
-  clear: "both";
-  background-color: #4CAF50;
-} */
+
+#product-right-arrow {
+  position: absolute;
+  right: 7px;
+  top: 140px;
+  border: none;
+  background: none;
+  font-size: 4rem;
+}
+#product-left-arrow {
+  position: absolute;
+  left: -22px;
+  top: 140px;
+  border: none;
+  background: none;
+  font-size: 4rem;
+}
 
 
-/* ---------------- RelatedProductsCard/YourOutfitcard/alreadyInOutfitCard ---------------- */
+
+/* ---------------- ProductsCard ---------------- */
 
 .ProductsCard {
   position: relative;
@@ -59,20 +71,19 @@
 
 .card-starButton {
   position: absolute;
-  right:15px;
-  top:9px;
-  width:25px;
-  height:25px;
+  right: 15px;
+  top: 9px;
+  width: 25px;
+  height: 25px;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   background-color: rgb(255 255 255 / 0);
-  border-radius:50px;
-  text-shadow: 1px 1px 3px black;
-  font-size: 20px;
+  border-radius: 85px;
+  text-shadow: 1px 1px 8px white;
 }
 
-
 .card-starButton:hover {
+  transform: scale(1.2);
   color: rgb(233, 7, 146);
 
 }
@@ -91,7 +102,6 @@
   background-color: rgb(255 255 255 / 0%);
   box-shadow: rgb(0 0 0 / 2%) 2px 2px 3px;
   border-radius:50px;
-
 }
 
 .card-removeButton:hover {
@@ -109,11 +119,12 @@
   font-weight: bold;
   padding: 0 0 5px;
 }
-
 .card-price {
   font-size: 1.3rem;
   padding: 0 0 5px;
 }
+/* ---------------- alreadyInOutfitCard ---------------- */
+
 
 #alreadyInOutfitCard {
   margin: 10px;
@@ -131,14 +142,11 @@
 
 }
 #alreadyInOutfitCard:hover {
-
-
   background: #e0ddd8;
   font-weight: bold;
-
 }
 
-/* ------------------------ YourOutfitContainer ------------------------ */
+/* ------------------------ addButtonCard ------------------------ */
 
 #addButtonCard-plus {
   font-size: 80px;
@@ -166,18 +174,6 @@
   align-items: center;
 }
 
-#YourOutfitContainer {
-  display: flex
-
-}
-/* TODO: add functionality to not show child elemnts after max width allowed on page */
-/* #YourOutfitContainer::after {
-  display: flex;
-  content: "";
-  display: "table";
-  clear: "both";
-  background-color: #4CAF50;
-} */
 
 /* ------------------------ Modal ------------------------ */
 

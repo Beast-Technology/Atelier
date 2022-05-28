@@ -16,7 +16,6 @@ function App() {
     border: '2px solid red',
     width: '1200px',
     margin: '48px auto',
-    padding: '32px',
   };
   // Set ProductID/Product State and UseEffect
   const [productID, setProductID] = useState(40346);
