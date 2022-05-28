@@ -55,6 +55,7 @@ function App() {
           meta={meta}
         />
         <QuestionsAndAnswers
+          productID={productID}
           setModal={setModal}
         />
         <RelatedItems
@@ -64,7 +65,7 @@ function App() {
           style={style}
         />
       </MetaContext.Provider>
-      <Modal modal={modal} />
+      <Modal productID={productID} productName={product.name} modal={modal} />
     </div>
   );
 }

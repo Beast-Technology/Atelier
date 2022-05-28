@@ -7,9 +7,10 @@ import './qa-styles.css';
 
 const axios = require('axios');
 
-const chosenId = 40344;
+// For test purpose
+// const chosenId = 40344;
 
-function QuestionsAndAnswers({setModal}) {
+function QuestionsAndAnswers({ productID, setModal }) {
   const [qaData, setQAData] = useState([]);
   const [qs, setQs] = useState([]);
   const [displayQs, setDisplayQs] = useState([]);
@@ -34,7 +35,7 @@ function QuestionsAndAnswers({setModal}) {
   }
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: chosenId, count: 100 } })
+    axios.get('/qa/questions', { params: { product_id: productID, count: 100 } })
       .then((res) => res.data.results.sort((a, b) => b.question_helpfulness - a.question_helpfulness))
       .then((sortedResults) => {
         setQAData(sortedResults);

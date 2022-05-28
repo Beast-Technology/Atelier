@@ -4,12 +4,12 @@ import './modal-styles.css';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 
-export default function Modal({ modal }) {
+export default function Modal({ productID, productName, modal }) {
 
   function renderModal(modalName) {
     switch (modalName) {
       case 'addq':
-        return <AddQuestionModal />;
+        return <AddQuestionModal productID={productID} productName={productName} />;
       case 'adda':
         return <AddAnswerModal />;
       default:
