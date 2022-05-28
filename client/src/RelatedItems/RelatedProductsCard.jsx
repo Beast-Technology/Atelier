@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ObjToRating from './Helper/ObjToRating.js';
+import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
 import { Stars } from '../helper/Stars.jsx';
 
 function RelatedProductsCard({
@@ -8,27 +8,14 @@ function RelatedProductsCard({
   const [photoSrc, setPhotoSrc] = useState('');
   const [rating, setRating] = useState(0);
 
-  // console.log(photoObject);
-  // console.log(metaObject);
-
-  // ---set PhotoObject for single Card --- //
   useEffect(() => {
-    if ((Object.keys(photoObject).length !== 0) && (photoObject[relatedItem.id] !== undefined)) {
-      const photoURL = photoObject[relatedItem.id][0].thumbnail_url;
-      if (photoURL !== null) {
-        setPhotoSrc(() => photoURL);
-      } else {
-        setPhotoSrc(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
-      }
-    }
+    setPhotoObjectCard(photoObject, relatedItem, setPhotoSrc);
   }, [photoObject, relatedItem]);
 
   // ---set metaObject for single Card --- //
 
   useEffect(() => {
-    if ((Object.keys(metaObject).length !== 0) && (metaObject[relatedItem.id] !== undefined)) {
-      setRating(ObjToRating(metaObject[relatedItem.id]));
-    }
+    setMetaObjectCard(metaObject, relatedItem, setRating);
   }, [metaObject, relatedItem]);
 
   function handleModal() {
@@ -73,8 +60,7 @@ function RelatedProductsCard({
       <div className="card-category">{relatedItem.category}</div>
       <div className="card-name">{relatedItem.name}</div>
       <div className="card-price">
-        $
-        {parseInt(relatedItem.default_price, 10)}
+        $ {parseInt(relatedItem.default_price, 10)}
       </div>
       <Stars rating={rating} />
     </div>

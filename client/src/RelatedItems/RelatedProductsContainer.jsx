@@ -20,7 +20,6 @@ function RelatedProductsContainer({
           setProductID={setProductID}
           photoObject={photoObject}
           metaObject={metaObject}
-
         />
 
       ))

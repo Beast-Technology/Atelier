@@ -46,10 +46,10 @@ function App() {
   return (
     <div style={container}>
       <MetaContext.Provider value={meta}>
-        <ProductOverview
+        {/* <ProductOverview
           productID={productID}
           product={product}
-        />
+        /> */}
         <RatingsAndReviews
           meta={meta}
         />

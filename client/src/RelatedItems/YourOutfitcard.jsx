@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import ObjToRating from './Helper/ObjToRating.js';
+import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
 import { Stars } from '../helper/Stars.jsx';
 
 
 function YourOutfitcard({
   yourOutfitItem, handleDeleteToOutfit, photoObject, metaObject,
 }) {
-  const [photoSrcOutfit, setphotoSrcOutfit] = useState('');
+  const [photoSrcOutfit, setPhotoSrc] = useState('');
   const [rating, setRating] = useState(0);
 
-  useEffect(() => {
-    if ((Object.keys(photoObject).length !== 0) && (photoObject[yourOutfitItem.id] !== undefined)) {
-      const photoURL = photoObject[yourOutfitItem.id][0].thumbnail_url;
-      if (photoURL !== null) {
-        setphotoSrcOutfit(() => photoURL);
-      } else {
-        setphotoSrcOutfit(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
-      }
-    }
-  }, [photoObject, yourOutfitItem]);
+  // ---set PhotoObject for single Card --- //
 
   useEffect(() => {
-    if ((Object.keys(metaObject).length !== 0) && (metaObject[yourOutfitItem.id] !== undefined)) {
-      setRating(ObjToRating(metaObject[yourOutfitItem.id]));
-    }
+    setPhotoObjectCard(photoObject, yourOutfitItem, setPhotoSrc);
+  }, [photoObject, yourOutfitItem]);
+
+  // ---set metaObject for single Card --- //
+
+  useEffect(() => {
+    setMetaObjectCard(metaObject, yourOutfitItem, setRating);
   }, [metaObject, yourOutfitItem]);
 
   return (
