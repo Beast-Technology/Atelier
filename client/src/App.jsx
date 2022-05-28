@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { getMeta, getProduct, getStyles } from './axiosCalls.js';
+
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import Modal from './helper/Modals/Modal.jsx';
 
+import { getMeta, getProduct, getStyles } from './axiosCalls.js';
 import { MetaContext } from './context.js';
 
 
 function App() {
-  // Junsu: added this style globally
+  // Temporary Container to show borders
   const container = {
     border: '2px solid red',
     width: '1200px',
@@ -18,27 +19,27 @@ function App() {
     padding: '32px',
   };
 
-  // Junsu: moved certain states to App
-  // Junsu: productID and product information
+  // Set ProductID/Product State and UseEffect
   const [productID, setProductID] = useState(40346);
   const [product, setProduct] = useState({});
   useEffect(() => {
     getProduct(productID, setProduct);
   }, [productID]);
 
-  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+  // Set Style/Styles State and UseEffect
+  const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   const [styles, setStyles] = useState([]);
   useEffect(() => {
-    console.log(productID);
     getStyles(productID, setStyle, setStyles);
   }, [productID]);
 
-  // Junsu: product metadata is provided via MetaContext.Provider
+  // Set Meta State and UseEffect
   const [meta, setMeta] = useState(0);
   useEffect(() => {
     getMeta(productID, setMeta);
   }, [productID]);
 
+<<<<<<< HEAD
   // By default, modal is an empty object {}
   // When using setModal, the syntax is setModal({ modalName, modalData })
     // modalName: Required; a string, decides which modal content to render
@@ -46,10 +47,13 @@ function App() {
   // Example 1 - setModal: line 14 @ './QuestionsAndAnswers/QAListEntry.jsx'
   // Example 2 - redernModal: line 8 @ './helper/Modals/Modals.jsx'
   const [modal, setModal] = useState({});
-
+=======
+  // Set Modal State
+  const [modal, setModal] = useState('');
+>>>>>>> main
 
   return (
-    <div style={container}>
+    <div style={{border: '2px solid red'}}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}

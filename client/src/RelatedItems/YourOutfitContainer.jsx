@@ -45,7 +45,7 @@ function YourOutfitContainer({
 
   // ---condiitonal rendering of the AddButton/isAre string --- //
   let addButtonDiv;
-  let isAre;
+  let isAreSpan;
   if (addButton) {
     addButtonDiv = (
       <div id="addButtonCard" className="fadeIn">
@@ -63,13 +63,13 @@ function YourOutfitContainer({
     );
   } else {
     if (currentProduct.name[currentProduct.name.length - 1] === 's') {
-      isAre = 'are';
+      isAreSpan = 'are';
     } else {
-      isAre = 'is';
+      isAreSpan = 'is';
     }
     addButtonDiv = (
       <div id="alreadyInOutfitCard">
-        <div> {currentProduct.name} {isAre} in your Outfit Collection </div>
+        <div> {currentProduct.name} {isAreSpan} in your Outfit Collection </div>
       </div>
     );
   }
