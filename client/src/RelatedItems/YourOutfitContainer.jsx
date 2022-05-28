@@ -11,7 +11,7 @@ function YourOutfitContainer({
   const [addButton, setAddButton] = useState(true);
   const [numArray, setOutfitNumArray] = useState([]);
 
-  let errorDiv;
+  // ---show/hide AddButton --- //
 
   useEffect(() => {
     if ((yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
@@ -21,22 +21,19 @@ function YourOutfitContainer({
     }
   }, [yourOutfitItems, currentProduct.id]);
 
+  // ---add currentProduct to yourOutfitItems and set index of added item in outfitNumArray --- //
 
   function handleAddToOutfit() {
     if (!(yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
       setOutfitNumArray(() => [...numArray, currentProduct.id]);
       setOutfitItem(() => [...yourOutfitItems, currentProduct]);
-      // setTimeout(() => setAddButton(false), 1000);
       setAddButton(false);
     }
   }
+  // ---delete selected product from yourOutfitItems and remove index of deleted item in outfitNumArray --- //
 
   function handleDeleteToOutfit(e, clickedDeleteItem) {
     e.stopPropagation();
-
-    // console.log('clickedDeleteItem', clickedDeleteItem.id);
-    // console.log('numArray', numArray);
-    // console.log(numArray.indexOf(clickedDeleteItem.id));
     const indexOfClicked = numArray.indexOf(clickedDeleteItem.id);
     if (indexOfClicked !== numArray.length - 1) {
       setOutfitItem(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
@@ -49,8 +46,9 @@ function YourOutfitContainer({
   }
 
 
-
+  // ---condiitonal rendering of the AddButton/isAre string --- //
   let addButtonDiv;
+  let isAre;
   if (addButton) {
     addButtonDiv = (
       <div id="addButtonCard" className="fadeIn">
@@ -67,7 +65,6 @@ function YourOutfitContainer({
       </div>
     );
   } else {
-    let isAre;
     if (currentProduct.name[currentProduct.name.length - 1] === 's') {
       isAre = 'are';
     } else {
@@ -79,7 +76,6 @@ function YourOutfitContainer({
       </div>
     );
   }
-  // console.log(yourOutfitItems);
 
   return (
     <div id="YourOutfitContainer">
@@ -95,8 +91,6 @@ function YourOutfitContainer({
           ))
           }
       {addButtonDiv}
-
-      {errorDiv}
     </div>
   );
 }

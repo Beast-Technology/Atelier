@@ -2,12 +2,12 @@
 /* eslint-disable no-lone-blocks */
 import React from 'react';
 
-let tableVals = [];
 
 function CompareModal({ showModal, currentProduct, clickedItem }) {
   if (!showModal) {
     return null;
   }
+  let tableVals = [];
   const compareObj = {};
   const currProductFeatures = currentProduct.features;
   const clickedFeatures = clickedItem.features;
