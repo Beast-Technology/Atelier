@@ -18,6 +18,7 @@ function App() {
     margin: '48px auto',
     padding: '32px',
   };
+
   // Set ProductID/Product State and UseEffect
   const [productID, setProductID] = useState(40346);
   const [product, setProduct] = useState({});
@@ -29,7 +30,6 @@ function App() {
   const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   const [styles, setStyles] = useState([]);
   useEffect(() => {
-    console.log(productID);
     getStyles(productID, setStyle, setStyles);
   }, [productID]);
 
@@ -43,7 +43,7 @@ function App() {
   const [modal, setModal] = useState('');
 
   return (
-    <div style={container}>
+    <div style={{border: '2px solid red'}}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}
