@@ -3,7 +3,7 @@ import React from 'react';
 import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
 
-export default function QAListEntry({ q, setModal }) {
+export default function QAListEntry({ q, setModal, setphotoModalURL }) {
   function markQuestionHelpful() {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
@@ -11,7 +11,7 @@ export default function QAListEntry({ q, setModal }) {
   }
 
   function handleAddAnswer() {
-    setModal('adda');
+    setModal({ modalName: 'adda', modalData: { question_id: q.question_id, question_body: q.question_body } });
     document.getElementById('modal').style.display = 'block';
   }
 
@@ -31,7 +31,7 @@ export default function QAListEntry({ q, setModal }) {
         </div>
       </div>
 
-      <AnswerList answers={q.answers} />
+      <AnswerList answers={q.answers} setphotoModalURL={setphotoModalURL} />
     </li>
   )
 }
