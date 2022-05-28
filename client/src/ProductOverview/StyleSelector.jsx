@@ -13,10 +13,9 @@ function StyleSelector({selectedStyle, styles, setStyle}) {
       }}>
         {styles.map((style, index) => {
           return style.style_id === selectedStyle.style_id ?
-            (<div>
+            (<div key={index}>
               <i style={{position: 'absolute'}}>✅</i>
               <img
-                key={index}
                 src={style.photos[0].thumbnail_url}
                 width='50'
                 height='50'>
@@ -24,7 +23,7 @@ function StyleSelector({selectedStyle, styles, setStyle}) {
             </div>)
           : (
               <img
-              key={index}
+                key={index}
                 onClick={() => setStyle(style)}
                 src={style.photos[0].thumbnail_url}
                 width='50'
