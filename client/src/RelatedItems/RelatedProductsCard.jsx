@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
-//import ObjToRating from './Helper/ObjToRating.js';
-//import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
 import { Stars } from '../helper/Stars.jsx';
+import metaToRating from './Helper/MetaObjToRating.js';
 
 function RelatedProductsCard({
   relatedItem, setShow, setClickedItem, setProductID,
@@ -11,9 +9,6 @@ function RelatedProductsCard({
   const [photoSrc, setPhotoSrc] = useState('');
   const [rating, setRating] = useState(0);
 
-
-  // Junsu: this gets a thumbnail from default style of relatedItem, if no default
-  // style, then first style's thumbnail. if no picture, then nothing for now
   useEffect(() => {
     axios.get(`/products/${relatedItem.id}/styles`)
       .then((response) => {
@@ -28,7 +23,6 @@ function RelatedProductsCard({
       });
   }, [relatedItem.id]);
 
-  // Junsu: this gets the average rating for the relatedItem
   useEffect(() => {
     axios.get('/reviews/meta', {
       params: {
@@ -36,30 +30,11 @@ function RelatedProductsCard({
       },
     })
       .then(((response) => {
-        // console.log(response.data.ratings);
-        const { ratings } = response.data;
-        let sum = 0;
-        let total = 0;
-        Object.keys(ratings).forEach((score) => {
-          sum += (parseInt(score, 10) * parseInt(ratings[score], 10));
-          total += parseInt(ratings[score], 10);
-        });
-        setRating((sum / total).toFixed(2));
+        setRating(metaToRating(response.data).toFixed(2));
       }));
   }, [relatedItem.id]);
 
-
-  // Junsu: moved these functions inside the onClick call, can be deleted
-  // function handleModal() {
-  //   setShow(true);
-  // }
-
-  // function handleClickedItem(e, item) {
-  //   e.stopPropagation();
-  //   setClickedItem(item);
-  // }
-
-  // required accessibility feature (possible)
+  // required for accessibility
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
       setProductID(relatedItem);

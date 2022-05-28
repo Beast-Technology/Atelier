@@ -7,14 +7,8 @@ function getMeta(productID, setMeta) {
     },
   })
     .then((res) => {
-      const { ratings } = res.data;
-      let sum = 0;
-      let total = 0;
-      Object.keys(ratings).forEach((rating) => {
-        sum += (parseInt(rating, 10) * parseInt(ratings[rating], 10));
-        total += parseInt(ratings[rating], 10);
-      });
-      setMeta((sum / total).toFixed(2));
+      // console.log(res.data);
+      setMeta(res.data);
     });
 }
 
@@ -34,11 +28,7 @@ function getStyles(productID, setStyle, setStyles) {
     method: 'get',
   })
     .then((response) => {
-      let defaultStyle = response.data.results.find((style) => style['default?']);
-      if (defaultStyle === undefined) {
-        [defaultStyle] = response.data.results;
-      }
-      setStyle(defaultStyle);
+      setStyle(response.data.results.find((styleId) => styleId['default?']));
       setStyles(response.data.results);
     });
 }
@@ -96,7 +86,6 @@ function getPhotosAndMetaForCards(allCardsArray, setPhotos, setMeta) {
       const responseObj = {};
       responses.forEach((styleItems) => {
         const styleItemResultsArray = styleItems.data.results;
-        // console.log('styleItemResultsArray', styleItemResultsArray);
         for (let i = 0; i < styleItemResultsArray.length; i += 1) {
           if (i === styleItemResultsArray.length - 1) {
             responseObj[styleItems.data.product_id] = styleItemResultsArray[i].photos;
