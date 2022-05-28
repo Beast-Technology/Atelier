@@ -20,7 +20,20 @@ function QuestionsAndAnswers({ productID, setModal }) {
 
   useEffect(() => {
     if (keyword.length >= 3) {
-      const results = qaData.filter((q) => q.question_body.toLowerCase().includes(keyword.toLowerCase()));
+      const results = qaData
+        .filter(
+          (q) => q.question_body.toLowerCase().includes(keyword.toLowerCase())
+        )
+        .map(
+          (q) => {
+            let newQ = JSON.parse(JSON.stringify(q));
+            newQ.question_body = newQ.question_body.replace(
+              new RegExp(keyword, 'gi'),
+              (match) => `<mark class="search-match">${match}</mark>`
+            )
+            return newQ;
+          }
+        )
       setQs(results);
       setDisplayQs(results.slice(0, 2));
     } else {
