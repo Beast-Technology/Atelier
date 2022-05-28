@@ -5,7 +5,6 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 function RelatedProductsContainer({
   relatedItems, showModal, setShow, setClickedItem, setProductID,
 }) {
-  // console.log(relatedItems);
   return (
 
     <div>
@@ -20,7 +19,6 @@ function RelatedProductsContainer({
           setClickedItem={setClickedItem}
           setProductID={setProductID}
         />
-
       ))
       }
       </div>

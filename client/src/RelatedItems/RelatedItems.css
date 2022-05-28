@@ -29,7 +29,7 @@
 
 /* ---------------- RelatedProductsCard/YourOutfitcard/alreadyInOutfitCard ---------------- */
 
-.RelatedProductsCard, .OutfitProductsCard {
+.ProductsCard {
   position: relative;
   margin: 10px;
   height: 300px;
@@ -42,21 +42,13 @@
   align-content: space-between;
   border-radius: 17px;
 }
-.RelatedProductsCard:hover {
+
+.ProductsCard:hover {
   box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
 }
-.OutfitProductsCard:hover {
-  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
-}
-.RelatedProductsCard:active {
+#RelatedProductsCard:active {
   /* transform: scale(0.98); */
   box-shadow: rgb(211 14 14 / 67%) 0px 4px 8px 0px;
-}
-
-.card-img-container {
-  height: 150px;
-  display: flex;
-  justify-content: center;
 }
 
 .card-img {
