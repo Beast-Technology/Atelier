@@ -26,6 +26,7 @@ function ReviewTile({ review }) {
 
   return (
     <td id="reviewTile">
+      {console.log(review)}
       <div className="tileRow1">
       <Stars rating={review.rating}/>
         <span className="nameDate">
@@ -46,6 +47,12 @@ function ReviewTile({ review }) {
           {/* Add photo section here as well */}
         </div>
       </div>
+      <div className="photos">
+        {review.photos.map((pic) => (
+          <img className="photo" src={`${pic.url}`}/>
+        ))}
+      </div>
+      {/* Should open modal on click and x button to get out */}
       {review.recommend
       ? (<div className="recommendProduct">
           {/* <svg xmlns="http://www.w3.org/2000/svg" className="check" viewBox="0, 0, 20, 20"><path d="M18.9 35.7 7.7 24.5 9.85 22.35 18.9 31.4 38.1 12.2 40.25 14.35Z"/></svg> */}
@@ -56,8 +63,8 @@ function ReviewTile({ review }) {
       {review.response ? <h4>Response: {review.response}</h4> : <div></div>}
       <div className="tileBotRow">
         <div>Was this review helpful?</div>
-        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulYes}>Yes</span> {helpful}
-        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulNo}>No</span> {notHelpful}
+        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulYes}>Yes</span> ({helpful})
+        <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulNo}>No</span> ({notHelpful})
         {/* Report wasn't not listed in Atelier Docs */}
         {report ? <span className="reported">Reported</span> : <span className="buttons" onClick={onClickReport}>Report</span>}
         <br />
