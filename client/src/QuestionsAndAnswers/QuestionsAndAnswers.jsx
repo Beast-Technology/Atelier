@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import QASearch from './QASearch.jsx';
 import QAList from './QAList.jsx';
 // import AddQuestionModal from './AddQuestionModal/AddQuestionModal.jsx';
+import AnswerPhotoModal from './AnswerPhotoModal.jsx';
 import './qa-styles.css';
 
 const axios = require('axios');
 
-const chosenId = 40333;
+const chosenId = 40344;
 
 function QuestionsAndAnswers({setModal}) {
   const [qaData, setQAData] = useState([]);
@@ -14,6 +15,7 @@ function QuestionsAndAnswers({setModal}) {
   const [displayQs, setDisplayQs] = useState([]);
   const [qsLeft, setQsLeft] = useState(0);
   const [keyword, setKeyword] = useState('');
+  const [photoModalURL, setphotoModalURL] = useState('');
 
   useEffect(() => {
     if (keyword.length >= 3) {
@@ -50,8 +52,8 @@ function QuestionsAndAnswers({setModal}) {
     <section className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch keyword={keyword} setKeyword={setKeyword} />
-      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} />
-
+      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />
+      <AnswerPhotoModal photoURL={photoModalURL} />
       {/* <AddQuestionModal /> */}
     </section>
   );

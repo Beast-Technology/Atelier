@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AnswerListEntry from './AnswerListEntry.jsx';
 
-export default function AnswerList({answers}) {
+export default function AnswerList({ answers, setphotoModalURL }) {
   const [answersData, setAnswersData] = useState(Object.values(answers).sort((a, b) => b.helpfulness - a.helpfulness));
   const [displayAnswers, setDisplayAnswers] = useState(answersData.slice(0, 2));
   const [notExpanded, setExpanded] = useState(true);
@@ -22,7 +22,7 @@ export default function AnswerList({answers}) {
 
       <div className="answers-container">
         <ul className="answer-list">
-          {displayAnswers.map((answer, index) => <AnswerListEntry key={index} a={answer} />)}
+          {displayAnswers.map((answer, index) => <AnswerListEntry key={index} a={answer} setphotoModalURL={setphotoModalURL} />)}
         </ul>
 
         {answersData.length > 2 && notExpanded && <span onClick={handleLoad} className="answer-load">LOAD MORE ANSWERS</span>}

@@ -2,8 +2,9 @@ const axios = require('axios');
 import React from 'react';
 import Helpful from './Helpful.jsx';
 import ReportButton from './ReportButton.jsx';
+import AnswerPhotoGallery from './AnswerPhotoGallery.jsx';
 
-export default function AnswerListEntry({a}) {
+export default function AnswerListEntry({ a, setphotoModalURL }) {
   function markAnswerHelpful() {
     axios.put(`/qa/answers/${a.id}/helpful`)
       .then(() => {console.log('success')})
@@ -13,6 +14,8 @@ export default function AnswerListEntry({a}) {
   return (
     <li className="answer-content">
       <p className="answer-text">{a.body}</p>
+
+      {a.photos.length && <AnswerPhotoGallery urls={a.photos} setphotoModalURL={setphotoModalURL} />}
 
       <div className="answer-info">
         <span>by {a.answerer_name}, {a.date}</span>
