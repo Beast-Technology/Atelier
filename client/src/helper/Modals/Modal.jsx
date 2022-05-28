@@ -11,7 +11,7 @@ export default function Modal({ productID, productName, modal }) {
       case 'addq':
         return <AddQuestionModal productID={productID} productName={productName} />;
       case 'adda':
-        return <AddAnswerModal />;
+        return <AddAnswerModal productName={productName} questionID={modal.question_id} questionBody={modal.question_body} />;
       default:
         return <div />;
     }
