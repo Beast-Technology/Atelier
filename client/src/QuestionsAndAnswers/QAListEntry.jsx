@@ -11,7 +11,7 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
   }
 
   function handleAddAnswer() {
-    setModal({ modalName: 'adda', question_id: q.question_id, question_body: q.question_body });
+    setModal({ modalName: 'adda', modalData: { question_id: q.question_id, question_body: q.question_body } });
     document.getElementById('modal').style.display = 'block';
   }
 

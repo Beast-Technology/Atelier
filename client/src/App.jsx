@@ -39,6 +39,12 @@ function App() {
     getMeta(productID, setMeta);
   }, [productID]);
 
+  // By default, modal is an empty object {}
+  // When using setModal, the syntax is setModal({ modalName, modalData })
+    // modalName: Required; a string, decides which modal content to render
+    // modalData: Optional; an object, should contain some data you need for the modal
+  // Example 1 - setModal: line 14 @ './QuestionsAndAnswers/QAListEntry.jsx'
+  // Example 2 - redernModal: line 8 @ './helper/Modals/Modals.jsx'
   const [modal, setModal] = useState({});
 
 
