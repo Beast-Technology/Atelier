@@ -45,13 +45,15 @@ function RelatedProductsCard({
 
 
 
-  function handleModal() {
-    setShow(true);
-  }
-  function handleClickedItem(e, item) {
-    e.stopPropagation();
-    setClickedItem(item);
-  }
+  // Junsu: moved these functions inside the onClick call, can be deleted
+  // function handleModal() {
+  //   setShow(true);
+  // }
+
+  // function handleClickedItem(e, item) {
+  //   e.stopPropagation();
+  //   setClickedItem(item);
+  // }
 
   // required accessibility feature (possible)
   function handleKeyPress(event) {
@@ -74,8 +76,9 @@ function RelatedProductsCard({
       <button
         className="card-starButton"
         onClick={(e) => {
-          handleModal();
-          handleClickedItem(e, relatedItem);
+          e.stopPropagation();
+          setShow(true);
+          setClickedItem(relatedItem);
         }}
         type="button"
       >

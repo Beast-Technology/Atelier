@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import YourOutfitCard from './YourOutfitcard.jsx';
 
-
-
-
 function YourOutfitContainer({
   currentProduct, yourOutfitItems, setOutfitItem, photoObject, metaObject,
 }) {
