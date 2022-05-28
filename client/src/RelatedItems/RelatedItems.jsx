@@ -1,14 +1,13 @@
 /* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import {getRelated} from '../axiosCalls.js';
+import { getRelated } from '../axiosCalls.js';
 import RelatedProductsContainer from './RelatedProductsContainer.jsx';
 import YourOutfitContainer from './YourOutfitContainer.jsx';
 import useOutsideClick from './useOutsideClick.js';
 import CompareModal from './CompareModal.jsx';
 import './RelatedItems.css';
 
-function RelatedItems({product, productID, setProductID}) {
+function RelatedItems({product, productID, setProductID, style}) {
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
   const [clickedItem, setClickedItem] = useState({});
@@ -37,25 +36,22 @@ function RelatedItems({product, productID, setProductID}) {
         />
 
         <RelatedProductsContainer
-          productID={productID} // Junsu: track
-          relatedItems={relatedItems} // Junsu: track
+          productID={productID}
+          setProductID={setProductID}
+          relatedItems={relatedItems}
           showModal={showModal}
           setShow={setShow}
           setClickedItem={setClickedItem}
-          setProductID={setProductID} // Junsu: track
         />
       </div>
       <br />
 
-      {/* <YourOutfitContainer
-        productID={productID}
-        relatedItems={relatedItems} // Junsu: track
-        currentProduct={product} // Junsu: track
+      <YourOutfitContainer
+        currentProduct={product}
+        style={style}
         yourOutfitItems={yourOutfitItems}
         setOutfitItem={setOutfitItem}
-        photoObject={photoObject}
-        metaObject={metaObject}
-      /> */}
+      />
       <div>
         currentProduct:_
         {product.name}

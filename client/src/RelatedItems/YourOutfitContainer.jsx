@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import YourOutfitCard from './YourOutfitcard.jsx';
 
 function YourOutfitContainer({
-  currentProduct, yourOutfitItems, setOutfitItem, photoObject, metaObject,
+  currentProduct, yourOutfitItems, setOutfitItem, style
 }) {
   const [addButton, setAddButton] = useState(true);
   const [numArray, setOutfitNumArray] = useState([]);
@@ -85,9 +85,8 @@ function YourOutfitContainer({
             <YourOutfitCard
               yourOutfitItem={yourOutfitItem}
               key={yourOutfitItem.id}
+              style={style}
               handleDeleteToOutfit={handleDeleteToOutfit}
-              photoObject={photoObject}
-              metaObject={metaObject}
             />
           ))
           }

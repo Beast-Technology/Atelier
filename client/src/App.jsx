@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getMeta, getProduct } from './axiosCalls.js';
+import { getMeta, getProduct, getStyles } from './axiosCalls.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
@@ -26,8 +26,15 @@ function App() {
     getProduct(productID, setProduct);
   }, [productID]);
 
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+  const [styles, setStyles] = useState([]);
+  useEffect(() => {
+    console.log(productID);
+    getStyles(productID, setStyle, setStyles);
+  }, [productID]);
+
   // Junsu: product metadata is provided via MetaContext.Provider
-  const [meta, setMeta] = useState({ ratings: { 1: '0' } });
+  const [meta, setMeta] = useState(0);
   useEffect(() => {
     getMeta(productID, setMeta);
   }, [productID]);
@@ -39,21 +46,24 @@ function App() {
     <div style={container}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
-          productID={productID}
           product={product}
+          style={style}
+          styles={styles}
+          setStyle={setStyle}
         />
         {/* <RatingsAndReviews
           meta={meta}
         /> */}
-      </MetaContext.Provider>
-      {/* <QuestionsAndAnswers
+        {/* <QuestionsAndAnswers
         setModal={setModal}
       /> */}
-      <RelatedItems
-        productID={productID}
-        setProductID={setProductID}
-        product={product}
-      />
+        <RelatedItems
+          productID={productID}
+          setProductID={setProductID}
+          product={product}
+          style={style}
+        />
+      </MetaContext.Provider>
       <Modal modal={modal} />
     </div>
   );

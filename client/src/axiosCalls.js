@@ -7,8 +7,14 @@ function getMeta(productID, setMeta) {
     },
   })
     .then((res) => {
-      // console.log(res.data);
-      setMeta(res.data);
+      const { ratings } = res.data;
+      let sum = 0;
+      let total = 0;
+      Object.keys(ratings).forEach((rating) => {
+        sum += (parseInt(rating, 10) * parseInt(ratings[rating], 10));
+        total += parseInt(ratings[rating], 10);
+      });
+      setMeta((sum / total).toFixed(2));
     });
 }
 
