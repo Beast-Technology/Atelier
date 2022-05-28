@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { MetaContext } from '../context.js';
 //import ObjToRating from './Helper/ObjToRating.js';
 //import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
@@ -9,12 +9,12 @@ function YourOutfitcard({
   yourOutfitItem, handleDeleteToOutfit, style,
 }) {
   // Junsu: extract url from style and set it as state so it's unlinked from style state in App - ie pic won't change when changing style
-  const [photoSrcOutfit, setphotoSrcOutfit] = useState(style.photos[0].thumbnail_url);
+  const photoSrcOutfit = useRef(style.photos[0].thumbnail_url);
   const rating = useContext(MetaContext);
 
   return (
     <div className="OutfitProductsCard">
-      <img className="card-img" src={photoSrcOutfit} alt={yourOutfitItem.name} />
+      <img className="card-img" src={photoSrcOutfit.current} alt={yourOutfitItem.name} />
       <button
         type="button"
         className="card-removeButton"

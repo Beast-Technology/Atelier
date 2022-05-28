@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import React, { useState } from 'react';
 
 const StarSelect = ({ selected = false, onClick = f => f }) => (

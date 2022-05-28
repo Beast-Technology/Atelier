@@ -5,13 +5,8 @@ function StyleSelector({selectedStyle, styles, setStyle}) {
   return (
     <div>
       <div>
-        <b>Style >s</b> {selectedStyle.name}
+        <b>Style ></b> {selectedStyle.name}
       </div>
-      {/* <select onChange={(e) => setStyle(styles[e.target.value])}>
-        {styles.map((style, index) => (
-          <option value={index} key={style.style_id}>{style.name}</option>
-        ))}
-      </select> */}
       <div style={{
         display:'grid',
         gridTemplateColumns: '1fr 1fr 1fr 1fr',

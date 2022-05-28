@@ -10,14 +10,6 @@ import { MetaContext } from './context.js';
 
 
 function App() {
-  // Junsu: added this style globally
-  const container = {
-    border: '2px solid red',
-    width: '1200px',
-    margin: '48px auto',
-    padding: '32px',
-  };
-
   // Junsu: moved certain states to App
   // Junsu: productID and product information
   const [productID, setProductID] = useState(40346);
@@ -43,7 +35,7 @@ function App() {
 
 
   return (
-    <div style={container}>
+    <div style={{border: '2px solid red'}}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}

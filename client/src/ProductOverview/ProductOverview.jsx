@@ -1,11 +1,11 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
-import ProductInformation from './ProductInformation/ProductInformation.jsx';
+import ProductInformation from './ProductInformation.jsx';
 import ProductDescription from './ProductDescription.jsx';
 import SocialMedia from './SocialMedia.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
-import StyleSelector from './StyleSelector/StyleSelector.jsx';
+import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 
 function ProductOverview(
@@ -14,7 +14,7 @@ function ProductOverview(
   },
 ) {
   return (
-    <div id="product-overview" style={{ border: '2px green solid' }}>
+    <section id="product-overview" style={{border: '2px solid green'}}>
       <div style={{ display: 'flex' }}>
         <ImageGallery photos={style.photos} />
         <div>
@@ -32,7 +32,7 @@ function ProductOverview(
         </div>
       </div>
       <ProductDescription product={product} />
-    </div>
+    </section>
   );
 }
 
