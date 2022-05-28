@@ -16,8 +16,8 @@ export default function ProductDescription({product}) {
       <div className='info-right-box'>
         <h2>Features</h2>
         <ul className='feature-list'>
-          {features ? features.map(feature => (
-            <li><b>{feature.feature}</b>: {feature.value}</li>
+          {features ? features.map((feature) => (
+            <li key={feature.feature}><b>{feature.feature}</b>: {feature.value}</li>
           )) : ''}
         </ul>
       </div>

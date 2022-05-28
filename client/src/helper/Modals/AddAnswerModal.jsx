@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 const axios = require('axios');
 
-export default function AddAnswerModal() {
-  const question_id = 641145;
+export default function AddAnswerModal({ productName, questionID, questionBody}) {
+  // const question_id = 641145;
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -24,7 +24,7 @@ export default function AddAnswerModal() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post(`/qa/questions/${question_id}/answers`, {question_id, body, name, email, photos})
+    axios.post(`/qa/questions/${questionID}/answers`, {question_id: questionID, body, name, email, photos})
       .then(() => { console.log('success!') })
       .then(() => { document.getElementById('modal').style.display = 'none' })
       .catch((err) => { alert(err) });
@@ -34,7 +34,8 @@ export default function AddAnswerModal() {
     <div className="modal-box modal-adda">
         <header>
           <h3 className="heading heading-tertiary">Submit Your Answer</h3>
-          <span className="subheading">[Product name] [Question body]</span>
+          <span className="subheading">{productName}</span>
+          <span className="subheading">{questionBody}</span>
         </header>
 
         <main>

@@ -23,6 +23,11 @@
   margin-bottom: 32px;
 }
 
+.modal-box header .subheading {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
 .modal-form {
   display: flex;
   flex-direction: column;

@@ -17,6 +17,7 @@ function App() {
     width: '1200px',
     margin: '48px auto',
   };
+
   // Set ProductID/Product State and UseEffect
   const [productID, setProductID] = useState(40346);
   const [product, setProduct] = useState({});
@@ -28,7 +29,6 @@ function App() {
   const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   const [styles, setStyles] = useState([]);
   useEffect(() => {
-    console.log(productID);
     getStyles(productID, setStyle, setStyles);
   }, [productID]);
 
@@ -38,11 +38,18 @@ function App() {
     getMeta(productID, setMeta);
   }, [productID]);
 
-  // Set Modal State
-  const [modal, setModal] = useState('');
+
+  // By default, modal is an empty object {}
+  // When using setModal, the syntax is setModal({ modalName, modalData })
+    // modalName: Required; a string, decides which modal content to render
+    // modalData: Optional; an object, should contain some data you need for the modal
+  // Example 1 - setModal: line 14 @ './QuestionsAndAnswers/QAListEntry.jsx'
+  // Example 2 - redernModal: line 8 @ './helper/Modals/Modals.jsx'
+  const [modal, setModal] = useState({});
+
 
   return (
-    <div style={container}>
+    <div style={{border: '2px solid red'}}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}
@@ -54,6 +61,7 @@ function App() {
           meta={meta}
         />
         <QuestionsAndAnswers
+          productID={productID}
           setModal={setModal}
         />
         <RelatedItems
@@ -63,7 +71,7 @@ function App() {
           style={style}
         />
       </MetaContext.Provider>
-      <Modal modal={modal} />
+      <Modal productID={productID} productName={product.name} modal={modal} />
     </div>
   );
 }

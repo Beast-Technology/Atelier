@@ -16,20 +16,28 @@ const viewStyle = {
 }
 
 export default function ImageGallery({photos}) {
+  console.log(photos);
   const [viewPhoto, setViewPhoto] = useState(null);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (photos[0] !== undefined) {
-      setViewPhoto(photos[index])
+      setViewPhoto(photos[index]);
     }
-  }, [index, photos])
+  }, [index, photos]);
 
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{ display: 'flex' }}>
       <div style={viewStyle}>
-        {viewPhoto === null ? '' :
-        (<img src={viewPhoto.url}></img>)}
+        {viewPhoto === null ? ''
+          : (
+            <img
+              alt="style picutre"
+              src={viewPhoto.url
+                ? viewPhoto.url
+                : 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png'}
+            />
+          )}
       </div>
       <div style={thumbnails}>
         {photos.map((photo, i) => {
@@ -44,7 +52,7 @@ export default function ImageGallery({photos}) {
                   }}
                   width='50'
                   height='50'
-                ></img>
+              ></img>
             )
             : (
                 <img
@@ -57,7 +65,7 @@ export default function ImageGallery({photos}) {
                   width='50'
                   height='50'
                 ></img>
-              )
+            )
         } )}
       </div>
 
