@@ -19,7 +19,6 @@ function RelatedProductsContainer({
           setShow={setShow}
           setClickedItem={setClickedItem}
           setProductID={setProductID}
-
         />
 
       ))

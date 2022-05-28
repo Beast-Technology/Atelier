@@ -1,9 +1,6 @@
-// --EVERYTHING UP TO RETURN - // // TODO: Remove and place into APP
 
 
 function metaToRating(meta) {
-  // console.log('meta', meta);
-  const rating = 5;
   let totalStars;
   let divideTotalStars;
 
@@ -28,30 +25,15 @@ function metaToRating(meta) {
 
   if (meta.ratings) {
     const values = Object.values(meta.ratings);
-    const total = values.reduce((a, b) => {
-      a += Number(b);
-      return a;
-    }, 0);
+    const total = values.reduce((a, b) => a + Number(b), 0);
     const result = [];
-
-    for (const value of values) {
+    values.forEach((value) => {
       result.push((value / total) * 100);
-    }
+    });
 
     totalStars = totalStarsFunction(meta.ratings);
     divideTotalStars = divideTotalStarsFunction(meta.ratings);
   }
-
-  //   const [totalStars, setTotalStars] = useState(0);
-  //   const [divideTotalStars, setDivideTotalStars] = useState(0);
-  //   const [recommended, setRecommended] = useState(0);
-  //   const [starRatings, setStarRatings] = useState([]);
-
-
-
-
-  // console.log((totalStars / divideTotalStars) * 5);
-
   return (totalStars / divideTotalStars) * 5;
 }
 

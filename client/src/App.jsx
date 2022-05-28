@@ -51,12 +51,12 @@ function App() {
           styles={styles}
           setStyle={setStyle}
         />
-        {/* <RatingsAndReviews
+        <RatingsAndReviews
           meta={meta}
-        /> */}
-        {/* <QuestionsAndAnswers
-        setModal={setModal}
-      /> */}
+        />
+        <QuestionsAndAnswers
+          setModal={setModal}
+        />
         <RelatedItems
           productID={productID}
           setProductID={setProductID}

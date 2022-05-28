@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import axios from 'axios';
-import ObjToRating from './Helper/ObjToRating.js';
+//import ObjToRating from './Helper/ObjToRating.js';
+//import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
 import { Stars } from '../helper/Stars.jsx';
 
 function RelatedProductsCard({
@@ -8,6 +10,7 @@ function RelatedProductsCard({
 }) {
   const [photoSrc, setPhotoSrc] = useState('');
   const [rating, setRating] = useState(0);
+
 
   // Junsu: this gets a thumbnail from default style of relatedItem, if no default
   // style, then first style's thumbnail. if no picture, then nothing for now
@@ -44,7 +47,6 @@ function RelatedProductsCard({
         setRating((sum / total).toFixed(2));
       }));
   }, [relatedItem.id]);
-
 
 
   // Junsu: moved these functions inside the onClick call, can be deleted
@@ -89,8 +91,7 @@ function RelatedProductsCard({
       <div className="card-category">{relatedItem.category}</div>
       <div className="card-name">{relatedItem.name}</div>
       <div className="card-price">
-        $
-        {parseInt(relatedItem.default_price, 10)}
+        $ {parseInt(relatedItem.default_price, 10)}
       </div>
       <Stars rating={rating} />
     </div>
