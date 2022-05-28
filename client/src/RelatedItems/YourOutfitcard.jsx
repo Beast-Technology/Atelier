@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
+import React, { useContext, useState } from 'react';
+import { MetaContext } from '../context.js';
+//import ObjToRating from './Helper/ObjToRating.js';
+//import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
 import { Stars } from '../helper/Stars.jsx';
 
 
 function YourOutfitcard({
-  yourOutfitItem, handleDeleteToOutfit, photoObject, metaObject,
+  yourOutfitItem, handleDeleteToOutfit, style,
 }) {
-  const [photoSrcOutfit, setPhotoSrc] = useState('');
-  const [rating, setRating] = useState(0);
-
-  // ---set PhotoObject for single Card --- //
-
-  useEffect(() => {
-    setPhotoObjectCard(photoObject, yourOutfitItem, setPhotoSrc);
-  }, [photoObject, yourOutfitItem]);
-
-  // ---set metaObject for single Card --- //
-
-  useEffect(() => {
-    setMetaObjectCard(metaObject, yourOutfitItem, setRating);
-  }, [metaObject, yourOutfitItem]);
+  // Junsu: extract url from style and set it as state so it's unlinked from style state in App - ie pic won't change when changing style
+  const [photoSrcOutfit, setphotoSrcOutfit] = useState(style.photos[0].thumbnail_url);
+  const rating = useContext(MetaContext);
 
   return (
     <div className="OutfitProductsCard">

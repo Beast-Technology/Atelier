@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getMeta, getProduct, getStyles, getRelated } from './axiosCalls.js';
+import { getMeta, getProduct, getStyles } from './axiosCalls.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
@@ -26,18 +26,17 @@ function App() {
     getProduct(productID, setProduct);
   }, [productID]);
 
-  // Junsu: product metadata is provided via MetaContext.Provider
-  const [meta, setMeta] = useState({ ratings: { 1: '0' } });
+  const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
+  const [styles, setStyles] = useState([]);
   useEffect(() => {
-    getMeta(productID, setMeta);
+    console.log(productID);
+    getStyles(productID, setStyle, setStyles);
   }, [productID]);
 
-  // Junsu: Alex, feel free to move this into your module RelatedItems. I think
-  // you're right that it doesn't need to be in the App
-  const [relatedItems, setRelatedItems] = useState([]);
-
+  // Junsu: product metadata is provided via MetaContext.Provider
+  const [meta, setMeta] = useState(0);
   useEffect(() => {
-    getRelated(productID, setRelatedItems);
+    getMeta(productID, setMeta);
   }, [productID]);
 
   const [modal, setModal] = useState('');
@@ -46,21 +45,25 @@ function App() {
   return (
     <div style={container}>
       <MetaContext.Provider value={meta}>
-        {/* <ProductOverview
-          productID={productID}
+        <ProductOverview
           product={product}
-        /> */}
+          style={style}
+          styles={styles}
+          setStyle={setStyle}
+        />
         <RatingsAndReviews
           meta={meta}
         />
+        <QuestionsAndAnswers
+          setModal={setModal}
+        />
+        <RelatedItems
+          productID={productID}
+          setProductID={setProductID}
+          product={product}
+          style={style}
+        />
       </MetaContext.Provider>
-      <QuestionsAndAnswers setModal={setModal} />
-      <RelatedItems
-        productID={productID}
-        setProductID={setProductID}
-        product={product}
-        relatedItems={relatedItems}
-      />
       <Modal modal={modal} />
     </div>
   );

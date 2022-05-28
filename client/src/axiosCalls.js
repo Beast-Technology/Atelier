@@ -7,8 +7,14 @@ function getMeta(productID, setMeta) {
     },
   })
     .then((res) => {
-      // console.log(res.data);
-      setMeta(res.data);
+      const { ratings } = res.data;
+      let sum = 0;
+      let total = 0;
+      Object.keys(ratings).forEach((rating) => {
+        sum += (parseInt(rating, 10) * parseInt(ratings[rating], 10));
+        total += parseInt(ratings[rating], 10);
+      });
+      setMeta((sum / total).toFixed(2));
     });
 }
 
@@ -28,7 +34,11 @@ function getStyles(productID, setStyle, setStyles) {
     method: 'get',
   })
     .then((response) => {
-      setStyle(response.data.results.find((styleId) => styleId['default?']));
+      let defaultStyle = response.data.results.find((style) => style['default?']);
+      if (defaultStyle === undefined) {
+        [defaultStyle] = response.data.results;
+      }
+      setStyle(defaultStyle);
       setStyles(response.data.results);
     });
 }
