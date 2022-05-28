@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getMeta, getProduct, getStyles, getRelated } from './axiosCalls.js';
+import { getMeta, getProduct } from './axiosCalls.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
@@ -32,14 +32,6 @@ function App() {
     getMeta(productID, setMeta);
   }, [productID]);
 
-  // Junsu: Alex, feel free to move this into your module RelatedItems. I think
-  // you're right that it doesn't need to be in the App
-  const [relatedItems, setRelatedItems] = useState([]);
-
-  useEffect(() => {
-    getRelated(productID, setRelatedItems);
-  }, [productID]);
-
   const [modal, setModal] = useState('');
 
 
@@ -50,16 +42,17 @@ function App() {
           productID={productID}
           product={product}
         />
-        <RatingsAndReviews
+        {/* <RatingsAndReviews
           meta={meta}
-        />
+        /> */}
       </MetaContext.Provider>
-      <QuestionsAndAnswers setModal={setModal} />
+      {/* <QuestionsAndAnswers
+        setModal={setModal}
+      /> */}
       <RelatedItems
         productID={productID}
         setProductID={setProductID}
         product={product}
-        relatedItems={relatedItems}
       />
       <Modal modal={modal} />
     </div>

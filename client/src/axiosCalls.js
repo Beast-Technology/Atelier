@@ -28,7 +28,11 @@ function getStyles(productID, setStyle, setStyles) {
     method: 'get',
   })
     .then((response) => {
-      setStyle(response.data.results.find((styleId) => styleId['default?']));
+      let defaultStyle = response.data.results.find((style) => style['default?']);
+      if (defaultStyle === undefined) {
+        [defaultStyle] = response.data.results;
+      }
+      setStyle(defaultStyle);
       setStyles(response.data.results);
     });
 }

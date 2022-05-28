@@ -1,35 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ObjToRating from './Helper/ObjToRating.js';
 import { Stars } from '../helper/Stars.jsx';
 
 function RelatedProductsCard({
-  relatedItem, setShow, setClickedItem, setProductID, photoObject, metaObject,
+  relatedItem, setShow, setClickedItem, setProductID,
 }) {
   const [photoSrc, setPhotoSrc] = useState('');
   const [rating, setRating] = useState(0);
 
-  // console.log(photoObject);
-  // console.log(metaObject);
-
-  // ---set PhotoObject for single Card --- //
+  // Junsu: this gets a thumbnail from default style of relatedItem, if no default
+  // style, then first style's thumbnail. if no picture, then nothing for now
   useEffect(() => {
-    if ((Object.keys(photoObject).length !== 0) && (photoObject[relatedItem.id] !== undefined)) {
-      const photoURL = photoObject[relatedItem.id][0].thumbnail_url;
-      if (photoURL !== null) {
-        setPhotoSrc(() => photoURL);
-      } else {
-        setPhotoSrc(() => 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png');
-      }
-    }
-  }, [photoObject, relatedItem]);
+    axios.get(`/products/${relatedItem.id}/styles`)
+      .then((response) => {
+        let defaultStyle = response.data.results.find((style) => style['default?']);
+        if (defaultStyle === undefined) {
+          [defaultStyle] = response.data.results;
+        }
+        const url = defaultStyle.photos[0].thumbnail_url ? defaultStyle.photos[0].thumbnail_url : '';
+        setPhotoSrc(url);
+      });
+  }, [relatedItem.id]);
 
-  // ---set metaObject for single Card --- //
-
+  // Junsu: this gets the average rating for the relatedItem
   useEffect(() => {
-    if ((Object.keys(metaObject).length !== 0) && (metaObject[relatedItem.id] !== undefined)) {
-      setRating(ObjToRating(metaObject[relatedItem.id]));
-    }
-  }, [metaObject, relatedItem]);
+    axios.get('/reviews/meta', {
+      params: {
+        product_id: relatedItem.id,
+      },
+    })
+      .then(((response) => {
+        // console.log(response.data.ratings);
+        const { ratings } = response.data;
+        let sum = 0;
+        let total = 0;
+        Object.keys(ratings).forEach((score) => {
+          sum += (parseInt(score, 10) * parseInt(ratings[score], 10));
+          total += parseInt(ratings[score], 10);
+        });
+        setRating((sum / total).toFixed(2));
+      }));
+  }, [relatedItem.id]);
+
+
 
   function handleModal() {
     setShow(true);
@@ -37,9 +51,6 @@ function RelatedProductsCard({
   function handleClickedItem(e, item) {
     e.stopPropagation();
     setClickedItem(item);
-  }
-  function handleClickedCard(item) {
-    setProductID(item.id);
   }
 
   // required accessibility feature (possible)
@@ -51,7 +62,7 @@ function RelatedProductsCard({
 
   return (
     <div
-      onClick={() => { handleClickedCard(relatedItem); }}
+      onClick={() => { setProductID(relatedItem.id); }}
       role="button"
       tabIndex={0}
       onKeyPress={handleKeyPress}

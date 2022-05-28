@@ -3,8 +3,9 @@ import React from 'react';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 
 function RelatedProductsContainer({
-  relatedItems, showModal, setShow, setClickedItem, setProductID, photoObject, metaObject,
+  relatedItems, showModal, setShow, setClickedItem, setProductID,
 }) {
+  // console.log(relatedItems);
   return (
 
     <div>
@@ -18,8 +19,6 @@ function RelatedProductsContainer({
           setShow={setShow}
           setClickedItem={setClickedItem}
           setProductID={setProductID}
-          photoObject={photoObject}
-          metaObject={metaObject}
 
         />
 

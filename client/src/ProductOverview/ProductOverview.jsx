@@ -17,6 +17,7 @@ function ProductOverview(
   const [style, setStyle] = useState({photos: [], skus: {0: {quantity: 0, size: ''}}});
   const [styles, setStyles] = useState([]);
   useEffect(() => {
+    console.log(productID);
     getStyles(productID, setStyle, setStyles);
   }, [productID]);
 
