@@ -41,16 +41,16 @@ export default function AddAnswerModal({ productName, questionID, questionBody})
         <main>
           <form className="modal-form" onSubmit={handleSubmit} >
             <label>Your Answer *
-              <textarea onChange={handleQuestionChange} name="answer_body" maxlength="1000" placeholder="Write your answer here..." required></textarea>
+              <textarea onChange={handleQuestionChange} name="answer_body" maxLength="1000" placeholder="Write your answer here..." required></textarea>
             </label>
 
             <label>Nickname *
-              <input onChange={handleNameChange} name="answerer_name" type="text" placeholder="Example: jack543!" maxlength="60" required />
+              <input onChange={handleNameChange} name="answerer_name" type="text" placeholder="Example: jack543!" maxLength="60" required />
               <span className="input-description">For privacy reasons, do not use your full name or email address</span>
             </label>
 
             <label>Email *
-              <input onChange={handleEmailChange} type="email" maxlength="60" placeholder="Why did you like the product or not?" required />
+              <input onChange={handleEmailChange} type="email" maxLength="60" placeholder="Why did you like the product or not?" required />
               <span className="input-description">For authentication reasons, you will not be emailed</span>
             </label>
 
