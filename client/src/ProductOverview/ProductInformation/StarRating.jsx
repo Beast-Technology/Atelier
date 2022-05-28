@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MetaContext } from '../../context.js';
 
-function StarRating({reviews}) {
-
-  const starAvg = reviews.reduce((prev, curr) => {
-    const prevRate = prev.rating ? prev.rating : prev;
-    return prevRate + curr.rating;
-  }, 0)/reviews.length;
+function StarRating() {
+  const ratings = useContext(MetaContext);
 
   return (
     <div>
-      <p>Star Average: {starAvg.toFixed(2)}</p>
+      <p>Star Average: {ratings}</p>
       <a href="">Read All Reviews</a>
     </div>
   )

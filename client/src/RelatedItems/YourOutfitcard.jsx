@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { MetaContext } from '../context.js';
+//import ObjToRating from './Helper/ObjToRating.js';
+//import { setPhotoObjectCard, setMetaObjectCard } from './Helper/setCardObjects.js';
+import { Stars } from '../helper/Stars.jsx';
 
 
-function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
-  const [photoSrcOutfit, setphotoSrcOutfit] = useState('');
-
-  useEffect(() => {
-    if ((Object.keys(photoObject).length !== 0) && (photoObject[yourOutfitItem.id] !== undefined)) {
-      const photoURL = photoObject[yourOutfitItem.id][0].thumbnail_url;
-      if (photoURL !== null) {
-        setphotoSrcOutfit(() => photoURL);
-      } else {
-        setphotoSrcOutfit(() => 'https://i.pinimg.com/474x/65/0b/a7/650ba7347e2d8751c157b70d791123b8--geek-humour-friday-humor.jpg');
-      }
-    }
-  }, [photoObject, yourOutfitItem]);
+function YourOutfitcard({
+  yourOutfitItem, handleDeleteToOutfit, style,
+}) {
+  // Junsu: extract url from style and set it as state so it's unlinked from style state in App - ie pic won't change when changing style
+  const [photoSrcOutfit, setphotoSrcOutfit] = useState(style.photos[0].thumbnail_url);
+  const rating = useContext(MetaContext);
 
   return (
     <div className="OutfitProductsCard">
@@ -32,7 +29,7 @@ function YourOutfitcard({ yourOutfitItem, handleDeleteToOutfit, photoObject }) {
         $
         {parseInt(yourOutfitItem.default_price, 10)}
       </div>
-      <div className="card-stars">★★★★★</div>
+      <Stars rating={rating} />
     </div>
   );
 }

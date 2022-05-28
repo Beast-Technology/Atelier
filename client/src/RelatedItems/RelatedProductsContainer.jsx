@@ -3,7 +3,7 @@ import React from 'react';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 
 function RelatedProductsContainer({
-  relatedItems, showModal, setShow, setClickedItem, setProductID, photoObject,
+  relatedItems, showModal, setShow, setClickedItem, setProductID,
 }) {
   // console.log(relatedItems);
   return (
@@ -19,8 +19,6 @@ function RelatedProductsContainer({
           setShow={setShow}
           setClickedItem={setClickedItem}
           setProductID={setProductID}
-          photoObject={photoObject}
-
         />
 
       ))

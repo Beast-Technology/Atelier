@@ -49,7 +49,7 @@ function QuestionsAndAnswers({setModal}) {
   }, [displayQs, qs.length]);
 
   return (
-    <section className="section-qanda">
+    <section style={{border: '2px pink solid'}} className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch keyword={keyword} setKeyword={setKeyword} />
       <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />

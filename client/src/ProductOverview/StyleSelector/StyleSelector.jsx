@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 
-export default function StyleSelector({selectedStyle, styles, setStyle}) {
+function StyleSelector({selectedStyle, styles, setStyle}) {
 
   return (
     <div>
       <div>
-        <b>Style ></b> {selectedStyle.name}
+        <b>Style >s</b> {selectedStyle.name}
       </div>
       {/* <select onChange={(e) => setStyle(styles[e.target.value])}>
         {styles.map((style, index) => (
@@ -21,6 +21,7 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
             (<div>
               <i style={{position: 'absolute'}}>✅</i>
               <img
+                key={index}
                 src={style.photos[0].thumbnail_url}
                 width='50'
                 height='50'>
@@ -28,6 +29,7 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
             </div>)
           : (
               <img
+              key={index}
                 onClick={() => setStyle(style)}
                 src={style.photos[0].thumbnail_url}
                 width='50'
@@ -39,3 +41,5 @@ export default function StyleSelector({selectedStyle, styles, setStyle}) {
     </div>
   )
 }
+
+export default StyleSelector;

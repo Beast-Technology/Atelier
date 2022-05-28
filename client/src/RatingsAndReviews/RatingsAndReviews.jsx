@@ -7,9 +7,8 @@ import ReviewsList from './ReviewsList.jsx';
 import ReviewButtons from './ReviewButtons.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
-function RatingsAndReviews() {
+function RatingsAndReviews({meta}) {
   const [reviews, setReviews] = useState([]);
-  const [meta, setMeta] = useState([]);
   const [countUp, setCountUp] = useState(2);
   // update page and concat instead of incrementing count
   useEffect(() => {
@@ -21,35 +20,24 @@ function RatingsAndReviews() {
       },
     })
       .then((res) => {
+        // console.log(res.data);
         setReviews(res.data);
       })
       .catch((err) => { console.log(err); });
   }, [countUp]);
-
-  useEffect(() => {
-    axios.get('/reviews/meta', {
-      params: {
-        product_id: 40344,
-      },
-    })
-      .then((res) => {
-        setMeta(res.data);
-      })
-      .catch((err) => { console.log(err); });
-  }, []);
 
   const onClickMoreReviews = () => {
     setCountUp(countUp + 2);
   };
 
   return (
-    <section>
+    <section style={{border: '2px blue solid'}}>
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <div className="mainPage">
         <div>
           <RatingBreakdown meta={meta} />
-          <ProductBreakdown meta={meta} />
+          {/* <ProductBreakdown meta={meta} /> */}
         </div>
         <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />
         {/* <h3>--ReviewButtons--</h3>

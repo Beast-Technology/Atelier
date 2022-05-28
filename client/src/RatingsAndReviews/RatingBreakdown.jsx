@@ -40,6 +40,7 @@ function RatingBreakdown({ meta }) {
     }
   }, [meta]);
 
+  // console.log('meta', meta)
   useEffect(() => {
     if (meta.ratings) {
       let values = Object.values(meta.ratings);
