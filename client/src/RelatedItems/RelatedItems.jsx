@@ -28,22 +28,22 @@ function RelatedItems({
   return (
   // Junsu: added style for CSS debugging purposes, delete later
     <section style={{ border: '2px purple solid' }} id="RelatedItems">
-      <div id="unclickArea" ref={ref}>
+      <div ref={ref}>
         <CompareModal
           showModal={showModal}
           currentProduct={product}
           clickedItem={clickedItem}
         />
-
-        <RelatedProductsContainer
-          productID={productID}
-          setProductID={setProductID}
-          relatedItems={relatedItems}
-          showModal={showModal}
-          setShow={setShow}
-          setClickedItem={setClickedItem}
-        />
       </div>
+
+      <RelatedProductsContainer
+        productID={productID}
+        setProductID={setProductID}
+        relatedItems={relatedItems}
+        showModal={showModal}
+        setShow={setShow}
+        setClickedItem={setClickedItem}
+      />
       <br />
       <YourOutfitContainer
         currentProduct={product}
