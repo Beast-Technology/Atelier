@@ -3,7 +3,7 @@ import QAListEntry from './QAListEntry.jsx';
 
 export default function QAList({ qs, qsLeft, onHandleLoad, setModal, setphotoModalURL }) {
   function handleClick() {
-    setModal('addq');
+    setModal({ modalName: 'addq' });
     document.getElementById('modal').style.display = 'block';
   }
 

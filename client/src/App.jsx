@@ -39,7 +39,7 @@ function App() {
     getMeta(productID, setMeta);
   }, [productID]);
 
-  const [modal, setModal] = useState('');
+  const [modal, setModal] = useState({});
 
 
   return (
