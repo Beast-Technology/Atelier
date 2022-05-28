@@ -9,13 +9,13 @@ import { getPhotosAndMetaForCards } from '../axiosCalls.js';
 
 
 function RelatedItems({
-  product, relatedItems, productID, setProductID, style
+  product, productID, setProductID, style
 }) {
   const [showModal, setShow] = useState(false);
   const [yourOutfitItems, setOutfitItem] = useState([]);
   const [clickedItem, setClickedItem] = useState({});
-  const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: '' }] });
-  const [metaObject, setMeta] = useState({ 40344: [{ meta: '' }] });
+  // const [photoObject, setPhotos] = useState({ 40344: [{ thumbnail_url: '' }] });
+  // const [metaObject, setMeta] = useState({ 40344: [{ meta: '' }] });
 
   // Junsu: moved relatedItems state from App to RelatedItems
   const [relatedItems, setRelatedItems] = useState([]);
@@ -23,10 +23,10 @@ function RelatedItems({
     getRelated(productID, setRelatedItems);
   }, [productID]);
 
-  useEffect(() => {
-    const allCardsArray = yourOutfitItems.concat(relatedItems);
-    getPhotosAndMetaForCards(allCardsArray, setPhotos, setMeta);
-  }, [relatedItems, yourOutfitItems]);
+  // useEffect(() => {
+  //   const allCardsArray = yourOutfitItems.concat(relatedItems);
+  //   getPhotosAndMetaForCards(allCardsArray, setPhotos, setMeta);
+  // }, [relatedItems, yourOutfitItems]);
 
   const ref = useRef();
 
