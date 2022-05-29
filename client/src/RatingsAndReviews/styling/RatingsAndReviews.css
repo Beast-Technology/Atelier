@@ -102,6 +102,7 @@ path {
   max-width: 60vw;
   min-width: 60vw;
   text-align: left;
+  margin-top: 1rem;
 }
 
 .tileRow1 {
@@ -166,6 +167,7 @@ path {
 .photos .photo {
   height: 6rem;
   width: 6rem;
+  margin-right: 1rem;
 }
 
 /* Review List */
@@ -180,7 +182,6 @@ path {
 }
 
 .sorter {
-  padding-left: 2px;
   border-bottom: 1px black solid;
 }
 
@@ -213,6 +214,17 @@ path {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+.listDropdown {
+  display: flex;
+}
+
+.listDropdown .dropdownOptions {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-bottom: 1rem;
 }
 
 /* Add Reviews */

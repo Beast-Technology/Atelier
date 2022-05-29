@@ -8,7 +8,7 @@ function ReviewTile({ review }) {
   const [notHelpful, setNotHelpful] = useState(0);
   const [report, setReport] = useState(false);
   const [summary, setSummary] = useState(review.summary);
-  const date = DatePosted(review.date)
+  const date = DatePosted(review.date);
 
   const onClickHelpfulYes = () => {
     setHelpful(helpful + 1);
@@ -26,7 +26,6 @@ function ReviewTile({ review }) {
 
   return (
     <td id="reviewTile">
-      {console.log(review)}
       <div className="tileRow1">
       <Stars rating={review.rating}/>
         <span className="nameDate">
@@ -44,7 +43,6 @@ function ReviewTile({ review }) {
           : <h4 className="reviewSummary">{summary}</h4> }
         <div>
           <p className="reviewBody">{review.body}</p>
-          {/* Add photo section here as well */}
         </div>
       </div>
       <div className="photos">

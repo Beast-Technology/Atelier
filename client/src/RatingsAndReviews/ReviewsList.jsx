@@ -11,7 +11,7 @@ function ReviewsList({ reviews, meta, onClick }) {
 
   useEffect(() => {
     if (meta.recommended) {
-      setTotalReviews(Number(meta.recommended.false) + Number(meta.recommended.true))
+      setTotalReviews(Number(meta.recommended.false) + Number(meta.recommended.true));
     }
   }, [meta]);
 
@@ -21,9 +21,13 @@ function ReviewsList({ reviews, meta, onClick }) {
         <h3>
           <div className="totalReviews">
             <span>{`${totalReviews} reviews, sorted by`}</span>
-            <span>
-              <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
-              <span className="material-symbols-outlined" style={{ verticalAlign: 'middle' }}>expand_more</span>
+            <span className="listDropdown">
+              <span className="dropdownOptions">
+                <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
+                <span className="sorter" onClick={() => setIsActive(!isActive)}>Helpful</span>
+                <span className="sorter" onClick={() => setIsActive(!isActive)}>Newest</span>
+              </span>
+              <span className="material-symbols-outlined" style={{ verticalAlign: 'middle', marginLeft: "8rem" }}>expand_more</span>
             </span>
           </div>
         </h3>

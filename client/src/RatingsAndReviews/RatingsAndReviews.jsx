@@ -10,21 +10,21 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 function RatingsAndReviews() {
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState([]);
-  const [countUp, setCountUp] = useState(2);
+  const [pageUp, setPageUp] = useState(1);
   // update page and concat instead of incrementing count
   useEffect(() => {
     axios.get('/reviews', {
       params: {
         product_id: 40344,
-        page: 1,
-        count: countUp,
+        page: pageUp,
+        count: 2,
       },
     })
       .then((res) => {
         setReviews(res.data);
       })
       .catch((err) => { console.log(err); });
-  }, [countUp]);
+  }, [pageUp]);
 
   useEffect(() => {
     axios.get('/reviews/meta', {
@@ -39,11 +39,12 @@ function RatingsAndReviews() {
   }, []);
 
   const onClickMoreReviews = () => {
-    setCountUp(countUp + 2);
+    setPageUp(pageUp + 1);
   };
 
   return (
     <section>
+      {console.log(reviews)}
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <div className="mainPage">
