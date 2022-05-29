@@ -55,3 +55,7 @@
   margin-top: 24px;
 }
 
+.modal-form input[type="file"] {
+  margin-bottom: 16px;
+}
+
