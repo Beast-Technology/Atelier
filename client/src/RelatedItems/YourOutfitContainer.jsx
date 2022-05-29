@@ -26,8 +26,8 @@ function YourOutfitContainer({
 
   function handleAddToOutfit() {
     if (!(yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
-      setOutfitNumArray(() => [...numArray, currentProduct.id]);
-      setOutfitItem(() => [...yourOutfitItems, currentProduct]);
+      setOutfitNumArray(() => [currentProduct.id, ...numArray]);
+      setOutfitItem(() => [currentProduct, ...yourOutfitItems]);
       setAddButton(false);
     }
   }

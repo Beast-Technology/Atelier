@@ -48,7 +48,7 @@ function CompareModal({ showModal, currentProduct, clickedItem }) {
 
   return (
     <div className="modalCard">
-      <table>
+      <table cellSpacing="0" cellPadding="0">
         <tbody>
           <tr>
             <th>{currentProduct.name}</th>
