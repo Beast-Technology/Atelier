@@ -59,6 +59,7 @@ function CompareModal({ showModal, currentProduct, clickedItem }) {
         </tbody>
       </table>
     </div>
+
   );
 }
 

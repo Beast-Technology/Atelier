@@ -5,71 +5,91 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 function RelatedProductsContainer({
   relatedItems, showModal, setShow, setClickedItem, setProductID,
 }) {
-  const [currentCard, setCurrentCard] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [xCoord, setXCoord] = useState(0);
   const { length } = relatedItems;
 
   useEffect(() => {
-    console.log(relatedItems);
+    setCurrentIndex(0);
   }, [relatedItems]);
 
 
-
-  const nextSlide = () => {
-    console.log('clickedItem');
-    // setCurrentCard(current === length - 1 ? 0 : current + 1);
+  const prevSlide = () => {
+    console.log('clickedPrevSlide');
+    setCurrentIndex(() => currentIndex - 1);
+    setXCoord((x) => x + 220);
   };
 
-  const prevSlide = () => {
-    console.log('clickedItem');
-    // setCurrentCard(current === 0 ? length - 1 : current - 1);
+  const nextSlide = () => {
+    console.log('clickednextSlide');
+    setCurrentIndex(() => currentIndex + 1);
+    setXCoord((x) => x - 220);
   };
 
   let RightArrow;
   let LeftArrow;
-  // const cardsSHown = 4;
-  if (length) {
+
+  if (currentIndex >= 1) {
     LeftArrow = (
       <button
-        className="material-symbols-outlined"
-        id="product-left-arrow"
+        className="arrow left-arrow"
         onClick={() => prevSlide()}
         type="button"
       >
-        arrow_back_ios
+        ‹
+      </button>
+    );
+  } else {
+    LeftArrow = (
+      <button
+        className="arrow left-arrow faded"
+        type="button"
+      >
+        ‹
       </button>
     );
   }
-  if (length) {
+  if ((length - currentIndex) > 5) {
     RightArrow = (
       <button
-        className="material-symbols-outlined"
-        id="product-right-arrow"
+        className="arrow right-arrow"
         onClick={() => nextSlide()}
         type="button"
       >
-        arrow_forward_ios
+        ›
+      </button>
+    );
+  } else {
+    RightArrow = (
+      <button
+        className="arrow right-arrow faded"
+        type="button"
+      >
+        ›
       </button>
     );
   }
-
   return (
-    <div id="CardContainer">
+    <div id="CardContainerOutter">
       {LeftArrow}
-      {
-      (relatedItems || []).map((relatedItem) => (
-        <RelatedProductsCard
-          relatedItem={relatedItem}
-          key={relatedItem.id}
-          showModal={showModal}
-          setShow={setShow}
-          setClickedItem={setClickedItem}
-          setProductID={setProductID}
-        />
-      ))
-      }
+      <div id="CardContainerMiddle">
+        <div style={{ left: xCoord }} id="CardContainerInner">
+          {
+          (relatedItems || []).map((relatedItem) => (
+            <RelatedProductsCard
+              relatedItem={relatedItem}
+              key={relatedItem.id}
+              showModal={showModal}
+              setShow={setShow}
+              setClickedItem={setClickedItem}
+              setProductID={setProductID}
+            />
+          ))
+          }
+        </div>
+      </div>
       {RightArrow}
     </div>
-
   );
 }
 

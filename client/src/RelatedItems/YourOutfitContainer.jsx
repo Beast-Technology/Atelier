@@ -3,10 +3,14 @@ import React, { useState, useEffect } from 'react';
 import YourOutfitCard from './YourOutfitcard.jsx';
 
 function YourOutfitContainer({
-  currentProduct, yourOutfitItems, setOutfitItem, style
+  currentProduct, yourOutfitItems, setOutfitItem, style,
 }) {
   const [addButton, setAddButton] = useState(true);
   const [numArray, setOutfitNumArray] = useState([]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [xCoord, setXCoord] = useState(0);
+  const { length } = yourOutfitItems;
 
   // ---show/hide AddButton --- //
 
@@ -42,7 +46,6 @@ function YourOutfitContainer({
     setAddButton(true);
   }
 
-
   // ---condiitonal rendering of the AddButton/isAre string --- //
   let addButtonDiv;
   let isAreSpan;
@@ -74,9 +77,75 @@ function YourOutfitContainer({
     );
   }
 
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [yourOutfitItems]);
+
+
+  const prevSlide = () => {
+    console.log('clickedPrevSlide');
+    setCurrentIndex(() => currentIndex - 1);
+    setXCoord((x) => x + 220);
+  };
+
+  const nextSlide = () => {
+    console.log('clickednextSlide');
+    setCurrentIndex(() => currentIndex + 1);
+    setXCoord((x) => x - 220);
+  };
+
+  let RightArrow;
+  let LeftArrow;
+
+  if (currentIndex >= 1) {
+    LeftArrow = (
+      <button
+        className="arrow left-arrow"
+        onClick={() => prevSlide()}
+        type="button"
+      >
+        ‹
+      </button>
+    );
+  } else {
+    LeftArrow = (
+      <button
+        className="arrow left-arrow faded"
+        type="button"
+      >
+        ‹
+      </button>
+    );
+  }
+  if ((length - currentIndex) > 4) {
+    RightArrow = (
+      <button
+        className="arrow right-arrow"
+        onClick={() => nextSlide()}
+        type="button"
+      >
+        ›
+      </button>
+    );
+  } else {
+    RightArrow = (
+      <button
+        className="arrow right-arrow faded"
+        type="button"
+      >
+        ›
+      </button>
+    );
+  }
+
   return (
-    <div id="CardContainer">
-      {
+    <div id="CardContainerOutter">
+      {LeftArrow}
+      <div id="CardContainerMiddle">
+        <div style={{ left: xCoord }} id="CardContainerInner">
+          {addButtonDiv}
+          {
           (yourOutfitItems || []).map((yourOutfitItem) => (
             <YourOutfitCard
               yourOutfitItem={yourOutfitItem}
@@ -86,7 +155,9 @@ function YourOutfitContainer({
             />
           ))
           }
-      {addButtonDiv}
+        </div>
+      </div>
+      {RightArrow}
     </div>
   );
 }
