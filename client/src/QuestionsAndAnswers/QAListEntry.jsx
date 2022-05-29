@@ -1,13 +1,26 @@
-const axios = require('axios');
-import React from 'react';
+import React, { useState } from 'react';
 import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
 
-export default function QAListEntry({q}) {
+const axios = require('axios');
+
+export default function QAListEntry({ q, setModal, setphotoModalURL }) {
+  // prevent side effect in AddAnswersModal when searching
+  const [question_body, setQuestion_body] = useState(q.question_body);
+
   function markQuestionHelpful() {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+  }
+
+  function handleAddAnswer() {
+    setModal({ modalName: 'adda', modalData: { question_id: q.question_id, question_body } });
+    document.getElementById('modal').style.display = 'block';
+  }
+
+  function createMarkup(html) {
+    return { __html: html };
   }
 
   return (
@@ -16,17 +29,18 @@ export default function QAListEntry({q}) {
         <p>Q:</p>
 
         <div className="question-container">
-          <p className="question-title">{q.question_body}</p>
+          {/* <p className="question-title">{q.question_body}</p> */}
+          <p className="question-title" dangerouslySetInnerHTML={createMarkup(q.question_body)} />
 
           <div className="question-actions">
             <Helpful count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
-            <span className="underline">Add Answers</span>
+            <span onClick={handleAddAnswer} className="underline">Add Answers</span>
           </div>
         </div>
       </div>
 
-      <AnswerList answers={q.answers} />
+      <AnswerList answers={q.answers} setphotoModalURL={setphotoModalURL} />
     </li>
   )
 }

@@ -1,54 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import QASearch from './QASearch.jsx';
 import QAList from './QAList.jsx';
+// import AddQuestionModal from './AddQuestionModal/AddQuestionModal.jsx';
+import AnswerPhotoModal from './AnswerPhotoModal.jsx';
 import './qa-styles.css';
 
 const axios = require('axios');
 
-const chosen_id = 40355;
+// For test purpose
+// const chosenId = 40344;
 
-function QuestionsAndAnswers() {
+function QuestionsAndAnswers({ productID, setModal }) {
+  const [qaData, setQAData] = useState([]);
   const [qs, setQs] = useState([]);
   const [displayQs, setDisplayQs] = useState([]);
-  const [nextPage, setNextPage] = useState(3);
-  const [nextCount, setNextCount] = useState(0);
+  const [qsLeft, setQsLeft] = useState(0);
+  const [keyword, setKeyword] = useState('');
+  const [photoModalURL, setphotoModalURL] = useState('');
 
-  function getTwoMoreFromData() {
-    axios.get('/qa/questions', { params: { product_id: chosen_id, page: nextPage} })
-      .then(res => { setQs([...qs, ...res.data.results]) })
-      .then(() => { setNextPage(nextPage + 1) })
-      .catch(err => { alert(err) });
-  }
+  useEffect(() => {
+    if (keyword.length >= 3) {
+      const results = qaData
+        .filter(
+          (q) => q.question_body.toLowerCase().includes(keyword.toLowerCase())
+        )
+        .map(
+          (q) => {
+            let newQ = JSON.parse(JSON.stringify(q));
+            newQ.question_body = newQ.question_body.replace(
+              new RegExp(keyword, 'gi'),
+              (match) => `<mark class="search-match">${match}</mark>`
+            )
+            return newQ;
+          }
+        )
+      setQs(results);
+      setDisplayQs(results.slice(0, 2));
+    } else {
+      setQs(qaData);
+      setDisplayQs(qaData.slice(0, 2));
+    }
+  }, [keyword]);
 
-  function addTwoMoreToDisplay() {
-    setDisplayQs([...displayQs, ...qs.slice(displayQs.length)]);
-  }
 
   function handleLoad() {
-    addTwoMoreToDisplay();
-    getTwoMoreFromData();
+    setDisplayQs([...displayQs, ...qs.slice(displayQs.length, displayQs.length + 2)]);
   }
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: chosen_id, count: 5} })
-      .then(res => {
-        setQs(res.data.results);
-        setDisplayQs(res.data.results.slice(0, 2));
+    axios.get('/qa/questions', { params: { product_id: productID, count: 100 } })
+      .then((res) => res.data.results.sort((a, b) => b.question_helpfulness - a.question_helpfulness))
+      .then((sortedResults) => {
+        setQAData(sortedResults);
+        setQs(sortedResults);
+        setDisplayQs(sortedResults.slice(0, 2));
       })
-      .catch(err => { alert(err) })
-  }, [])
+      .catch((err) => { alert(err); });
+  }, []);
 
   useEffect(() => {
-    console.log('qs:', qs.length);
-    console.log('displayQs:', displayQs.length);
-    setNextCount(qs.length - displayQs.length);
-  }, [qs, displayQs])
+    setQsLeft(qs.length - displayQs.length);
+  }, [displayQs, qs.length]);
 
   return (
-    <section className="section-qanda">
+    <section style={{border: '2px pink solid'}} className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
-      <QASearch />
-      <QAList qs={displayQs} next={nextCount} onHandleLoad={handleLoad} />
+      <QASearch keyword={keyword} setKeyword={setKeyword} />
+      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />
+      <AnswerPhotoModal photoURL={photoModalURL} />
+      {/* <AddQuestionModal /> */}
     </section>
   );
 }
