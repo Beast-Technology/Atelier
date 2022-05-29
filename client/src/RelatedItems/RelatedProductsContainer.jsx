@@ -15,13 +15,11 @@ function RelatedProductsContainer({
 
 
   const prevSlide = () => {
-    console.log('clickedPrevSlide');
     setCurrentIndex(() => currentIndex - 1);
     setXCoord((x) => x + 220);
   };
 
   const nextSlide = () => {
-    console.log('clickednextSlide');
     setCurrentIndex(() => currentIndex + 1);
     setXCoord((x) => x - 220);
   };

@@ -40,8 +40,12 @@ function YourOutfitContainer({
       setOutfitItem(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
       setOutfitNumArray(() => [...numArray.slice(0, indexOfClicked), ...numArray.slice(indexOfClicked + 1)]);
     } else {
+      // if Last item is deleted
       setOutfitItem(() => [...yourOutfitItems.slice(0, indexOfClicked)]);
       setOutfitNumArray(() => [...numArray.slice(0, indexOfClicked)]);
+      if ((length - currentIndex) === 4) {
+        setXCoord((x) => x + 220);
+      }
     }
     setAddButton(true);
   }
