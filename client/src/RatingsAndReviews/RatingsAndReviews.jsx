@@ -7,14 +7,10 @@ import ReviewsList from './ReviewsList.jsx';
 import ReviewButtons from './ReviewButtons.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
-function RatingsAndReviews({meta}) {
+function RatingsAndReviews() {
   const [reviews, setReviews] = useState([]);
-<<<<<<< HEAD
   const [meta, setMeta] = useState([]);
   const [pageUp, setPageUp] = useState(1);
-=======
-  const [countUp, setCountUp] = useState(2);
->>>>>>> main
   // update page and concat instead of incrementing count
   useEffect(() => {
     axios.get('/reviews', {
@@ -36,12 +32,8 @@ function RatingsAndReviews({meta}) {
   };
 
   return (
-<<<<<<< HEAD
     <section>
       {console.log(reviews)}
-=======
-    <section style={{border: '2px blue solid'}}>
->>>>>>> main
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <div className="mainPage">
