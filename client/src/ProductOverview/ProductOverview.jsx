@@ -17,7 +17,7 @@ function ProductOverview(
     <section id="product-overview" style={{border: '2px solid green'}}>
       <div style={{ display: 'flex' }}>
         <ImageGallery photos={style.photos} />
-        <div>
+        <div style={{marginLeft: "30px"}}>
           <ProductInformation
             style={style}
             product={product}
