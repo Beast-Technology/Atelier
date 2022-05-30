@@ -17,7 +17,6 @@ function getMeta(productID, setMeta) {
       setMeta((sum / total).toFixed(2));
     });
 }
-
 function getProduct(productID, setProduct) {
   axios.request({
     url: `/products/${productID}`,
@@ -27,7 +26,6 @@ function getProduct(productID, setProduct) {
       setProduct(response.data);
     });
 }
-
 function getStyles(productID, setStyle, setStyles) {
   axios.request({
     url: `/products/${productID}/styles`,
@@ -42,7 +40,6 @@ function getStyles(productID, setStyle, setStyles) {
       setStyles(response.data.results);
     });
 }
-
 function getRelated(productID, setRelatedItems) {
   axios.request({
     url: `/products/${productID}/related`,
@@ -71,55 +68,6 @@ function getRelated(productID, setRelatedItems) {
     });
 }
 
-function getPhotosAndMetaForCards(allCardsArray, setPhotos, setMeta) {
-  const photosPromiseArray = [];
-  const metaPromiseArray = [];
-
-  allCardsArray.forEach((allCardsProduct) => {
-    const styleID = allCardsProduct.id;
-    photosPromiseArray.push(
-      axios.request({
-        url: `/products/${styleID}/styles`,
-        method: 'GET',
-      }),
-    );
-    metaPromiseArray.push(
-      axios.get('/reviews/meta', {
-        params: {
-          product_id: styleID,
-        },
-      }),
-    );
-  });
-  Promise.all(photosPromiseArray)
-    .then((responses) => {
-      const responseObj = {};
-      responses.forEach((styleItems) => {
-        const styleItemResultsArray = styleItems.data.results;
-        // console.log('styleItemResultsArray', styleItemResultsArray);
-        for (let i = 0; i < styleItemResultsArray.length; i += 1) {
-          if (i === styleItemResultsArray.length - 1) {
-            responseObj[styleItems.data.product_id] = styleItemResultsArray[i].photos;
-          } else if (styleItemResultsArray[i]['default?'] === true) {
-            responseObj[styleItems.data.product_id] = styleItemResultsArray[i].photos;
-          }
-        }
-      });
-      setPhotos(responseObj);
-    });
-  Promise.all(metaPromiseArray)
-    .then((responses) => {
-      const responseObj = {};
-      responses.forEach((styleItems) => {
-        responseObj[styleItems.data.product_id] = styleItems.data;
-      });
-      setMeta(responseObj);
-    });
-}
-
-
-
-
 export {
-  getMeta, getProduct, getStyles, getRelated, getPhotosAndMetaForCards,
+  getMeta, getProduct, getStyles, getRelated,
 };

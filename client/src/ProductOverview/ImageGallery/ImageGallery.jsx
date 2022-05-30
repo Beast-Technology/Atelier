@@ -16,7 +16,7 @@ const viewStyle = {
 }
 
 export default function ImageGallery({photos}) {
-  console.log(photos);
+  // console.log(photos);
   const [viewPhoto, setViewPhoto] = useState(null);
   const [index, setIndex] = useState(0);
 

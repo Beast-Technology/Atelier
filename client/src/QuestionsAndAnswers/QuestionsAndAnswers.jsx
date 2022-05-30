@@ -2,22 +2,38 @@ import React, { useState, useEffect } from 'react';
 import QASearch from './QASearch.jsx';
 import QAList from './QAList.jsx';
 // import AddQuestionModal from './AddQuestionModal/AddQuestionModal.jsx';
+import AnswerPhotoModal from './AnswerPhotoModal.jsx';
 import './qa-styles.css';
 
 const axios = require('axios');
 
-const chosenId = 40333;
+// For test purpose
+// const chosenId = 40344;
 
-function QuestionsAndAnswers({setModal}) {
+function QuestionsAndAnswers({ productID, setModal }) {
   const [qaData, setQAData] = useState([]);
   const [qs, setQs] = useState([]);
   const [displayQs, setDisplayQs] = useState([]);
   const [qsLeft, setQsLeft] = useState(0);
   const [keyword, setKeyword] = useState('');
+  const [photoModalURL, setphotoModalURL] = useState('');
 
   useEffect(() => {
     if (keyword.length >= 3) {
-      const results = qaData.filter((q) => q.question_body.toLowerCase().includes(keyword.toLowerCase()));
+      const results = qaData
+        .filter(
+          (q) => q.question_body.toLowerCase().includes(keyword.toLowerCase())
+        )
+        .map(
+          (q) => {
+            let newQ = JSON.parse(JSON.stringify(q));
+            newQ.question_body = newQ.question_body.replace(
+              new RegExp(keyword, 'gi'),
+              (match) => `<mark class="search-match">${match}</mark>`
+            )
+            return newQ;
+          }
+        )
       setQs(results);
       setDisplayQs(results.slice(0, 2));
     } else {
@@ -32,7 +48,7 @@ function QuestionsAndAnswers({setModal}) {
   }
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: chosenId, count: 100 } })
+    axios.get('/qa/questions', { params: { product_id: productID, count: 100 } })
       .then((res) => res.data.results.sort((a, b) => b.question_helpfulness - a.question_helpfulness))
       .then((sortedResults) => {
         setQAData(sortedResults);
@@ -50,8 +66,8 @@ function QuestionsAndAnswers({setModal}) {
     <section style={{border: '2px pink solid'}} className="section-qanda">
       <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
       <QASearch keyword={keyword} setKeyword={setKeyword} />
-      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} />
-
+      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />
+      <AnswerPhotoModal photoURL={photoModalURL} />
       {/* <AddQuestionModal /> */}
     </section>
   );

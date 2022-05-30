@@ -1,9 +1,20 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: [
+    // insert test here if you wish to ignore them when running 'npm run test script'
+    // '/node_modules/',
+
     // ProductOverview
-    'client/src/ProductOverview/AddToCart/SizeSelector.test.js',
+    '<rootDir>/client/src/ProductOverview',
+
+    // QuestionsAndAnswers
+    '<rootDir>/client/src/QuestionsAndAnswers',
+
+    // ReatingAndReviews
+    '<rootDir>/client/src/RatingsAndReviews',
+
     // RelatedItems
-    // 'client/src/RelatedItems/Tests/CompareModal.test.js',
+    '<rootDir>/client/src/RelatedItems',
+
   ],
 };
