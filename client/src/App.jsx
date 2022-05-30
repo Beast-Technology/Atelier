@@ -11,14 +11,6 @@ import { MetaContext } from './context.js';
 
 
 function App() {
-  // Temporary Container to show borders
-  const container = {
-    border: '2px solid red',
-    width: '1200px',
-    margin: '48px auto',
-    padding: '32px',
-  };
-
   // Set ProductID/Product State and UseEffect
   const [productID, setProductID] = useState(40346);
   const [product, setProduct] = useState({});
@@ -42,15 +34,15 @@ function App() {
 
   // By default, modal is an empty object {}
   // When using setModal, the syntax is setModal({ modalName, modalData })
-    // modalName: Required; a string, decides which modal content to render
-    // modalData: Optional; an object, should contain some data you need for the modal
+  // modalName: Required; a string, decides which modal content to render
+  // modalData: Optional; an object, should contain some data you need for the modal
   // Example 1 - setModal: line 14 @ './QuestionsAndAnswers/QAListEntry.jsx'
   // Example 2 - redernModal: line 8 @ './helper/Modals/Modals.jsx'
   const [modal, setModal] = useState({});
 
 
   return (
-    <div style={{border: '2px solid red'}}>
+    <div style={{ border: '2px solid red' }}>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}
