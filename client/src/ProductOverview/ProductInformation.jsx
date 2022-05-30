@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Stars } from '../helper/Stars.jsx';
 import { MetaContext } from '../context.js';
 
@@ -11,7 +11,7 @@ export default function ProductInformation({style, product}) {
   return (
     <div>
       <Stars rating={ratings}/>
-      <a href="" onClick={(e) => e.preventDefault()}>Read All Reviews</a>
+      <a href="#reviews">Read All Reviews</a>
       <div>{category}</div>
       <div>{name}</div>
       {sale_price ?

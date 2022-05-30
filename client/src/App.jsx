@@ -19,6 +19,7 @@ function App() {
   }, [productID]);
 
   // Set Style/Styles State and UseEffect
+  // Junsu: style singular is the style selected in Product Overview
   const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   const [styles, setStyles] = useState([]);
   useEffect(() => {
