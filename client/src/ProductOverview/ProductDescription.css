@@ -1,5 +1,6 @@
 .info-flex-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 
 .info-left-box {
