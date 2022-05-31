@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 function getMeta(productID, setMeta) {
   axios.get('/reviews/meta', {
     params: {
@@ -26,6 +27,7 @@ function getProduct(productID, setProduct) {
       setProduct(response.data);
     });
 }
+
 function getStyles(productID, setStyle, setStyles) {
   axios.request({
     url: `/products/${productID}/styles`,
@@ -40,31 +42,40 @@ function getStyles(productID, setStyle, setStyles) {
       setStyles(response.data.results);
     });
 }
+
 function getRelated(productID, setRelatedItems) {
+  const localRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
+
   axios.request({
     url: `/products/${productID}/related`,
     method: 'get',
   })
     .then((response) => {
-      const array = response.data.map((relatedItemId) => axios.request({
-        url: `/products/${relatedItemId}`,
-        method: 'get',
-      })
-        .then((result) => result.data));
-      Promise.all(array)
-        .then((values) => {
-          const filteredArray = [];
-          const responseArray = [];
-          // some related items are repeating within data, below is a filter to only show unique values.
-          values.forEach((reitems) => {
-            if ((filteredArray.indexOf(reitems.id) < 0) && (reitems.id !== productID)) {
-              filteredArray.push(reitems.id);
-              responseArray.push(reitems);
-            }
-          });
+      const uniqueResponse = [...new Set(response.data)];
+      const responseArray = [];
+      const requestArray = [];
 
-          setRelatedItems(responseArray);
-        });
+      uniqueResponse.forEach((uniqueRelatedItemID) => {
+        if (localRelateditems[uniqueRelatedItemID]) {
+          responseArray.push(localRelateditems[uniqueRelatedItemID]);
+        } else {
+          requestArray.push(uniqueRelatedItemID);
+        }
+      });
+      if (requestArray.length !== 0) {
+        const array = requestArray.map((relatedItemId) => axios.request({
+          url: `/products/${relatedItemId}`,
+          method: 'get',
+        })
+          .then((result) => result.data));
+        Promise.all(array)
+          .then((values) => {
+            responseArray.push(...values);
+            setRelatedItems(responseArray);
+          });
+      } else {
+        setRelatedItems(responseArray);
+      }
     });
 }
 
