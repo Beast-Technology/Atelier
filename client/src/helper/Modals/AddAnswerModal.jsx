@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PhotoUploader from './PhotoUploader.jsx';
 
 const axios = require('axios');
 
@@ -52,6 +53,10 @@ export default function AddAnswerModal({ productName, questionID, questionBody})
             <label>Email *
               <input onChange={handleEmailChange} type="email" maxLength="60" placeholder="Why did you like the product or not?" required />
               <span className="input-description">For authentication reasons, you will not be emailed</span>
+            </label>
+
+            <label>Upload images
+              <PhotoUploader photos={photos} setPhotos={setPhotos} />
             </label>
 
             <input className="btn btn-primary" type="submit" value="Submit Your Answer" />
