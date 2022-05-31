@@ -1,5 +1,8 @@
 {
   "extends": ["airbnb", "airbnb/hooks"],
+  "env": {
+    "browser": true
+  },
   "rules": {
     "import/extensions": ["error", "ignorePackages", {
       "jsx": "always"
@@ -12,5 +15,6 @@
       "react/jsx-one-expression-per-line": 0
 
     }
+
   }
 
