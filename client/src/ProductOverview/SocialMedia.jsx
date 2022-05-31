@@ -20,7 +20,7 @@ export default function SocialMeda() {
           style={{ border: 'none', overflow: 'hidden' }}
           scrolling="no"
           frameBorder="0"
-          allowFullScreen="true"
+          allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         />
         <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"> </a>

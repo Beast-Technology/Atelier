@@ -15,7 +15,7 @@ function ProductOverview(
 ) {
   return (
     <section id="product-overview" style={{border: '2px solid green'}}>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr' }}>
         <ImageGallery photos={style.photos} />
         <div style={{marginLeft: "30px"}}>
           <ProductInformation

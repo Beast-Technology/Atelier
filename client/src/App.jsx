@@ -12,7 +12,7 @@ import { MetaContext } from './context.js';
 
 function App() {
   // Set ProductID/Product State and UseEffect
-  const [productID, setProductID] = useState(40346);
+  const [productID, setProductID] = useState(40348);
   const [product, setProduct] = useState({});
   useEffect(() => {
     getProduct(productID, setProduct);

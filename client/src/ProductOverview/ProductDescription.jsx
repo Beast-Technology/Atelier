@@ -6,7 +6,7 @@ export default function ProductDescription({product}) {
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "3fr 1fr"
+      gridTemplateColumns: "2fr 1fr"
     }}>
 
       <div style={{
