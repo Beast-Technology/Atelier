@@ -46,6 +46,8 @@ function getStyles(productID, setStyle, setStyles) {
 function getRelated(productID, setRelatedItems) {
   const localRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
 
+  // const localOutfitItems = JSON.parse(sessionStorage.getItem('ls_outfitItems')) || {};
+
   axios.request({
     url: `/products/${productID}/related`,
     method: 'get',

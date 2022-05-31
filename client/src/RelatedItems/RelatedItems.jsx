@@ -12,7 +12,6 @@ function RelatedItems({
   product, productID, setProductID, style,
 }) {
   const [showModal, setShow] = useState(false);
-  const [yourOutfitItems, setOutfitItem] = useState([]);
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
 
@@ -67,8 +66,6 @@ function RelatedItems({
       <YourOutfitContainer
         currentProduct={product}
         style={style}
-        yourOutfitItems={yourOutfitItems}
-        setOutfitItem={setOutfitItem}
       />
     </section>
   );

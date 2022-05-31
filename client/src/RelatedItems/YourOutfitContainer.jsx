@@ -1,16 +1,30 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import YourOutfitCard from './YourOutfitcard.jsx';
 
 function YourOutfitContainer({
-  currentProduct, yourOutfitItems, setOutfitItem, style,
+  currentProduct, style,
 }) {
-  const [addButton, setAddButton] = useState(true);
-  const [numArray, setOutfitNumArray] = useState([]);
+  const [yourOutfitItems, setOutfitItems] = useState([]);
 
+  const [addButton, setAddButton] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [xCoord, setXCoord] = useState(0);
   const { length } = yourOutfitItems;
+
+  // --------------------- using localStorage ------------------- //
+
+  useEffect(() => {
+    const localOutfitItems = JSON.parse(sessionStorage.getItem('ls_outfitItems')) || [];
+    if (localOutfitItems) {
+      setOutfitItems(localOutfitItems);
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('ls_outfitItems', JSON.stringify(yourOutfitItems));
+  }, [yourOutfitItems]);
+
 
   // ---show/hide AddButton --- //
 
@@ -22,33 +36,35 @@ function YourOutfitContainer({
     }
   }, [yourOutfitItems, currentProduct.id]);
 
-  // ---add currentProduct to yourOutfitItems and set index of added item in outfitNumArray --- //
+  // ---add currentProduct to yourOutfitItems --- //
 
   function handleAddToOutfit() {
     if (!(yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
-      setOutfitNumArray(() => [currentProduct.id, ...numArray]);
-      setOutfitItem(() => [currentProduct, ...yourOutfitItems]);
-      setAddButton(false);
+      const currentProductCopy = JSON.parse(JSON.stringify(currentProduct));
+      currentProductCopy.style = style;
+      setOutfitItems(() => [currentProductCopy, ...yourOutfitItems]);
     }
   }
-  // ---delete selected product from yourOutfitItems and remove index of deleted item in outfitNumArray --- //
+  // ---delete selected product from yourOutfitItems --- //
 
-  function handleDeleteToOutfit(e, clickedDeleteItem) {
-    e.stopPropagation();
-    const indexOfClicked = numArray.indexOf(clickedDeleteItem.id);
-    if (indexOfClicked !== numArray.length - 1) {
-      setOutfitItem(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
-      setOutfitNumArray(() => [...numArray.slice(0, indexOfClicked), ...numArray.slice(indexOfClicked + 1)]);
+  const handleDeleteToOutfit = useCallback((clickedDeleteItem) => {
+    const indexOfClicked = yourOutfitItems.findIndex((item) => item.id === clickedDeleteItem.id);
+
+    if (indexOfClicked !== length - 1) {
+      setOutfitItems(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
     } else {
       // if Last item is deleted
-      setOutfitItem(() => [...yourOutfitItems.slice(0, indexOfClicked)]);
-      setOutfitNumArray(() => [...numArray.slice(0, indexOfClicked)]);
-      if ((length - currentIndex) === 4) {
-        setXCoord((x) => x + 220);
-      }
+      setOutfitItems(() => [...yourOutfitItems.slice(0, indexOfClicked)]);
     }
-    setAddButton(true);
-  }
+    if (((length - currentIndex) <= 5) && (xCoord)) {
+      setXCoord((x) => x + 220);
+    }
+    if (currentIndex > 0) {
+      setCurrentIndex(() => currentIndex - 1);
+    }
+  });
+
+
 
   // ---condiitonal rendering of the AddButton/isAre string --- //
   let addButtonDiv;
@@ -82,26 +98,18 @@ function YourOutfitContainer({
   }
 
 
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [yourOutfitItems]);
-
-
   const prevSlide = () => {
-    console.log('clickedPrevSlide');
     setCurrentIndex(() => currentIndex - 1);
     setXCoord((x) => x + 220);
   };
 
   const nextSlide = () => {
-    console.log('clickednextSlide');
     setCurrentIndex(() => currentIndex + 1);
     setXCoord((x) => x - 220);
   };
 
   let RightArrow;
   let LeftArrow;
-
   if (currentIndex >= 1) {
     LeftArrow = (
       <button
@@ -150,12 +158,12 @@ function YourOutfitContainer({
         <div style={{ left: xCoord }} id="CardContainerInner">
           {addButtonDiv}
           {
-          (yourOutfitItems || []).map((yourOutfitItem) => (
+          yourOutfitItems.map((yourOutfitItem) => (
             <YourOutfitCard
               yourOutfitItem={yourOutfitItem}
               key={yourOutfitItem.id}
-              style={style}
               handleDeleteToOutfit={handleDeleteToOutfit}
+
             />
           ))
           }
