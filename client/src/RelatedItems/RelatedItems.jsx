@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getRelated } from '../axiosCalls.js';
+
 import RelatedProductsContainer from './RelatedProductsContainer.jsx';
 import YourOutfitContainer from './YourOutfitContainer.jsx';
 import useOutsideClick from './useOutsideClick.js';
@@ -11,13 +12,30 @@ function RelatedItems({
   product, productID, setProductID, style,
 }) {
   const [showModal, setShow] = useState(false);
-  const [yourOutfitItems, setOutfitItem] = useState([]);
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
+
+
+  // const [localRelatedItems, setlocalRelatedItems] = useState({});
+
 
   useEffect(() => {
     getRelated(productID, setRelatedItems);
   }, [productID]);
+
+  // --------------------- using localStorage ------------------- //
+
+  useEffect(() => {
+    const tempRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
+    relatedItems.forEach((item) => {
+      if (!tempRelateditems[item.id]) {
+        tempRelateditems[item.id] = item;
+      }
+      sessionStorage.setItem('ls_relatedItems', JSON.stringify(tempRelateditems));
+    });
+  }, [relatedItems]);
+
+  // --------------------- localStorage ------------------- //
 
   const ref = useRef();
 
@@ -48,8 +66,6 @@ function RelatedItems({
       <YourOutfitContainer
         currentProduct={product}
         style={style}
-        yourOutfitItems={yourOutfitItems}
-        setOutfitItem={setOutfitItem}
       />
     </section>
   );
