@@ -12,13 +12,14 @@ import { MetaContext } from './context.js';
 
 function App() {
   // Set ProductID/Product State and UseEffect
-  const [productID, setProductID] = useState(40346);
+  const [productID, setProductID] = useState(40348);
   const [product, setProduct] = useState({});
   useEffect(() => {
     getProduct(productID, setProduct);
   }, [productID]);
 
   // Set Style/Styles State and UseEffect
+  // Junsu: style singular is the style selected in Product Overview
   const [style, setStyle] = useState({ photos: [], skus: { 0: { quantity: 0, size: '' } } });
   const [styles, setStyles] = useState([]);
   useEffect(() => {

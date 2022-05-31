@@ -31,7 +31,7 @@ function RatingsAndReviews({meta}) {
   };
 
   return (
-    <section style={{border: '2px blue solid'}}>
+    <section id="reviews" style={{border: '2px blue solid'}}>
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <div className="mainPage">
