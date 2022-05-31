@@ -58,7 +58,6 @@ function RelatedItems({
         productID={productID}
         setProductID={setProductID}
         relatedItems={relatedItems}
-        showModal={showModal}
         setShow={setShow}
         setClickedItem={setClickedItem}
       />

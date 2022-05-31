@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 
 function RelatedProductsContainer({
-  relatedItems, showModal, setShow, setClickedItem, setProductID,
+  relatedItems, setShow, setClickedItem, setProductID,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [xCoord, setXCoord] = useState(0);
@@ -77,7 +77,6 @@ function RelatedProductsContainer({
             <RelatedProductsCard
               relatedItem={relatedItem}
               key={relatedItem.id}
-              showModal={showModal}
               setShow={setShow}
               setClickedItem={setClickedItem}
               setProductID={setProductID}
