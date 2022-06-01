@@ -52,6 +52,13 @@ module.exports = {
     id: 40344,
     name: 'Camo Onesie',
     slogan: 'Blend in to your crowd',
+    style: {
+      'default?': true,
+      name: 'Black',
+      original_price: '40.00',
+      photos: [{ thumbnail_url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80' }],
+      sale_price: null,
+    },
     updated_at: '2021-08-13T14:38:44.509Z',
   },
 
@@ -70,6 +77,13 @@ module.exports = {
     id: 40344,
     name: 'Heir Jordans',
     slogan: 'Blend in to your crowd',
+    style: {
+      'default?': true,
+      name: 'Black',
+      original_price: '40.00',
+      photos: [{ thumbnail_url: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80' }],
+      sale_price: null,
+    },
     updated_at: '2021-08-13T14:38:44.509Z',
   },
 
@@ -142,17 +156,18 @@ module.exports = {
         },
       },
     ],
-  // ...
+    // ...
   },
 
 
   // Related Products //
 
   relatedProductsAPI: [
-    2,
-    3,
-    8,
-    7,
+    40349,
+    40351,
+    40352,
+    40344,
+    40346,
   ],
 
   // --------------------- using Reviews API ------------------- //
@@ -182,7 +197,7 @@ module.exports = {
           id: 2,
           url: 'urlplaceholder/review_5_photo_number_2.jpg',
         },
-          // ...
+        // ...
         ],
       },
       {
@@ -197,7 +212,7 @@ module.exports = {
         helpfulness: 5,
         photos: [],
       },
-      // ...
+    // ...
     ],
   },
 
@@ -209,11 +224,11 @@ module.exports = {
       2: 1,
       3: 1,
       4: 2,
-      // ...
+    // ...
     },
     recommended: {
       0: 5,
-      // ...
+    // ...
     },
     characteristics: {
       Size: {
@@ -228,7 +243,7 @@ module.exports = {
         id: 16,
         value: '4.0000',
       },
-      // ...
+    // ...
     },
 
     // --------------------- using Questions and Answers API ------------------- //
@@ -252,7 +267,7 @@ module.exports = {
             answerer_name: 'Seller',
             helpfulness: 4,
             photos: [],
-            // ...
+          // ...
           },
         },
       },

@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import { render, unmountComponentAtNode } from 'react-dom';
+import {fireEvent, screen} from '@testing-library/react'
 import { act } from 'react-dom/test-utils';
 import { createRoot } from 'react-dom/client';
 import './../RelatedItems.css';
@@ -19,7 +20,6 @@ import CompareModal from '../CompareModal.jsx';
 
 
 let container = null;
-
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
@@ -45,7 +45,7 @@ describe('Basic HTML test', () => {
   it('DOES render the CompareModal since showModal is true', () => {
     act(() => {
       render(<CompareModal
-        showModal
+        showModal={true}
         currentProduct={productInformationResponse1}
         clickedItem={productInformationResponse2}
       />, container);
