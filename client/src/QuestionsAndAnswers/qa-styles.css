@@ -159,11 +159,12 @@ textarea::placeholder {
 .question-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
 .question-title {
+  max-width: 70%;
   font-weight: 600;
 }
 
