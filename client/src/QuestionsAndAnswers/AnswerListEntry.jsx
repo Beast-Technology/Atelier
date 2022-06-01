@@ -16,6 +16,12 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
     localStorage.setItem('aStatus', JSON.stringify(aStatus));
   }
 
+  function markReported() {
+    let aStatus = JSON.parse(localStorage.getItem('aStatus'));
+    aStatus[a.id].reported = true;
+    localStorage.setItem('aStatus', JSON.stringify(aStatus));
+  }
+
   return (
     <li className="answer-content">
       <p className="answer-text">{a.body}</p>
@@ -28,7 +34,7 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
         <Helpful target={'answer'} id={a.id} count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
         {/* <span>Report</span> */}
-        <ReportButton />
+        <ReportButton onMarkReported={markReported} />
       </div>
     </li>
   )
