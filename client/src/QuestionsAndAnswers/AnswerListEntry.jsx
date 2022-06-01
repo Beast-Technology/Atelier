@@ -26,7 +26,7 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
     <li className="answer-content">
       <p className="answer-text">{a.body}</p>
 
-      {a.photos.length && <AnswerPhotoGallery urls={a.photos} setphotoModalURL={setphotoModalURL} />}
+      {!!a.photos.length && <AnswerPhotoGallery urls={a.photos} setphotoModalURL={setphotoModalURL} />}
 
       <div className="answer-info">
         <span>by {a.answerer_name}, {DatePosted(a.date)}</span>
