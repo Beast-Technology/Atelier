@@ -34,7 +34,7 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
         <Helpful target={'answer'} id={a.id} count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
         {/* <span>Report</span> */}
-        <ReportButton onMarkReported={markReported} />
+        <ReportButton id={a.id} onMarkReported={markReported} />
       </div>
     </li>
   )
