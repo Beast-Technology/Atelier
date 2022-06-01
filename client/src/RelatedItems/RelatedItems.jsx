@@ -3,7 +3,7 @@ import { getRelated } from '../axiosCalls.js';
 
 import RelatedProductsContainer from './RelatedProductsContainer.jsx';
 import YourOutfitContainer from './YourOutfitContainer.jsx';
-import useOutsideClick from './useOutsideClick.js';
+import useOutsideClick from './helper/useOutsideClick.js';
 import CompareModal from './CompareModal.jsx';
 import './RelatedItems.css';
 
