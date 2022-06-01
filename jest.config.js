@@ -1,8 +1,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: [
-    // insert test here if you wish to ignore them when running 'npm run test script'
-    // '/node_modules/',
+    // comment out your component root folderstring when working on your module test
 
     // ProductOverview
     '<rootDir>/client/src/ProductOverview',
@@ -14,7 +13,7 @@ module.exports = {
     '<rootDir>/client/src/RatingsAndReviews',
 
     // RelatedItems
-    '<rootDir>/client/src/RelatedItems',
+    // '<rootDir>/client/src/RelatedItems',
 
   ],
 };
