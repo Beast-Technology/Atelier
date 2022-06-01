@@ -25,7 +25,7 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
       <div className="answer-info">
         <span>by {a.answerer_name}, {DatePosted(a.date)}</span>
         |
-        <Helpful count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
+        <Helpful target={'answer'} id={a.id} count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
         {/* <span>Report</span> */}
         <ReportButton />

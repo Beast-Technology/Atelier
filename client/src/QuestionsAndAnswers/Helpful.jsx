@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Helpful({ id, count, onMarkHelpful }) {
+export default function Helpful({ target, id, count, onMarkHelpful }) {
   const [localCount, setLocalCount] = useState(count);
   const [isClicked, setClicked] = useState(''); //
 
@@ -11,11 +11,22 @@ export default function Helpful({ id, count, onMarkHelpful }) {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('qStatus')) {
-      let qStatus = JSON.parse(localStorage.getItem('qStatus'));
-      qStatus[id] === true ? setClicked(true) : setClicked(false);
-    } else {
-      setClicked(false);
+    if (target === 'question') {
+      if (localStorage.getItem('qStatus')) {
+        let qStatus = JSON.parse(localStorage.getItem('qStatus'));
+        qStatus[id] === true ? setClicked(true) : setClicked(false);
+      } else {
+        setClicked(false);
+      }
+    }
+
+    if (target === 'answer') {
+      if (localStorage.getItem('aStatus')) {
+        let aStatus = JSON.parse(localStorage.getItem('aStatus'));
+        aStatus[id].helpful === true ? setClicked(true) : setClicked(false);
+      } else {
+        setClicked(false);
+      }
     }
   }, []);
 

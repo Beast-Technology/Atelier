@@ -37,7 +37,7 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
           <p className="question-title" dangerouslySetInnerHTML={createMarkup(q.question_body)} />
 
           <div className="question-actions">
-            <Helpful id={q.question_id} count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
+            <Helpful target={'question'} id={q.question_id} count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
             <span onClick={handleAddAnswer} className="underline">Add Answers</span>
           </div>
