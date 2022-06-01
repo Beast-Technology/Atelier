@@ -51,7 +51,7 @@ function App() {
           styles={styles}
           setStyle={setStyle}
         />
-        {/* <RatingsAndReviews
+        <RatingsAndReviews
           meta={meta}
         />
         <QuestionsAndAnswers
@@ -63,7 +63,7 @@ function App() {
           setProductID={setProductID}
           product={product}
           style={style}
-        /> */}
+        />
       </MetaContext.Provider>
       <Modal productID={productID} productName={product.name} modal={modal} />
     </div>
