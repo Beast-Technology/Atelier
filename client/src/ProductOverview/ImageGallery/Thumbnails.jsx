@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const thumbnailLength = 50;
 
@@ -104,7 +104,7 @@ export default function Thumbnails({
             )
             : (
               <img
-                style={{border: '3px grey solid' }}
+                style={{ border: '3px grey solid' }}
                 key={photo.thumbnail_url}
                 src={photo.thumbnail_url}
                 onClick={() => {

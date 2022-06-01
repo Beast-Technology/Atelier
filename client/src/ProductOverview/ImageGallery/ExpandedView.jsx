@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
-import DefaultViewIcons from './DefaultViewIcons.jsx';
+// import DefaultViewIcons from './DefaultViewIcons.jsx';
 
 const expanded = {
   border: '2px solid gray',
@@ -33,7 +33,6 @@ const leftArrow = {
 export default function ExpandedView({
   index, setIndex, photos, showExpanded, setShowExpanded,
 }) {
-
   const RightArrow = (
     <button
       style={rightArrow}
