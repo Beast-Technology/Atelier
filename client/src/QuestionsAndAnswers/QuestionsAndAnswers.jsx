@@ -60,6 +60,16 @@ function QuestionsAndAnswers({ productID, setModal }) {
           sortedResults.forEach((q) => { qStatus[q.question_id] = false; });
           localStorage.setItem('qStatus', JSON.stringify(qStatus));
         }
+
+        if (!localStorage.getItem('aStatus')) {
+          const aStatus = {};
+          sortedResults.forEach((q) => {
+            Object.values(q.answers).forEach(
+              (a) => { aStatus[a.id] = { helpful: false, reported: false } }
+            )
+          });
+          localStorage.setItem('aStatus', JSON.stringify(aStatus));
+        }
       })
       .catch((err) => { alert(err); });
   }, []);
