@@ -13,7 +13,10 @@ module.exports = {
     '<rootDir>/client/src/RatingsAndReviews',
 
     // RelatedItems
-    // '<rootDir>/client/src/RelatedItems',
+    '<rootDir>/client/src/RelatedItems',
 
   ],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
 };
