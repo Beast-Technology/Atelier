@@ -44,22 +44,330 @@ export default function AddReviewModal({ productID, productName }) {
           </label>
 
           <label>Do you recommend this product? *
-            <label className="container">Yes
-              <input type="checkbox" checked="checked" />
-              <span className="checkmark"></span>
-            </label>
-            <label className="container">No
-              <input type="checkbox" />
-              <span className="checkmark"></span>
-            </label>
+            <div className="recommendContainer">
+              <label className="container">Yes
+                <input type="checkbox" />
+                <span className="checkmark"></span>
+              </label>
+              <label className="container">No
+                <input type="checkbox" />
+                <span className="checkmark"></span>
+              </label>
+            </div>
           </label>
 
           <label>Characteristics *
-            <input  name="asker_name" type="text" placeholder="Characteristics" />
+
+            <label>
+              <div className="charCategory">Size</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>A size too small</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Half a size too small</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>1/2 a size too big</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>A size too wide</span>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <div className="charCategory">Width</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Too narrow</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Slightly narrow</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Slightly wide</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Too wide</span>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <div className="charCategory">Comfort</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Uncomfortable</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Slightly uncomfortable</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Ok</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Comfortable</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <div className="charCategory">Quality</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Poor</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Below average</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>What I expected</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Pretty great</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <div className="charCategory">Length</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs short</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs slightly short</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs slightly long</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs long</span>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <div className="charCategory">Fit</div>
+              <div className="charContainer">
+                <div className="charNums">
+                  <div>
+                    <label className="container">1
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs tight</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">2
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs slightly tight</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">3
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Perfect</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">4
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs slightly long</span>
+                </div>
+                <div className="charNums">
+                  <div>
+                    <label className="container">5
+                      <input type="checkbox" />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                  <span>Runs long</span>
+                </div>
+              </div>
+            </label>
+
           </label>
 
           <label>Review Summary *
-            <input  name="asker_name" type="text" placeholder="Write your summary here" />
+            <input  name="asker_name" type="text" placeholder="Write your summary here..." />
           </label>
 
           <label>Review Body *
@@ -76,7 +384,7 @@ export default function AddReviewModal({ productID, productName }) {
           </label>
 
           <label>Email *
-            <input onChange={handleEmailChange} type="email" maxLength="60" placeholder="Why did you like the product or not?" required />
+            <input onChange={handleEmailChange} type="email" maxLength="60" placeholder="example@gmail.com" required />
             <span className="input-description">For authentication reasons, you will not be emailed</span>
           </label>
 

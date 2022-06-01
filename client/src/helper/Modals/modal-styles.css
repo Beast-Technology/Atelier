@@ -63,10 +63,11 @@
 
 /* Checkboxes for Add Review */
 
-.container {
+.modal-review .container {
   display: flex;
   position: relative;
   padding-left: 35px;
+  padding-right: 10px;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
@@ -77,14 +78,14 @@
 }
 
 /* Hide the browser's default radio button */
-.container input {
+.modal-review .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
 /* Create a custom radio button */
-.checkmark {
+.modal-review .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -95,33 +96,61 @@
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.modal-review .container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.modal-review .container input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
+.modal-review .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
+.modal-review .container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.container .checkmark:after {
+.modal-review .container .checkmark:after {
  	top: 9px;
 	left: 9px;
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
 	background: white;
+}
+
+.recommendContainer {
+  display: flex;
+  padding-right: 1rem;
+  padding-top: 3rem;
+}
+
+.charContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2rem;
+}
+
+.charNums {
+  display: flex;
+  flex-direction: column;
+}
+
+.charContainer span {
+  font-size: 1rem;
+}
+
+.charCategory {
+  font-size: 1.2rem;
+  font-weight: 500;
+  width: fit-content;
+  border-bottom: 1px black solid;
 }
