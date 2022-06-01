@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Stars } from '../helper/Stars.jsx';
-import metaToRating from './Helper/MetaObjToRating.js';
+import metaToRating from './helper/MetaObjToRating.js';
 
 function RelatedProductsCard({
   relatedItem, setShow, setClickedItem, setProductID,

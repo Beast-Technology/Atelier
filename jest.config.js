@@ -1,8 +1,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: [
-    // insert test here if you wish to ignore them when running 'npm run test script'
-    // '/node_modules/',
+    // comment out your component root folderstring when working on your module test
 
     // ProductOverview
     '<rootDir>/client/src/ProductOverview',
@@ -17,4 +16,7 @@ module.exports = {
     '<rootDir>/client/src/RelatedItems',
 
   ],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
 };

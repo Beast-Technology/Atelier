@@ -67,6 +67,7 @@ function YourOutfitContainer({
 
 
   // ---condiitonal rendering of the AddButton/isAre string --- //
+
   let addButtonDiv;
   let isAreSpan;
   if (addButton) {

@@ -1,12 +1,12 @@
 
 /* ------------------------ MAIN ------------------------ */
 
-#RelatedItems {
+/* #RelatedItems {
   border: 10px rgb(41, 206, 4) solid;
   width: 1200px;
   margin: 48px auto;
   padding: 32px;
-}
+} */
 button {
   transition-property: transform;
   transition-duration: 500ms;
