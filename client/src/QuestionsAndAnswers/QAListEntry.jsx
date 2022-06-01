@@ -12,6 +12,10 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+
+    const qStatus = JSON.parse(localStorage.getItem('qStatus'));
+    qStatus[q.question_id] = true;
+    localStorage.setItem('qStatus', JSON.stringify(qStatus));
   }
 
   function handleAddAnswer() {
