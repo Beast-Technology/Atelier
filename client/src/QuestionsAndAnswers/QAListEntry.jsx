@@ -12,6 +12,10 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
     axios.put(`/qa/questions/${q.question_id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+
+    const qStatus = JSON.parse(localStorage.getItem('qStatus'));
+    qStatus[q.question_id] = true;
+    localStorage.setItem('qStatus', JSON.stringify(qStatus));
   }
 
   function handleAddAnswer() {
@@ -33,7 +37,7 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
           <p className="question-title" dangerouslySetInnerHTML={createMarkup(q.question_body)} />
 
           <div className="question-actions">
-            <Helpful count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
+            <Helpful target={'question'} id={q.question_id} count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
             <span onClick={handleAddAnswer} className="underline">Add Answers</span>
           </div>
