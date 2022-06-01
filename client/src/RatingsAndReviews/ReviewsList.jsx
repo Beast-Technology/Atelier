@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import ReviewTile from './ReviewTile.jsx';
 import AddReview from './AddReview.jsx';
+import Sorter from './Sorter.jsx';
 
 function ReviewsList({ reviews, meta, onClick }) {
   const [totalReviews, setTotalReviews] = useState(0);
-  const [isActive, setIsActive] = useState(false);
   const [addReview, setAddReview] = useState(false);
 
   useEffect(() => {
@@ -21,20 +21,13 @@ function ReviewsList({ reviews, meta, onClick }) {
         <h3>
           <div className="totalReviews">
             <span>{`${totalReviews} reviews, sorted by`}</span>
-            <span className="listDropdown">
-              <span className="dropdownOptions">
-                <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
-                <span className="sorter" onClick={() => setIsActive(!isActive)}>Helpful</span>
-                <span className="sorter" onClick={() => setIsActive(!isActive)}>Newest</span>
-              </span>
-              <span className="material-symbols-outlined" style={{ verticalAlign: 'middle', marginLeft: "8rem" }}>expand_more</span>
-            </span>
+            <Sorter />
           </div>
         </h3>
         <table className="reviewsList">
           <tbody>
             {
-              (reviews.results || []).map((review, index) => (
+              (reviews || []).map((review, index) => (
                 <tr>
                   <ReviewTile review={review} key={index} />
                 </tr>
@@ -43,8 +36,8 @@ function ReviewsList({ reviews, meta, onClick }) {
           </tbody>
         </table>
         {/* should be a button eslint */}
-        <button className="moreReviews" onClick={onClick}>More Reviews</button>
-        <button className="addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</button>
+        <a className="btn btn-outline moreReviews" onClick={onClick}>More Reviews</a>
+        <a className="btn btn-primary addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</a>
       </div>
     );
   }
