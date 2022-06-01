@@ -10,6 +10,10 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
     axios.put(`/qa/answers/${a.id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+
+    let aStatus = JSON.parse(localStorage.getItem('aStatus'));
+    aStatus[a.id].helpful = true;
+    localStorage.setItem('aStatus', JSON.stringify(aStatus));
   }
 
   return (
