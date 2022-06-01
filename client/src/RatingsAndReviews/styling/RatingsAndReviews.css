@@ -50,8 +50,8 @@
 
 .star {
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 3rem;
   background-color: grey;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -79,12 +79,12 @@
   );
 }
 
-.star.selected {
-  background-color: goldenrod;
+.star:hover {
+  background: gainsboro;
 }
 
-path {
-  background-color: blue;
+.star.selected {
+  background-color: goldenrod;
 }
 
 .starTest {

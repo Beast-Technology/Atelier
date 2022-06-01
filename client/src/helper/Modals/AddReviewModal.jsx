@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { StarRatingSelect } from '../Stars.jsx';
 
 const axios = require('axios');
 
-export default function AddQuestionModal({ productID, productName }) {
+export default function AddReviewModal({ productID, productName }) {
   // const product_id = 40333;
 
   const [body, setBody] = useState('');
@@ -30,16 +31,43 @@ export default function AddQuestionModal({ productID, productName }) {
   }
 
   return (
-    <div className="modal-box modal-addq">
+    <div className="modal-box modal-review">
       <header>
-        <h3 className="heading heading-tertiary">Ask Your Questions</h3>
-        <span className="subheading">About the {productName}</span>
+        <h3 className="heading heading-tertiary">Review</h3>
+        <span className="subheading">on the {productName}</span>
       </header>
 
       <main>
-        <form className="modal-form" onSubmit={handleSubmit} >
-          <label>Your Question *
-            <textarea onChange={handleQuestionChange} name="question_body" maxLength="1000" placeholder="Write your question here..." required></textarea>
+        <form className="modal-form" onSubmit={handleSubmit}>
+          <label>Overall Rating *
+            <StarRatingSelect totalStars={5} />
+          </label>
+
+          <label>Do you recommend this product? *
+            <label className="container">Yes
+              <input type="checkbox" checked="checked" />
+              <span className="checkmark"></span>
+            </label>
+            <label className="container">No
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+            </label>
+          </label>
+
+          <label>Characteristics *
+            <input  name="asker_name" type="text" placeholder="Characteristics" />
+          </label>
+
+          <label>Review Summary *
+            <input  name="asker_name" type="text" placeholder="Write your summary here" />
+          </label>
+
+          <label>Review Body *
+            <textarea  name="question_body" maxLength="1000" placeholder="Write your body here..." required></textarea>
+          </label>
+
+          <label>Upload Photos *
+            <input  name="asker_name" type="text" placeholder="Photo Here" />
           </label>
 
           <label>Nickname *
@@ -52,7 +80,7 @@ export default function AddQuestionModal({ productID, productName }) {
             <span className="input-description">For authentication reasons, you will not be emailed</span>
           </label>
 
-          <input className="btn btn-primary" type="submit" value="Submit Your Question" />
+          <input className="btn btn-primary" type="submit" value="Submit Your Review" />
         </form>
       </main>
     </div>

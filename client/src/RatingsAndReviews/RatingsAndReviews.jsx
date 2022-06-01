@@ -7,7 +7,7 @@ import ReviewsList from './ReviewsList.jsx';
 import ReviewButtons from './ReviewButtons.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
-function RatingsAndReviews() {
+function RatingsAndReviews({ setModal }) {
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState([]);
   const [pageUp, setPageUp] = useState(1);
@@ -53,7 +53,7 @@ function RatingsAndReviews() {
           <RatingBreakdown meta={meta} />
           <ProductBreakdown meta={meta} />
         </div>
-        <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />
+        <ReviewsList reviews={reviews} meta={meta} setModal={setModal} onClick={onClickMoreReviews} />
         {/* <h3>--ReviewButtons--</h3>
         <ReviewButtons />
         Keyword search low priority */}
