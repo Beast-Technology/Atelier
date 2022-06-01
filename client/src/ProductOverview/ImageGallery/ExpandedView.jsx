@@ -4,29 +4,93 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
+import DefaultViewIcons from './DefaultViewIcons.jsx';
 
 const expanded = {
   border: '2px solid gray',
-  position: 'fixed',
+  position: 'absolute',
   zIndex: 2,
   backgroundColor: 'grey',
-  // width: '90%',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
 };
 
-export default function ExpandedView({ index, photos, showExpanded, setShowExpanded }) {
+const rightArrow = {
+  position: 'absolute',
+  fontSize: '30px',
+  top: '50%',
+  right: '0',
+  zIndex: '1',
+};
+const leftArrow = {
+  position: 'absolute',
+  fontSize: '30px',
+  top: '50%',
+  zIndex: '1',
+};
+
+export default function ExpandedView({
+  index, setIndex, photos, showExpanded, setShowExpanded,
+}) {
+
+  const RightArrow = (
+    <button
+      style={rightArrow}
+      onClick={() => {
+        setIndex(index + 1);
+      }}
+      type="button"
+    >
+      ›
+    </button>
+  );
+
+  const LeftArrow = (
+    <button
+      style={leftArrow}
+      onClick={() => {
+        setIndex(index - 1);
+      }}
+      type="button"
+    >
+      ‹
+    </button>
+  );
 
   return showExpanded
     ? (
       <div
         style={expanded}
-        onClick={() => setShowExpanded(false)}
       >
-        <img
-          src={photos[index].url}
-        />
+        <div>
+          {LeftArrow}
+          <img
+            src={photos[index].url}
+            onClick={() => {
+              setShowExpanded(false);
+            }}
+          />
+          {RightArrow}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {photos.map((photo, i) => (i === index ? (
+            <button
+              type="button"
+              style={{ backgroundColor: 'green' }}
+            >{i + 1}
+            </button>
+          )
+            : (
+              <button
+                type="button"
+                onClick={() => setIndex(i)}
+              >
+                {i + 1}
+              </button>
+            )))}
+        </div>
+        {/* <DefaultViewIcons /> */}
       </div>
     )
     : '';

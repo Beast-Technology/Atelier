@@ -27,6 +27,7 @@ export default function ImageGallery({ product, photos }) {
       <div>
         <ExpandedView
           index={index}
+          setIndex={setIndex}
           photos={photos}
           setShowExpanded={setShowExpanded}
           showExpanded={showExpanded}
