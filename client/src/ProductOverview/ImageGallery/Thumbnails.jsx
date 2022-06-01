@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const thumbnailLength = 50;
 
@@ -33,11 +33,8 @@ const upArrow = {
 };
 
 export default function Thumbnails({
-  index, photos, setIndex, setXCoord, xCoord,
+  index, photos, setIndex, count, setCount,
 }) {
-  const [count, setCount] = useState(0);
-  const [yCoord, setYCoord] = useState(0);
-
   const thumbnailInner = {
     display: 'flex',
     flexDirection: 'column',
@@ -45,7 +42,7 @@ export default function Thumbnails({
     transition: '600ms',
     gap: '5px',
     margin: '5px',
-    top: yCoord,
+    top: 0 - (count * 57.5),
   };
 
   const DownArrow = count < (photos.length - 7)
@@ -54,7 +51,6 @@ export default function Thumbnails({
         style={downArrow}
         onClick={() => {
           setCount(count + 1);
-          setYCoord(yCoord - 57.5);
         }}
         type="button"
       >
@@ -76,7 +72,6 @@ export default function Thumbnails({
         style={upArrow}
         onClick={() => {
           setCount(count - 1);
-          setYCoord(yCoord + 57.5);
         }}
         type="button"
       >
@@ -114,7 +109,6 @@ export default function Thumbnails({
                 src={photo.thumbnail_url}
                 onClick={() => {
                   setIndex(i);
-                  setXCoord(xCoord - ((i - index) * 700));
                 }}
                 width={thumbnailLength}
                 height={thumbnailLength}
