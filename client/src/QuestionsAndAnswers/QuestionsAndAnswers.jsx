@@ -54,6 +54,12 @@ function QuestionsAndAnswers({ productID, setModal }) {
         setQAData(sortedResults);
         setQs(sortedResults);
         setDisplayQs(sortedResults.slice(0, 2));
+
+        if (!localStorage.getItem('qStatus')) {
+          const qStatus = {};
+          sortedResults.forEach((q) => { qStatus[q.question_id] = false; });
+          localStorage.setItem('qStatus', JSON.stringify(qStatus));
+        }
       })
       .catch((err) => { alert(err); });
   }, []);
