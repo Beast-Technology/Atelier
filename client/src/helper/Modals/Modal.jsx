@@ -6,7 +6,6 @@ import AddAnswerModal from './AddAnswerModal.jsx';
 import AddReviewModal from './AddReviewModal.jsx';
 
 export default function Modal({ productID, productName, modal }) {
-
   function renderModal({ modalName, modalData }) {
     switch (modalName) {
       case 'addq':

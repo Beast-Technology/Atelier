@@ -48,17 +48,20 @@ function CompareModal({ showModal, currentProduct, clickedItem }) {
 
   return (
     <div className="modalCard">
-      <table>
-        <tbody>
-          <tr>
-            <th>{currentProduct.name}</th>
-            <th>Compare</th>
-            <th>{clickedItem.name}</th>
-          </tr>
-          {tableVals}
-        </tbody>
-      </table>
+      <div className="fixTableHead">
+        <table cellSpacing="0" cellPadding="0">
+          <thead>
+            <tr>
+              <th>{currentProduct.name}</th>
+              <th> </th>
+              <th>{clickedItem.name}</th>
+            </tr>
+            {tableVals}
+          </thead>
+        </table>
+      </div>
     </div>
+
   );
 }
 

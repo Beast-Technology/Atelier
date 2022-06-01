@@ -10,6 +10,16 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
     axios.put(`/qa/answers/${a.id}/helpful`)
       .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
+
+    let aStatus = JSON.parse(localStorage.getItem('aStatus'));
+    aStatus[a.id].helpful = true;
+    localStorage.setItem('aStatus', JSON.stringify(aStatus));
+  }
+
+  function markReported() {
+    let aStatus = JSON.parse(localStorage.getItem('aStatus'));
+    aStatus[a.id].reported = true;
+    localStorage.setItem('aStatus', JSON.stringify(aStatus));
   }
 
   return (
@@ -21,10 +31,10 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
       <div className="answer-info">
         <span>by {a.answerer_name}, {DatePosted(a.date)}</span>
         |
-        <Helpful count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
+        <Helpful target={'answer'} id={a.id} count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
         {/* <span>Report</span> */}
-        <ReportButton />
+        <ReportButton id={a.id} onMarkReported={markReported} />
       </div>
     </li>
   )

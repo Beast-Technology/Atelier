@@ -154,3 +154,8 @@
   width: fit-content;
   border-bottom: 1px black solid;
 }
+
+.modal-form input[type="file"] {
+  margin-bottom: 16px;
+}
+

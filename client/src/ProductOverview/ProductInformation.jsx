@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Stars } from '../helper/Stars.jsx';
 import { MetaContext } from '../context.js';
 
@@ -9,15 +9,17 @@ export default function ProductInformation({style, product}) {
   const ratings = useContext(MetaContext);
 
   return (
-    <div>
-      <Stars rating={ratings}/>
-      <a href="" onClick={(e) => e.preventDefault()}>Read All Reviews</a>
+    <div style={{margin: "10px 0"}}>
       <div>{category}</div>
       <div>{name}</div>
       {sale_price ?
         (<div><s>${original_price}</s> <span style={{color: 'red'}}>${sale_price}</span></div>) :
         (<div>${original_price}</div>)
       }
+      <div style={{margin: "10px 0"}}>
+        <Stars rating={ratings}/>
+        <a href="#reviews">Read All Reviews</a>
+      </div>
     </div>
   )
 }

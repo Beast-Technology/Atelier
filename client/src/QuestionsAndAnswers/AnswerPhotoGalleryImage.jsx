@@ -2,8 +2,10 @@ import React from 'react';
 
 export default function AnswerPhotoGalleryImage({ url, setphotoModalURL }) {
   function handleClick() {
-    setphotoModalURL(url);
-    document.getElementById('answer-modal').style.display = 'block';
+    if (setphotoModalURL !== false) {
+      setphotoModalURL(url);
+      document.getElementById('answer-modal').style.display = 'block';
+    }
   }
 
   return (
