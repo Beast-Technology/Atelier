@@ -50,20 +50,16 @@ function ReviewTile({ review }) {
           <img className="photo" src={`${pic.url}`}/>
         ))}
       </div>
-      {/* Should open modal on click and x button to get out */}
       {review.recommend
       ? (<div className="recommendProduct">
-          {/* <svg xmlns="http://www.w3.org/2000/svg" className="check" viewBox="0, 0, 20, 20"><path d="M18.9 35.7 7.7 24.5 9.85 22.35 18.9 31.4 38.1 12.2 40.25 14.35Z"/></svg> */}
           <svg xmlns="http://www.w3.org/2000/svg" className="check" viewBox="0, 0, 50, 50"><path d="M18.9 35.7 7.7 24.5 9.85 22.35 18.9 31.4 38.1 12.2 40.25 14.35Z"/></svg>
           I recommend this product</div>)
         : <div></div>}
-      {/* if response is true return else leave out */}
       {review.response ? <h4>Response: {review.response}</h4> : <div></div>}
       <div className="tileBotRow">
         <div>Was this review helpful?</div>
         <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulYes}>Yes</span> ({helpful})
         <span className="buttons" onClick={clicked ? console.log("Clicked Already") : onClickHelpfulNo}>No</span> ({notHelpful})
-        {/* Report wasn't not listed in Atelier Docs */}
         {report ? <span className="reported">Reported</span> : <span className="buttons" onClick={onClickReport}>Report</span>}
         <br />
       </div>
@@ -72,13 +68,3 @@ function ReviewTile({ review }) {
 }
 
 export default ReviewTile;
-
-
-// -star rating
-// -date of review
-// -review summary
-// -review body
-// -recommend
-// -reviewer name
-// -response to review
-// -rating helpfulness

@@ -95,11 +95,8 @@
 #reviewTile {
   display: flex;
   flex-direction: column;
-  padding-bottom: 1%;
   border-bottom: 1px #c2255c solid;
   margin-bottom: 1%;
-  max-width: 40vw;
-  min-width: 40vw;
   text-align: left;
   background: white;
 }
@@ -180,6 +177,11 @@
   overflow: auto;
 }
 
+.reviewsList tr {
+  background: white;
+  display: block;
+}
+
 .sorter {
   border-bottom: 1px black solid;
 }
@@ -201,6 +203,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
+  margin-left: 1rem;
 }
 
 .listDropdown {
@@ -420,4 +423,9 @@
 .totalReviews .container {
   padding-left: 0px;
   margin-bottom: 0px;
+}
+
+/* Ratings and Reviews */
+.mainPage .right {
+  width: 100%;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PhotoUploader from './PhotoUploader.jsx';
 import { StarRatingSelect } from '../Stars.jsx';
 
 const axios = require('axios');
@@ -9,16 +10,18 @@ export default function AddReviewModal({ productID, productName }) {
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('/qa/questions', {body, name, email, product_id: productID})
+    axios.post('/reviews', {body, name, email, product_id: productID})
       .then(() => { console.log('success!') })
       .then(() => { document.getElementById('modal').style.display = 'none' })
       .catch((err) => { alert(err) });
   }
 
-  function handleQuestionChange(e) {
+
+  function handleBodyChange(e) {
     setBody(e.target.value);
   }
 
@@ -371,11 +374,11 @@ export default function AddReviewModal({ productID, productName }) {
           </label>
 
           <label>Review Body *
-            <textarea  name="question_body" maxLength="1000" placeholder="Write your body here..." required></textarea>
+            <textarea  onChange={handleBodyChange} name="question_body" maxLength="1000" placeholder="Write your body here..." required></textarea>
           </label>
 
           <label>Upload Photos *
-            <input  name="asker_name" type="text" placeholder="Photo Here" />
+            <PhotoUploader photos={photos} setPhotos={setPhotos} />
           </label>
 
           <label>Nickname *
