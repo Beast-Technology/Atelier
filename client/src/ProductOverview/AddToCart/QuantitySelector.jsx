@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-export default function QuantitySelector({sku, setQty}) {
-
-
+export default function QuantitySelector({ sku, setQty }) {
   const skuNotSelected = (
     <select disabled>
       <option>-</option>
@@ -14,11 +12,13 @@ export default function QuantitySelector({sku, setQty}) {
       <select
         onChange={(e) => setQty(e.target.value)}
       >
-        {sku ? [...Array(sku.quantity)].map((e, i) => {
-          return (i === 0 || i > 15) ? '' : (<option key={i}>{i}</option>);
-        }) : (<option>OUT OF STOCK</option>)}
+        {sku
+          ? [...Array(sku.quantity)].map((e, i) => (
+            (i === 0 || i > 15) ? '' : (<option key={i}>{i}</option>)
+          ))
+          : (<option>OUT OF STOCK</option>)}
       </select>
-      <button>Add To Cart</button>
+      <button type="button">Add To Cart</button>
     </div>
   );
 
@@ -26,7 +26,5 @@ export default function QuantitySelector({sku, setQty}) {
     <span>
       {sku ? skuSelected : skuNotSelected}
     </span>
-  )
+  );
 }
-
-//(<option key={i} selected hidden disabled>SELECT QUANTITY</option>)

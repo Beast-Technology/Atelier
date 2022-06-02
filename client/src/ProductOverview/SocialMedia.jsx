@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function SocialMeda() {
   return (
-    <div style={{margin: "10px 0"}}>
+    <div style={{ margin: '10px 0' }}>
       <i>Share on Social Media!</i>
-      <div style={{display: "flex"}}>
+      <div style={{ display: 'flex' }}>
         <a
           href="https://twitter.com/share"
           className="twitter-share-button"
@@ -26,5 +26,5 @@ export default function SocialMeda() {
         <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"> </a>
       </div>
     </div>
-  )
+  );
 }

@@ -7,39 +7,53 @@ import ReviewsList from './ReviewsList.jsx';
 import ReviewButtons from './ReviewButtons.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
-function RatingsAndReviews({meta}) {
+function RatingsAndReviews({ setModal }) {
   const [reviews, setReviews] = useState([]);
-  const [countUp, setCountUp] = useState(2);
+  const [meta, setMeta] = useState([]);
+  const [pageUp, setPageUp] = useState(1);
   // update page and concat instead of incrementing count
   useEffect(() => {
     axios.get('/reviews', {
       params: {
         product_id: 40344,
-        page: 1,
-        count: countUp,
+        page: pageUp,
+        count: 2,
       },
     })
       .then((res) => {
-        // console.log(res.data);
-        setReviews(res.data);
+        console.log(res.data.results);
+        setReviews((currState) => { return currState.concat(res.data.results); });
       })
       .catch((err) => { console.log(err); });
-  }, [countUp]);
+  }, [pageUp]);
+
+  useEffect(() => {
+    axios.get('/reviews/meta', {
+      params: {
+        product_id: 40344,
+      },
+    })
+      .then((res) => {
+        setMeta(res.data);
+      })
+      .catch((err) => { console.log(err); });
+  }, []);
 
   const onClickMoreReviews = () => {
-    setCountUp(countUp + 2);
+    setPageUp(pageUp + 1);
   };
 
   return (
-    <section id="reviews" style={{border: '2px blue solid'}}>
+    <section>
+      {console.log(reviews)}
       <h2>Ratings and Reviews</h2>
       {/* Create sorting option for display of reviews list */}
       <div className="mainPage">
         <div>
           <RatingBreakdown meta={meta} />
-          {/* <ProductBreakdown meta={meta} /> */}
+          <ProductBreakdown meta={meta} />
         </div>
-        <ReviewsList reviews={reviews} meta={meta} onClick={onClickMoreReviews} />
+        <ReviewsList reviews={reviews} meta={meta} setModal={setModal} onClick={onClickMoreReviews} />
         {/* <h3>--ReviewButtons--</h3>
         <ReviewButtons />
         Keyword search low priority */}
