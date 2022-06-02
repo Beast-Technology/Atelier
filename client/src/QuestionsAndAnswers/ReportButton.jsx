@@ -11,7 +11,11 @@ export default function ReportButton({ id, onMarkReported }) {
   useEffect(() => {
     if (localStorage.getItem('aStatus')) {
       let aStatus = JSON.parse(localStorage.getItem('aStatus'));
-      aStatus[id].reported === true ? setReported(true) : setReported(false);
+      if (aStatus[id]) {
+        aStatus[id].reported === true ? setReported(true) : setReported(false);
+      } else {
+        setReported(false);
+      }
     } else {
       setReported(false);
     }
