@@ -7,7 +7,6 @@ import useOutsideClick from './helper/useOutsideClick.js';
 import CompareModal from './CompareModal.jsx';
 import './RelatedItems.css';
 
-
 function RelatedItems({
   product, productID, setProductID, style,
 }) {
@@ -15,15 +14,13 @@ function RelatedItems({
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
 
-
-  // const [localRelatedItems, setlocalRelatedItems] = useState({});
-
+    // --------------------- get relatedItems/load Related API on change of productID ------------------- //
 
   useEffect(() => {
     getRelated(productID, setRelatedItems);
   }, [productID]);
 
-  // --------------------- using localStorage ------------------- //
+  // ---------------------  set relatedItems into sessionStorage ------------------- //
 
   useEffect(() => {
     const tempRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
@@ -35,7 +32,7 @@ function RelatedItems({
     });
   }, [relatedItems]);
 
-  // --------------------- localStorage ------------------- //
+  // --------------------- onClick on any div other than referenced, setShow modal to false ------------------- //
 
   const ref = useRef();
 
@@ -44,8 +41,7 @@ function RelatedItems({
   });
 
   return (
-  // Junsu: added style for CSS debugging purposes, delete later
-    <section style={{ border: '2px purple solid' }} id="RelatedItems">
+    <section id="RelatedItems">
       <div ref={ref}>
         <CompareModal
           showModal={showModal}
