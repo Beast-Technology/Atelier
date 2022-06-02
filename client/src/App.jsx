@@ -43,7 +43,7 @@ function App() {
 
 
   return (
-    <div style={{ border: '2px solid red' }}>
+    <div>
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}
