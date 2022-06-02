@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import ReviewTile from './ReviewTile.jsx';
 import Sorter from './Sorter.jsx';
 
 function ReviewsList({ reviews, meta, onClick, setModal }) {
   const [totalReviews, setTotalReviews] = useState(0);
-  const [addReview, setAddReview] = useState(false);
 
   useEffect(() => {
     if (meta.recommended) {
