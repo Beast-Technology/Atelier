@@ -12,7 +12,7 @@ function YourOutfitContainer({
   const [xCoord, setXCoord] = useState(0);
   const { length } = yourOutfitItems;
 
-  // --------------------- using localStorage ------------------- //
+  // ---------------------  get yourOutfit items from sessionStorage and set on load ------------------- //
 
   useEffect(() => {
     const localOutfitItems = JSON.parse(sessionStorage.getItem('ls_outfitItems')) || [];
@@ -21,12 +21,14 @@ function YourOutfitContainer({
     }
   }, []);
 
+  // --------------------- set yourOutfit items to sessionStorage on change of productID ------------------- //
+
   useEffect(() => {
     sessionStorage.setItem('ls_outfitItems', JSON.stringify(yourOutfitItems));
   }, [yourOutfitItems]);
 
 
-  // ---show/hide AddButton --- //
+  // --------------------- show/hide AddButton logic ------------------- //
 
   useEffect(() => {
     if ((yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
@@ -36,7 +38,8 @@ function YourOutfitContainer({
     }
   }, [yourOutfitItems, currentProduct.id]);
 
-  // ---add currentProduct to yourOutfitItems --- //
+
+  // --------------------- add currentProduct to yourOutfitItems ------------------- //
 
   function handleAddToOutfit() {
     if (!(yourOutfitItems.findIndex((element) => (element.id === currentProduct.id))) >= 0) {
@@ -45,16 +48,16 @@ function YourOutfitContainer({
       setOutfitItems(() => [currentProductCopy, ...yourOutfitItems]);
     }
   }
-  // ---delete selected product from yourOutfitItems --- //
+  // --------------------- delete selected product from yourOutfitItems ------------------- //
+
 
   const handleDeleteToOutfit = useCallback((clickedDeleteItem) => {
     const indexOfClicked = yourOutfitItems.findIndex((item) => item.id === clickedDeleteItem.id);
 
-    if (indexOfClicked !== length - 1) {
-      setOutfitItems(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
-    } else {
-      // if Last item is deleted
+    if (indexOfClicked === length - 1) {
       setOutfitItems(() => [...yourOutfitItems.slice(0, indexOfClicked)]);
+    } else {
+      setOutfitItems(() => [...yourOutfitItems.slice(0, indexOfClicked), ...yourOutfitItems.slice(indexOfClicked + 1)]);
     }
     if (((length - currentIndex) <= 5) && (xCoord)) {
       setXCoord((x) => x + 220);
@@ -65,8 +68,7 @@ function YourOutfitContainer({
   });
 
 
-
-  // ---condiitonal rendering of the AddButton/isAre string --- //
+  // --------------------- condiitonal rendering of the AddButton/isAre string ------------------- //
 
   let addButtonDiv;
   let isAreSpan;
@@ -98,6 +100,7 @@ function YourOutfitContainer({
     );
   }
 
+  // --------------------- handler functions for left/right arrows upon click ------------------- //
 
   const prevSlide = () => {
     setCurrentIndex(() => currentIndex - 1);
@@ -108,6 +111,8 @@ function YourOutfitContainer({
     setCurrentIndex(() => currentIndex + 1);
     setXCoord((x) => x - 220);
   };
+
+  // --------------------- left/right arrows conditional rendering ------------------- //
 
   let RightArrow;
   let LeftArrow;
@@ -164,7 +169,6 @@ function YourOutfitContainer({
               yourOutfitItem={yourOutfitItem}
               key={yourOutfitItem.id}
               handleDeleteToOutfit={handleDeleteToOutfit}
-
             />
           ))
           }

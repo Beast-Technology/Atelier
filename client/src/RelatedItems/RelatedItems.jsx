@@ -3,10 +3,9 @@ import { getRelated } from '../axiosCalls.js';
 
 import RelatedProductsContainer from './RelatedProductsContainer.jsx';
 import YourOutfitContainer from './YourOutfitContainer.jsx';
-import useOutsideClick from './useOutsideClick.js';
+import useOutsideClick from './helper/useOutsideClick.js';
 import CompareModal from './CompareModal.jsx';
 import './RelatedItems.css';
-
 
 function RelatedItems({
   product, productID, setProductID, style,
@@ -15,15 +14,13 @@ function RelatedItems({
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
 
-
-  // const [localRelatedItems, setlocalRelatedItems] = useState({});
-
+  // --------------------- get/set relatedItems from API on change of productID ------------------- //
 
   useEffect(() => {
     getRelated(productID, setRelatedItems);
   }, [productID]);
 
-  // --------------------- using localStorage ------------------- //
+  // ---------------------  set relatedItems into sessionStorage ------------------- //
 
   useEffect(() => {
     const tempRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
@@ -35,17 +32,17 @@ function RelatedItems({
     });
   }, [relatedItems]);
 
-  // --------------------- localStorage ------------------- //
+  // --------------------- onClick on any div other than referenced, setShow modal to false ------------------- //
 
   const ref = useRef();
-
   useOutsideClick(ref, () => {
     setShow(false);
   });
 
+
   return (
-  // Junsu: added style for CSS debugging purposes, delete later
-    <section style={{ border: '2px purple solid' }} id="RelatedItems">
+    <section id="RelatedItems">
+      <h2 className="heading heading-secondary">RELATED ITEMS</h2>
       <div ref={ref}>
         <CompareModal
           showModal={showModal}
@@ -71,3 +68,4 @@ function RelatedItems({
 }
 
 export default RelatedItems;
+
