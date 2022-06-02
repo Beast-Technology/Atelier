@@ -1,6 +1,38 @@
 import axios from 'axios';
 
 
+
+// --------------------- get/set information for a single product- API call ------------------- //
+
+
+function getProduct(productID, setProduct) {
+  axios.request({
+    url: `/products/${productID}`,
+    method: 'get',
+  })
+    .then((response) => {
+      setProduct(response.data);
+    });
+}
+// --------------------- get/set default style and styles for a single product - API call ------------------- //
+
+function getStyles(productID, setStyle, setStyles) {
+  axios.request({
+    url: `/products/${productID}/styles`,
+    method: 'get',
+  })
+    .then((response) => {
+      let defaultStyle = response.data.results.find((style) => style['default?']);
+      if (defaultStyle === undefined) {
+        [defaultStyle] = response.data.results;
+      }
+      setStyle(defaultStyle);
+      setStyles(response.data.results);
+    });
+}
+
+// --------------------- get/set metadata for single a product- API call ------------------- //
+
 function getMeta(productID, setMeta) {
   axios.get('/reviews/meta', {
     params: {
@@ -18,30 +50,7 @@ function getMeta(productID, setMeta) {
       setMeta((sum / total).toFixed(2));
     });
 }
-function getProduct(productID, setProduct) {
-  axios.request({
-    url: `/products/${productID}`,
-    method: 'get',
-  })
-    .then((response) => {
-      setProduct(response.data);
-    });
-}
-
-function getStyles(productID, setStyle, setStyles) {
-  axios.request({
-    url: `/products/${productID}/styles`,
-    method: 'get',
-  })
-    .then((response) => {
-      let defaultStyle = response.data.results.find((style) => style['default?']);
-      if (defaultStyle === undefined) {
-        [defaultStyle] = response.data.results;
-      }
-      setStyle(defaultStyle);
-      setStyles(response.data.results);
-    });
-}
+// --------------------- get/set related items for a single product API call ------------------- //
 
 function getRelated(productID, setRelatedItems) {
   const localRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};

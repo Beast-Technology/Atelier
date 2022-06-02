@@ -16,7 +16,6 @@ function ProductOverview(
   return (
     <section
       id="product-overview"
-      style={{ border: '2px solid green' }}
     >
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', marginBottom: '20px' }}>
         <ImageGallery
