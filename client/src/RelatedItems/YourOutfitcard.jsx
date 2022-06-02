@@ -8,7 +8,6 @@ function YourOutfitcard({
 }) {
   const priceData = yourOutfitItem.style;
   const photoURL = yourOutfitItem.style.photos[0].thumbnail_url ? yourOutfitItem.style.photos[0].thumbnail_url : 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png';
-
   const rating = useContext(MetaContext);
 
   let priceDiv;

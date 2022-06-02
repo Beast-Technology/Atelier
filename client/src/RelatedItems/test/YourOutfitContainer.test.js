@@ -1,120 +1,63 @@
-// /* eslint-disable */
+/* eslint-disable */
 
-// import { render, unmountComponentAtNode } from 'react-dom';
-// import {act} from 'react-dom/test-utils';
-// import {createRoot} from 'react-dom/client';
-// import CompareModal from './../CompareModal.jsx';
-// import RelatedProductsCard from './../RelatedProductsCard.jsx';
-
-// let container = null;
-// const product1 = {
-//   features: [
-//     {feature: 'Sole', value: 'Rubber'},
-//     {feature: 'Material', value: 'FullControlSkin'},
-//     {feature: 'Mid-Sole', value: 'ControlSupport Arch Bridge'},
-//     {feature: 'Stitching', value: 'Double Stitch'}
-//   ],
-//   name: "Heir Force Ones"
-// }
-// const product2 = {
-//   features: [
-//     {feature: 'Sole', value: 'Rubber'},
-//     {feature: 'Material', value: 'FullControlSkin'},
-//     {feature: 'Mid-Sole', value: 'ControlSupport Arch Bridge'},
-//     {feature: 'Stitching', value: 'Double Stitch'}
-//   ],
-//   name: "Morning Joggers"
-// }
-// const product3 = {
-//   features: [
-//     {feature: 'Sole', value: 'Grey'},
-//     {feature: 'Material', value: 'Cotton'},
-//     {feature: 'Mid-Sole', value: 'ControlSupport Arch Bridge'},
-//     {feature: 'Stitching', value: 'Single Stitch'}
-//   ],
-//   name: "Chinos"
-// }
-// beforeEach(() => {
-//   container = document.createElement("div");
-//   document.body.appendChild(container);
-
-// });
-
-// afterEach(() => {
-//   unmountComponentAtNode(container);
-//   container.remove();
-//   container = null;
-// });
-
-// describe("Basic HTML test", () => {
-//   it("DOES NOT render the CompareModal since showModal is false:", () => {
-//     act(() => {
-//       render(<CompareModal
-//         showModal={false}
-//         />, container);
-//       });
-//       expect(container.firstChild).toBe(null);
-//     });
+import {render, unmountComponentAtNode } from 'react-dom';
+import {fireEvent, screen} from '@testing-library/react'
+import { act } from 'react-dom/test-utils';
+import { createRoot } from 'react-dom/client';
+import './../RelatedItems.css';
+import {
+  listProductsResponse1,
+  productInformationResponse1,
+  productInformationResponse2,
+  productStyleResponse1,
+  relatedProductsAPI,
+  listReviewsResponce1,
+  getReviewMetadataResponse1,
+} from '../../test_data/data.js';
 
 
-//     it("DOES render the CompareModal since showModal is true", () => {
-//       act(() => {
+import YourOutfitcard from '../YourOutfitcard.jsx';
 
-//         render(<CompareModal
-//           showModal={true}
-//           currentProduct={product1}
-//           clickedItem={product2}
-//           />, container);
 
-//           expect(container.firstChild.className).toBe("modalCard");
+let container = null;
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
 
-//         });
-//       });
-//     });
-//     describe("Table Render Test", () => {
-//       it("Confirm Title and Checkmarks show up on both features when products are the same", () => {
-//         act(() => {
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
-//           render(<CompareModal
-//             showModal={true}
-//             currentProduct={product1}
-//             clickedItem={product2}
-//             />, container);
+describe('Basic HTML test', () => {
+  it('DOES NOT render the YourOutfitcard since showModal is false:', () => {
+    act(() => {
+      render(<YourOutfitcard
+        yourOutfitItem={productInformationResponse2}
+      />, container);
+    });
 
-//             let test1 = document.getElementsByTagName("th")[0].textContent;
-//             let test2 = document.getElementsByTagName("th")[2].textContent;
 
-//             let test3 = document.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].textContent
-//             let test4 = document.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].textContent
+    console.log(container.getElementsByClassName('card-img'))
 
-//             expect(test1).toBe("Heir Force Ones");
-//             expect(test2).toBe("Morning Joggers");
+    // console.log('test2', container.classList.contains('Heir Jordans'))
 
-//             expect(test3).toBe("✓");
-//             expect(test4).toBe("✓");
-//           });
-//         });
+    expect(screen.getByRole("button", { name: "0" })).toBeInTheDocument();
 
-//         it("Confirm Title and Checkmarks show up on both features when products are the same", () => {
-//           act(() => {
+    // expect(container.classList.contains(<div class="card-name">Heir Jordans</div>)).toBe(true);
 
-//             render(<CompareModal
-//               showModal={true}
-//               currentProduct={product1}
-//               clickedItem={product3}
-//               />, container);
+  });
 
-//               let test1 = document.getElementsByTagName("th")[0].textContent;
-//               let test2 = document.getElementsByTagName("th")[2].textContent;
 
-//               let test3 = document.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].textContent
-//               let test4 = document.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].textContent
+  it('DOES render the YourOutfitcard since showModal is true', () => {
+    act(() => {
+      render(<YourOutfitcard
+        yourOutfitItem={productInformationResponse2}
+      />, container);
+    });
+  });
+  // expect(container.firstChild).toBe(null);
 
-//               expect(test1).toBe("Heir Force Ones");
-//               expect(test2).toBe("Chinos");
-
-//               expect(test3).toBe("✓");
-//               expect(test4).toBe("");
-//             });
-//           });
-//       });
+});

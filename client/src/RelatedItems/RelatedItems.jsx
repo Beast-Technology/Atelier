@@ -15,10 +15,6 @@ function RelatedItems({
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
 
-
-  // const [localRelatedItems, setlocalRelatedItems] = useState({});
-
-
   useEffect(() => {
     getRelated(productID, setRelatedItems);
   }, [productID]);

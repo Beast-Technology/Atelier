@@ -13,7 +13,7 @@ module.exports = {
     '<rootDir>/client/src/RatingsAndReviews',
 
     // RelatedItems
-    '<rootDir>/client/src/RelatedItems',
+    // '<rootDir>/client/src/RelatedItems',
 
   ],
   moduleNameMapper: {
