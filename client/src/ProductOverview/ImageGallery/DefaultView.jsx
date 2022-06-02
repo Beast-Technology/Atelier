@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
 const outer = {
@@ -29,13 +31,14 @@ const leftArrow = {
 
 
 export default function DefaultView({
-  photos, index, xCoord, setIndex, setXCoord,
+  photos, index, setIndex, setShowExpanded,
 }) {
   const inner = {
     display: 'flex',
     position: 'absolute',
     transition: '600ms',
-    left: xCoord,
+    left: 0 - (index * 700),
+    cursor: 'zoom-in',
   };
 
   const RightArrow = (
@@ -43,7 +46,6 @@ export default function DefaultView({
       style={rightArrow}
       onClick={() => {
         setIndex(index + 1);
-        setXCoord(xCoord - 700);
       }}
       type="button"
     >
@@ -56,7 +58,6 @@ export default function DefaultView({
       style={leftArrow}
       onClick={() => {
         setIndex(index - 1);
-        setXCoord(xCoord + 700);
       }}
       type="button"
     >
@@ -75,6 +76,7 @@ export default function DefaultView({
               width="700"
               key={photo.url}
               src={photo.url}
+              onClick={() => setShowExpanded(true)}
             />
           ))}
         </div>

@@ -3,17 +3,22 @@ import axios from 'axios';
 
 import ReviewTile from './ReviewTile.jsx';
 import AddReview from './AddReview.jsx';
+import Sorter from './Sorter.jsx';
 
-function ReviewsList({ reviews, meta, onClick }) {
+function ReviewsList({ reviews, meta, onClick, setModal }) {
   const [totalReviews, setTotalReviews] = useState(0);
-  const [isActive, setIsActive] = useState(false);
   const [addReview, setAddReview] = useState(false);
 
   useEffect(() => {
     if (meta.recommended) {
-      setTotalReviews(Number(meta.recommended.false) + Number(meta.recommended.true))
+      setTotalReviews(Number(meta.recommended.false) + Number(meta.recommended.true));
     }
   }, [meta]);
+
+  function handleAddReview() {
+    setModal({ modalName: 'review' });
+    document.getElementById('modal').style.display = 'block';
+  }
 
   if (addReview === false) {
     return (
@@ -21,16 +26,13 @@ function ReviewsList({ reviews, meta, onClick }) {
         <h3>
           <div className="totalReviews">
             <span>{`${totalReviews} reviews, sorted by`}</span>
-            <span>
-              <span className="sorter" onClick={() => setIsActive(!isActive)}>Relative</span>
-              <span className="material-symbols-outlined" style={{ verticalAlign: 'middle' }}>expand_more</span>
-            </span>
+            <Sorter />
           </div>
         </h3>
         <table className="reviewsList">
           <tbody>
             {
-              (reviews.results || []).map((review, index) => (
+              (reviews || []).map((review, index) => (
                 <tr>
                   <ReviewTile review={review} key={index} />
                 </tr>
@@ -39,8 +41,9 @@ function ReviewsList({ reviews, meta, onClick }) {
           </tbody>
         </table>
         {/* should be a button eslint */}
-        <button className="moreReviews" onClick={onClick}>More Reviews</button>
-        <button className="addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</button>
+        <a className="btn btn-outline moreReviews" onClick={onClick}>More Reviews</a>
+        {/* <a className="btn btn-primary addReviews" onClick={() => setAddReview(!addReview)}>Add A Review +</a> */}
+        <a className="btn btn-primary addReviews" onClick={handleAddReview}>Add A Review +</a>
       </div>
     );
   }

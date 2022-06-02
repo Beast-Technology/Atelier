@@ -53,6 +53,7 @@ function App() {
         />
         <RatingsAndReviews
           meta={meta}
+          setModal={setModal}
         />
         <QuestionsAndAnswers
           productID={productID}
