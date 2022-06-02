@@ -24,12 +24,16 @@ function RelatedItems({
 
   useEffect(() => {
     const tempRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
+    let count = 0;
     relatedItems.forEach((item) => {
       if (!tempRelateditems[item.id]) {
         tempRelateditems[item.id] = item;
+        count += 1;
       }
-      sessionStorage.setItem('ls_relatedItems', JSON.stringify(tempRelateditems));
     });
+    if (count) {
+      sessionStorage.setItem('ls_relatedItems', JSON.stringify(tempRelateditems));
+    }
   }, [relatedItems]);
 
   // --------------------- onClick on any div other than referenced, setShow modal to false ------------------- //
