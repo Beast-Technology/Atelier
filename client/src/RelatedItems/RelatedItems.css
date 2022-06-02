@@ -1,23 +1,22 @@
 
 /* ------------------------ MAIN ------------------------ */
 
-/* #RelatedItems {
-  border: 10px rgb(41, 206, 4) solid;
-  width: 1200px;
-  margin: 48px auto;
-  padding: 32px;
-} */
+
 button {
   transition-property: transform;
   transition-duration: 500ms;
+  background-color: #fff;
 }
+
 button:hover {
-  transform: scale(1.2);
-
+  transform: scale(1.3);
+  color: rgb(233, 7, 146);
+  background: white;
+  border: 0.1px solid rgb(233, 7, 146);
 }
-button:active {
-  transform: scale(0.9);
 
+button:active {
+  transform: scale(0.7);
 }
 
 /* ------------------------ CardContainers ------------------------ */
@@ -36,59 +35,19 @@ button:active {
 /* RelatedProductsContainer */
 
 #CardContainerOutter {
-  position: relative;
-  display: flex;
   width: 100%;
   height: 330px;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.faded {
-  opacity: 0.1;
-}
-
-.left-arrow {
-  position: absolute;
-  left: -15px;
-  height: 222px;
-  width: 26px;
-  border: none;
-  border-radius: 10px;
-  font-size: 4rem;
-  box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
-}
-.left-arrow:hover {
-  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
-  transform: scale(1.05);
-}
-.left-arrow:active {
-  transform: scale(0.90);
-}
-.right-arrow {
-  position: absolute;
-  right: -15px;
-  height: 222px;
-  width: 26px;
-  border: none;
-  border-radius: 10px;
-  font-size: 4rem;
-  box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
-
-}
-.right-arrow:hover {
-  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
-  transform: scale(1.05);
-}
-.right-arrow:active {
-  transform: scale(0.90);
-}
-
 #CardContainerMiddle {
-  position: relative;
-  overflow-x: hidden;
   width: 97%;
   height: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
 #CardContainerInner {
@@ -96,11 +55,38 @@ button:active {
   position: absolute;
   transition: 600ms;
 }
+/* ------------------------ Arrows ------------------------ */
 
+.arrow {
+  position: absolute;
+  height: 222px;
+  width: 26px;
+  border: none;
+  border-radius: 10px;
+  font-size: 4rem;
+  box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
+}
 
+.arrow:hover {
+  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
+  transform: scale(1.05);
+}
 
+.arrow:active {
+  transform: scale(0.90);
+}
 
+.left-arrow {
+  left: -15px;
+}
 
+.right-arrow {
+  right: -15px;
+}
+
+.faded {
+  opacity: 0.1;
+}
 
 /* ---------------- ProductsCard ---------------- */
 
@@ -112,7 +98,6 @@ button:active {
   min-width: 200px;
   box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
   padding: 8px;
-  background-color: #f1f1f1;
   display: grid;
   align-content: space-between;
   border-radius: 17px;
@@ -121,68 +106,63 @@ button:active {
 .ProductsCard:hover {
   box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
 }
-#RelatedProductsCard:active {
-  /* transform: scale(0.98); */
-  box-shadow: rgb(211 14 14 / 67%) 0px 4px 8px 0px;
-}
 
 .card-img {
+  position: relative;
   height: 150px;
   width: 100%;
+  border-radius: 10px;
   object-fit: cover;
 }
+.card-img-overlay {
+  position: absolute;
+  transition: .5s ease;
+  background-color: rgb(169 77 133 / 64%);
+  height: 50%;
+  width: 92%;
+  border-radius: 10px;
+  top: 8px;
+  left: 8px;
+  opacity: 0;
+}
+.card-img-overlay:hover {
+  opacity: 1;
+}
+.card-img-overlay:active {
+  transform: scale(1.09);
+}
+.card-img-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
 
-.card-starButton {
+.card-button {
   position: absolute;
   right: 15px;
-  top: 9px;
+  top: 15px;
   width: 25px;
   height: 25px;
   border: none;
   border-radius: 85px;
-  background-color: rgb(255 255 255 / 62%);
 }
 
-.card-starButton:hover {
-  color: rgb(233, 7, 146);
-
-}
-.card-starButton:active {
-  transform: scale(0.90);
-
-
-}
-.card-removeButton {
-  position: absolute;
-  right:15px;
-  top:15px;
-  width:25px;
-  height:25px;
-  font-size: 14px;
-  background-color: rgb(255 255 255 / 62%);
-  border-radius: 50px;
-  border: none;
-}
-
-.card-removeButton:hover {
-  color: rgb(233, 7, 146);
-}
-.card-removeButton:active {
-  transform: scale(0.90);
-}
-.card-category {
-  font-size: 1.1rem;
-  padding: 0 0 5px;
-}
-.card-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  padding: 0 0 5px;
-}
-.card-price {
+.card-text {
   font-size: 1.3rem;
   padding: 0 0 5px;
 }
+.card-name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding: 0 0 5px;
+}
+
 /* ---------------- alreadyInOutfitCard ---------------- */
 
 
@@ -216,16 +196,12 @@ button:active {
   font-size: 18px;
   height: 100%;
   width: 100%;
-  border-radius: 15px;
-
+  border-radius: 17px;
 }
 #addButtonCard-button:hover {
-  box-shadow: 3px 2px 22px 1px rgb(0 0 0 / 24%);
   transform: scale(1.05);
-
-}
-#addButtonCard-button:active {
-  transform: scale(0.90);
+  background: #fef8ff;
+  transition: .5s ease;
 }
 
 #addButtonCard {
@@ -236,7 +212,7 @@ button:active {
   min-width: 200px;
   box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px;
   padding: 8px;
-  background-color: #f1f1f1;
+  border-radius: 17px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,18 +228,12 @@ button:active {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  width: 50%;
-  height: 30%;
+  width: 60%;
+  height: 28%;
   border-radius: 56px;
-  /* display: flex; */
-  /* flex-direction: row-reverse; */
   padding: 48px 32px;
   background-color: #fff;
   box-shadow: rgb(0 0 0 / 73%) 0px 1px 20px 0px;
-  /* justify-content: space-evenly; */
-  /* align-content: space-around; */
-  /* align-items: stretch;*/
-
 }
 
 
@@ -290,7 +260,6 @@ table {
   height: 90%;
   text-align: center;
   table-layout: fixed;
-
 }
 td {
   padding: 10px;
@@ -302,27 +271,3 @@ th {
 tr:nth-child(even) {
   background: rgb(200 200 200 / 27%);
 }
-
-
-/* table tbody, table thead
-{
-  display: block;
-}
-
-table tbody
-{
-  overflow: auto;
-  height: 100px;
-} */
-
-
-/* .fadeOut{
-  opacity:0;
-  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
-
-}
-.fadeIn{
-  opacity:1;
-  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
-
-} */

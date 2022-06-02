@@ -14,7 +14,7 @@ function RelatedItems({
   const [clickedItem, setClickedItem] = useState({});
   const [relatedItems, setRelatedItems] = useState([]);
 
-    // --------------------- get relatedItems/load Related API on change of productID ------------------- //
+  // --------------------- get/set relatedItems from API on change of productID ------------------- //
 
   useEffect(() => {
     getRelated(productID, setRelatedItems);
@@ -35,13 +35,14 @@ function RelatedItems({
   // --------------------- onClick on any div other than referenced, setShow modal to false ------------------- //
 
   const ref = useRef();
-
   useOutsideClick(ref, () => {
     setShow(false);
   });
 
+
   return (
     <section id="RelatedItems">
+      <h2 className="heading heading-secondary">RELATED ITEMS</h2>
       <div ref={ref}>
         <CompareModal
           showModal={showModal}
@@ -67,3 +68,4 @@ function RelatedItems({
 }
 
 export default RelatedItems;
+

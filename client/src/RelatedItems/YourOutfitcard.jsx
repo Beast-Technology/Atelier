@@ -1,47 +1,59 @@
-import React, { useContext } from 'react';
-import { MetaContext } from '../context.js';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Stars } from '../helper/Stars.jsx';
+import metaToRating from './helper/metaToRating.js';
 
 
 function YourOutfitcard({
   yourOutfitItem, handleDeleteToOutfit,
 }) {
   const priceData = yourOutfitItem.style;
-  const photoURL = yourOutfitItem.style.photos[0].thumbnail_url ? yourOutfitItem.style.photos[0].thumbnail_url : 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png';
+  const photoURL = yourOutfitItem.style.photos[0].thumbnail_url ? yourOutfitItem.style.photos[0].thumbnail_url : 'https://tinyurl.com/2p9xcr3y';
+  const [rating, setRating] = useState(0);
 
-  const rating = useContext(MetaContext);
+  // --------------------- render individual card meta on related item id change ------------------- //
+
+  useEffect(() => {
+    axios.get('/reviews/meta', {
+      params: {
+        product_id: yourOutfitItem.id,
+      },
+    })
+      .then(((response) => {
+        setRating(metaToRating(response.data).toFixed(2));
+      }));
+  }, [yourOutfitItem.id]);
+
+  // --------------------- conditionally render price ------------------- //
 
   let priceDiv;
   if (priceData.sale_price) {
     priceDiv = (
-      <div>
+      <div className="card-text">
         <s>$ {priceData.original_price}</s>
         <span style={{ color: 'red' }}>${parseInt(priceData.sale_price, 10)}</span>
       </div>
     );
   } else {
     priceDiv = (
-      <div>$ {parseInt(priceData.original_price, 10)}</div>
+      <div className="card-text">$ {parseInt(priceData.original_price, 10)}</div>
     );
   }
 
-
-
   return (
-    <div className="ProductsCard">
+    <div
+      className="ProductsCard"
+    >
       <img className="card-img" src={photoURL} alt={yourOutfitItem.name} />
       <button
         type="button"
-        className="card-removeButton"
+        className="card-button"
         onClick={() => handleDeleteToOutfit(yourOutfitItem)}
-      >
-        x
+      > x
       </button>
-      <div className="card-category">{yourOutfitItem.category}</div>
+      <div className="card-text">{yourOutfitItem.category}</div>
       <div className="card-name">{yourOutfitItem.name}</div>
-      <div className="card-price">
-        {priceDiv}
-      </div>
+      {priceDiv}
       <Stars rating={rating} />
     </div>
   );

@@ -9,10 +9,13 @@ function RelatedProductsContainer({
   const [xCoord, setXCoord] = useState(0);
   const { length } = relatedItems;
 
+  // --------------------- reset current index to 0 on change in relatedItems ------------------- //
+
   useEffect(() => {
     setCurrentIndex(0);
   }, [relatedItems]);
 
+  // --------------------- handler functions for left/right arrows upon click ------------------- //
 
   const prevSlide = () => {
     setCurrentIndex(() => currentIndex - 1);
@@ -24,9 +27,10 @@ function RelatedProductsContainer({
     setXCoord((x) => x - 220);
   };
 
+  // --------------------- left/right arrows conditional rendering ------------------- //
+
   let RightArrow;
   let LeftArrow;
-
   if (currentIndex >= 1) {
     LeftArrow = (
       <button
@@ -67,6 +71,7 @@ function RelatedProductsContainer({
       </button>
     );
   }
+
   return (
     <div id="CardContainerOutter">
       {LeftArrow}
@@ -75,8 +80,8 @@ function RelatedProductsContainer({
           {
           (relatedItems || []).map((relatedItem) => (
             <RelatedProductsCard
-              relatedItem={relatedItem}
               key={relatedItem.id}
+              relatedItem={relatedItem}
               setShow={setShow}
               setClickedItem={setClickedItem}
               setProductID={setProductID}
