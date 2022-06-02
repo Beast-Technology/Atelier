@@ -19,10 +19,16 @@ export default function Modal({ productID, productName, modal }) {
     }
   }
 
+  function reset() {
+    const allInputs = document.querySelectorAll('.modal-input');
+    allInputs.forEach((i) => { i.value = ''; });
+  }
+
   function handleClick(e) {
     const modalMask = document.getElementById('modal');
     if (e.target === modalMask) {
       modalMask.style.display = 'none';
+      reset();
     }
   }
 

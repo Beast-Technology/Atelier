@@ -14,7 +14,11 @@ export default function Helpful({ target, id, count, onMarkHelpful }) {
     if (target === 'question') {
       if (localStorage.getItem('qStatus')) {
         let qStatus = JSON.parse(localStorage.getItem('qStatus'));
-        qStatus[id] === true ? setClicked(true) : setClicked(false);
+        if (qStatus[id]) {
+          qStatus[id] === true ? setClicked(true) : setClicked(false);
+        } else {
+          setClicked(false);
+        }
       } else {
         setClicked(false);
       }
@@ -23,7 +27,11 @@ export default function Helpful({ target, id, count, onMarkHelpful }) {
     if (target === 'answer') {
       if (localStorage.getItem('aStatus')) {
         let aStatus = JSON.parse(localStorage.getItem('aStatus'));
-        aStatus[id].helpful === true ? setClicked(true) : setClicked(false);
+        if (aStatus[id]) {
+          aStatus[id].helpful === true ? setClicked(true) : setClicked(false);
+        } else {
+          setClicked(false);
+        }
       } else {
         setClicked(false);
       }
