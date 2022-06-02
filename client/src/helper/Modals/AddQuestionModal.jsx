@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 const axios = require('axios');
 
 export default function AddQuestionModal({ productID, productName }) {
-  // const product_id = 40333;
-
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,7 +10,6 @@ export default function AddQuestionModal({ productID, productName }) {
   function handleSubmit(e) {
     e.preventDefault();
     axios.post('/qa/questions', {body, name, email, product_id: productID})
-      .then(() => { console.log('success!') })
       .then(() => { document.getElementById('modal').style.display = 'none' })
       .catch((err) => { alert(err) });
   }

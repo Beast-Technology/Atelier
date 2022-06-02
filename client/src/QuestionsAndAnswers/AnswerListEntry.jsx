@@ -8,7 +8,6 @@ import { DatePosted } from '../helper/Date.jsx';
 export default function AnswerListEntry({ a, setphotoModalURL }) {
   function markAnswerHelpful() {
     axios.put(`/qa/answers/${a.id}/helpful`)
-      .then(() => {console.log('success')})
       .catch((err) => {alert(err)});
 
     let aStatus = JSON.parse(localStorage.getItem('aStatus'));
@@ -33,7 +32,6 @@ export default function AnswerListEntry({ a, setphotoModalURL }) {
         |
         <Helpful target={'answer'} id={a.id} count={a.helpfulness} onMarkHelpful={markAnswerHelpful} />
         |
-        {/* <span>Report</span> */}
         <ReportButton id={a.id} onMarkReported={markReported} />
       </div>
     </li>

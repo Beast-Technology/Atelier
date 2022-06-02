@@ -4,7 +4,6 @@ import PhotoUploader from './PhotoUploader.jsx';
 const axios = require('axios');
 
 export default function AddAnswerModal({ productName, questionID, questionBody}) {
-  // const question_id = 641145;
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -26,7 +25,6 @@ export default function AddAnswerModal({ productName, questionID, questionBody})
   function handleSubmit(e) {
     e.preventDefault();
     axios.post(`/qa/questions/${questionID}/answers`, {question_id: questionID, body, name, email, photos})
-      .then(() => { console.log('success!') })
       .then(() => { document.getElementById('modal').style.display = 'none' })
       .catch((err) => { alert(err) });
   }
