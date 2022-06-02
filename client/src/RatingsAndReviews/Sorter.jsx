@@ -1,15 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-// import { useDetectOutsideClick } from '../helper/DetectClick.jsx';
-/*
- * Read the blog post here:
- * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
- */
+
 /**
  * Hook for handling closing when clicking outside of an element
  * @param {React.node} el
  * @param {boolean} initialState
  */
- const useDetectOutsideClick = (el, initialState) => {
+const useDetectOutsideClick = (el, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {
@@ -37,13 +33,30 @@ function Sorter() {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(useDetectOutsideClick(dropdownRef, false));
   const [category, setCategory] = useState(['Relative', 'Helpful', 'Newest']);
+  const [selected, setSelected] = useState(category[0]);
+
   const onClick = () => setIsActive(!isActive);
+
+  const onClickHelpful = () => {
+    setSelected(category[1]);
+    setIsActive(!isActive);
+  };
+
+  const onClickNewest = () => {
+    setSelected(category[2]);
+    setIsActive(!isActive);
+  };
+
+  const onClickRelative = () => {
+    setSelected(category[0]);
+    setIsActive(!isActive);
+  };
 
   return (
     <div className="container">
       <div className="menu-container">
         <span onClick={onClick} className="menu-trigger">
-          <span>{category[0]}</span>
+          <span>{selected}</span>
           <span className="material-symbols-outlined" style={{ verticalAlign: 'middle'}}>expand_more</span>
         </span>
         <nav
@@ -51,12 +64,21 @@ function Sorter() {
           className={`menu ${isActive ? "inactive" : "active"}`}
         >
           <ul>
-            <li>
-              <a href="#">{category[1]}</a>
-            </li>
-            <li>
-              <a href="#">{category[2]}</a>
-            </li>
+            {category[0] === selected ? <div></div> :
+              <li>
+                <a onClick={onClickRelative}>{category[0]}</a>
+              </li>
+            }
+            {category[1] === selected ? <div></div> :
+              <li>
+                <a onClick={onClickHelpful}>{category[1]}</a>
+              </li>
+            }
+            {category[2] === selected ? <div></div> :
+              <li>
+                <a onClick={onClickNewest}>{category[2]}</a>
+              </li>
+            }
           </ul>
         </nav>
       </div>
