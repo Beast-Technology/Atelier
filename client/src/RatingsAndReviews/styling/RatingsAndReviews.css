@@ -50,8 +50,8 @@
 
 .star {
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 3rem;
   background-color: grey;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -79,12 +79,12 @@
   );
 }
 
-.star.selected {
-  background-color: goldenrod;
+.star:hover {
+  background: gainsboro;
 }
 
-path {
-  background-color: blue;
+.star.selected {
+  background-color: goldenrod;
 }
 
 .starTest {
@@ -96,12 +96,12 @@ path {
   display: flex;
   flex-direction: column;
   padding-bottom: 1%;
-  border-bottom: 1px black solid;
-  background-color: rgb(248, 246, 243);
+  border-bottom: 1px #c2255c solid;
   margin-bottom: 1%;
-  max-width: 60vw;
-  min-width: 60vw;
+  max-width: 40vw;
+  min-width: 40vw;
   text-align: left;
+  background: white;
 }
 
 .tileRow1 {
@@ -137,7 +137,7 @@ path {
 }
 
 #reviewTile .buttons:hover {
-  color: blue;
+  color: rgb(72, 69, 69);
   cursor: pointer;
 }
 
@@ -163,19 +163,24 @@ path {
   margin-right: 2px;
 }
 
+.photos .photo {
+  height: 6rem;
+  width: 6rem;
+  margin-right: 1rem;
+}
+
 /* Review List */
 
 .reviewsList {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-height: 50vh;
+  max-height: 60vh;
   width:auto;
   overflow: auto;
 }
 
 .sorter {
-  padding-left: 2px;
   border-bottom: 1px black solid;
 }
 
@@ -183,19 +188,8 @@ path {
   cursor: pointer;
 }
 
-.moreReviews, .addReviews {
-  border: 1px black solid;
-  background-color: rgb(248, 246, 243);
-  padding: 7px;
-  display: inline-block;
-}
-
 .addReviews {
   margin-left: 1rem;
-}
-
-.moreReviews, .addReviews:hover {
-  cursor: pointer;
 }
 
 .material-symbols-outlined {
@@ -207,6 +201,17 @@ path {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+.listDropdown {
+  display: flex;
+}
+
+.listDropdown .dropdownOptions {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-bottom: 1rem;
 }
 
 /* Add Reviews */
@@ -261,7 +266,7 @@ path {
 
 .progress .progress__bar {
   height: 100%;
-  background-color: #4CBB17;
+  background-color: #c2255c;
 }
 
 .starBar {
@@ -272,13 +277,13 @@ path {
 
 .starBar span{
   border-bottom: 1px black solid;
-  margin-right: 1rem;
+  margin-right: 1.7rem;
   font-size: 1rem;
 }
 
 .starBar span:hover{
   cursor: pointer;
-  color: blue;
+  color: rgb(72, 69, 69);
 }
 
 .breakRecommend {
@@ -307,18 +312,19 @@ path {
 .productBreakdown .progress .progress__bar {
   height: 100%;
   width: 0%;
-  background-color: rgb(6, 109, 6);
 }
 
 .prodChar {
   display: flex;
   flex-direction: column;
+  margin-right: 1rem;
 }
 
 .prodBars {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 
 .prodRating {
@@ -327,4 +333,91 @@ path {
   justify-content: space-between;
   font-size: 1rem;
   margin-bottom: 2px;
+}
+
+.prodBar .progress {
+  position: relative;
+}
+.prodChar .arrowDown {
+  height: 2.2rem;
+  position: absolute;
+}
+
+/* Sorter */
+.menu-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-trigger {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  margin-left: auto;
+}
+
+.menu-trigger span {
+  font-weight: 700;
+}
+
+.menu-trigger span:nth-child(1) {
+  border-bottom: 1px black solid;
+}
+
+.menu-trigger img {
+  border-radius: 90px;
+}
+
+.menu {
+  background: #ffffff;
+  font-size: 1rem;
+  border-radius: 8px;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  width: 12rem;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #dddddd;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333333;
+  padding: 10px 15px;
+  display: block;
+}
+
+.menu li a:hover {
+  background-color: #c2255c;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.totalReviews .container {
+  padding-left: 0px;
+  margin-bottom: 0px;
 }

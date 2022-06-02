@@ -3,6 +3,7 @@ import './modal-styles.css';
 
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
+import AddReviewModal from './AddReviewModal.jsx';
 
 export default function Modal({ productID, productName, modal }) {
   function renderModal({ modalName, modalData }) {
@@ -11,6 +12,8 @@ export default function Modal({ productID, productName, modal }) {
         return <AddQuestionModal productID={productID} productName={productName} />;
       case 'adda':
         return <AddAnswerModal productName={productName} questionID={modalData.question_id} questionBody={modalData.question_body} />;
+      case 'review':
+        return <AddReviewModal productID={productID} productName={productName} />;
       default:
         return <div />;
     }
