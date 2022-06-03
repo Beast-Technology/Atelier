@@ -47,7 +47,9 @@ function ReviewTile({ review }) {
       </div>
       <div className="photos">
         {review.photos.map((pic) => (
-          <img className="photo" src={`${pic.url}`}/>
+          <div key={pic.id}>
+            <img className="photo" src={`${pic.url}`}/>
+          </div>
         ))}
       </div>
       {review.recommend

@@ -42,11 +42,9 @@ function RatingBreakdown({ meta }) {
 
   useEffect(() => {
     if (meta.ratings) {
-      let values = Object.values(meta.ratings);
-      let total = values.reduce((a, b) => {
-         a = a + Number(b)
-        return a }, 0);
-      let result = [];
+      const values = Object.values(meta.ratings);
+      const total = values.reduce((a, b) => { return a = a + Number(b) }, 0);
+      const result = [];
 
       for (let value of values) {
         result.push((value / total) * 100)
