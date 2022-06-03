@@ -86,7 +86,6 @@ export default function Thumbnails({
         ↑
       </button>
     );
-
   return (
     <div id="thumbnail-outer" style={thumbnailOuter}>
       {photos.length > 7 ? UpArrow : ''}
@@ -96,6 +95,7 @@ export default function Thumbnails({
             ? (
               <img
                 style={{ border: '3px green solid' }}
+                alt="thumbnail photos of current product"
                 key={photo.thumbnail_url}
                 src={photo.thumbnail_url}
                 width={thumbnailLength}
@@ -105,6 +105,7 @@ export default function Thumbnails({
             : (
               <img
                 style={{ border: '3px grey solid' }}
+                alt="thumbnail photos of current product"
                 key={photo.thumbnail_url}
                 src={photo.thumbnail_url}
                 onClick={() => {
