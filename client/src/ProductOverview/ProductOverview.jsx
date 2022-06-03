@@ -18,7 +18,10 @@ function ProductOverview(
     <section
       id="product-overview"
     >
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px' }}>
+      <div style={{
+        display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px'
+      }}
+      >
         <ImageGallery
           photos={style.photos}
           product={product}
