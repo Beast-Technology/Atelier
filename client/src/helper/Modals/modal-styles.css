@@ -16,6 +16,8 @@
   width: 800px;
   background-color: #fff;
   border-radius: 8px;
+  overflow: scroll;
+  max-height: 80%;
 }
 
 .modal-box header {
@@ -55,11 +57,6 @@
   margin-top: 24px;
 }
 
-/* Add Review */
-.modal-review {
-  overflow: scroll;
-  max-height: 80%;
-}
 
 /* Checkboxes for Add Review */
 
