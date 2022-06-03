@@ -3,4 +3,5 @@ node_modules
 .DS_Store
 .eslintrc
 client/dist/main.js
+client/dist/main.js.gz
 coverage/
