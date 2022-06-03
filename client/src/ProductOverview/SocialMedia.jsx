@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function SocialMeda() {
   return (
-    <div style={{ margin: '10px 0' }}>
-      <i>Share on Social Media!</i>
-      <div style={{ display: 'flex' }}>
-        <a
+    <div className="share">
+      <p>Share</p>
+      <div className="social-media">
+        {/* <a
           href="https://twitter.com/share"
           className="twitter-share-button"
         >
@@ -23,7 +23,24 @@ export default function SocialMeda() {
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         />
-        <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"> </a>
+        <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"> </a> */}
+        <ul className="social-links">
+          <li>
+            <a href="https://twitter.com/">
+              <ion-icon class="social-icon" name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/">
+            <ion-icon class="social-icon" name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pinterest.com/">
+            <ion-icon class="social-icon" name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );

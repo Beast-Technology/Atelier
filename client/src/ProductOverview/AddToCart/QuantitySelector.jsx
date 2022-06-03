@@ -18,7 +18,7 @@ export default function QuantitySelector({ sku, setQty }) {
           ))
           : (<option>OUT OF STOCK</option>)}
       </select>
-      <button type="button">Add To Cart</button>
+      <span className="btn btn-primary btn-addtocart">Add To Cart</span>
     </div>
   );
 

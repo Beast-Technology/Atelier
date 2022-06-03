@@ -10,15 +10,15 @@ export default function ProductInformation({ style, product }) {
   const ratings = useContext(MetaContext);
 
   return (
-    <div style={{ margin: '10px 0' }}>
-      <div>{category}</div>
-      <div>{name}</div>
+    <div className="product-info">
+      <span className="product-category">{category}</span>
+      <h1 className="heading heading-primary">{name}</h1>
       {sale_price
         ? (<div><s>${original_price}</s> <span style={{ color: 'red' }}>${sale_price}</span></div>)
-        : (<div>${original_price}</div>)}
-      <div style={{ margin: '10px 0' }}>
+        : (<div className="product-price">${original_price}</div>)}
+      <div className="product-rr">
         <Stars rating={ratings} />
-        <a href="#reviews">Read All Reviews</a>
+        <a className="link" href="#reviews">Read All Reviews</a>
       </div>
     </div>
   );

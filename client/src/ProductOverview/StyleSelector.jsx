@@ -5,14 +5,8 @@ import React from 'react';
 function StyleSelector({ selectedStyle, styles, setStyle }) {
   return (
     <div>
-      <div>
-        <b>Style {'>'}</b> {selectedStyle.name}
-      </div>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr 1fr',
-      }}
-      >
+      <p className="style-text"><b>Style {'>'}</b> {selectedStyle.name}</p>
+      <div className="style-styles">
         {styles.map((style) => (
           style.style_id === selectedStyle.style_id
             ? (

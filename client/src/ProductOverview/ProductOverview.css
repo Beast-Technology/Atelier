@@ -1,0 +1,160 @@
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #c2255c;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+.link:hover,
+.link:active {
+  color: #a61e4d;
+  border-bottom: 1px dotted transparent;
+}
+
+/* Section product overview */
+
+#product-overview {
+  width: 1300px;
+  /* background-color: #fff5f5; */
+}
+
+.product-info-container {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-info {
+  /* display: flex;
+  flex-direction: column;
+  gap: 16px; */
+}
+
+.product-category {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #f08c00;
+  color: #fff;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.product-price {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.product-rr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Social Media */
+
+.share {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #999;
+}
+
+.social-icon:hover {
+  color: #c2255c;
+}
+
+/* Style Selectors */
+
+.style-text {
+  margin-bottom: 8px;
+}
+
+.style-styles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Add to Cart */
+.btn-addtocart {
+  margin-top: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* Product Description */
+.product-description {
+  /* display: grid;
+  grid-template-columns: 2fr 1fr; */
+  margin-top: 100px;
+  position: relative;
+  padding: 32px 32px 48px;
+  border-radius: 8px;
+  background-color: #c2255c;
+  box-shadow: 0 8px 16px rgba(194, 37, 92, 0.2);
+}
+
+.description-slogan {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.description-text {
+  font-size: 18px;
+  line-height: 1.6;
+  width: 60%;
+  color: #fff;
+}
+
+.feature-box {
+  position: absolute;
+  top: -30%;
+  right: 0;
+  z-index: 1;
+  margin: 24px;
+  padding: 24px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, .1);
+  transition: all 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-16px);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.05);
+}
+
+.feature-box ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-box ul li {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.feature-text {
+  font-weight: 600;
+  color: #c2255c;
+}
+
