@@ -1,6 +1,13 @@
 const router = require('express').Router();
 const controllers = require('./controllers/index.js');
 
+
+router.get('*.js', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 // -- Overview -- //
 router.get('/reviews', controllers.overview.overview);
 router.get('/products/:product_id', controllers.overview.products);
