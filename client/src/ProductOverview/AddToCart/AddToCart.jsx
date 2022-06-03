@@ -12,7 +12,9 @@ export default function AddToCart({ skus }) {
 
   return (
     <div>
+      <span className="selector-label">Size</span>
       <SizeSelector skus={skus} setSku={setSku} />
+      <span className="selector-label">Quantity</span>
       <QuantitySelector sku={sku} setQty={setQty} />
     </div>
   );

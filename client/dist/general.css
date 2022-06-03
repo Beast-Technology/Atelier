@@ -18,7 +18,7 @@ body {
   font-size: 1.6rem;
 }
 
-section {
+.section-container {
   width: 1200px;
   margin: 48px auto;
   padding: 32px;

@@ -79,12 +79,13 @@ function QuestionsAndAnswers({ productID, setModal }) {
   }, [displayQs, qs.length]);
 
   return (
-    <section className="section-qanda">
-      <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
-      <QASearch keyword={keyword} setKeyword={setKeyword} />
-      <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />
-      <AnswerPhotoModal photoURL={photoModalURL} />
-      {/* <AddQuestionModal /> */}
+    <section id="section-qanda">
+      <div className="section-container">
+        <h2 className="heading heading-secondary">QUESTIONS & ANSWERS</h2>
+        <QASearch keyword={keyword} setKeyword={setKeyword} />
+        <QAList qs={displayQs} qsLeft={qsLeft} onHandleLoad={handleLoad} setModal={setModal} setphotoModalURL={setphotoModalURL} />
+        <AnswerPhotoModal photoURL={photoModalURL} />
+      </div>
     </section>
   );
 }
