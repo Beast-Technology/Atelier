@@ -1,5 +1,5 @@
 /* SECTION Q AND A */
-.section-qanda {
+#section-qanda {
   max-height: 100vh;
   overflow: auto;
   position: relative;
