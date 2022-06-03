@@ -42,7 +42,7 @@ function RatingsAndReviews({ setModal }) {
   };
 
   return (
-    <section>
+    <section id="reviews">
       <h2>Ratings and Reviews</h2>
       <div className="mainPage">
         <div>

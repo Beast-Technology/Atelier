@@ -53,39 +53,72 @@ function getMeta(productID, setMeta) {
 // --------------------- get/set related items for a single product API call ------------------- //
 
 function getRelated(productID, setRelatedItems) {
+  const localArraysOfRelated = JSON.parse(sessionStorage.getItem('ls_arraysOfRelated')) || {};
+
   const localRelateditems = JSON.parse(sessionStorage.getItem('ls_relatedItems')) || {};
 
-  axios.request({
-    url: `/products/${productID}/related`,
-    method: 'get',
-  })
-    .then((response) => {
-      const uniqueResponse = [...new Set(response.data)];
-      const responseArray = [];
-      const requestArray = [];
+  if (localArraysOfRelated[productID]) {
+    const responseArray = [];
+    const requestArray = [];
 
-      uniqueResponse.forEach((uniqueRelatedItemID) => {
-        if (localRelateditems[uniqueRelatedItemID]) {
-          responseArray.push(localRelateditems[uniqueRelatedItemID]);
-        } else {
-          requestArray.push(uniqueRelatedItemID);
-        }
-      });
-      if (requestArray.length !== 0) {
-        const array = requestArray.map((relatedItemId) => axios.request({
-          url: `/products/${relatedItemId}`,
-          method: 'get',
-        })
-          .then((result) => result.data));
-        Promise.all(array)
-          .then((values) => {
-            responseArray.push(...values);
-            setRelatedItems(responseArray);
-          });
+    localArraysOfRelated[productID].forEach((uniqueRelatedItemID) => {
+      if (localRelateditems[uniqueRelatedItemID]) {
+        responseArray.push(localRelateditems[uniqueRelatedItemID]);
       } else {
-        setRelatedItems(responseArray);
+        requestArray.push(uniqueRelatedItemID);
       }
     });
+    if (requestArray.length !== 0) {
+      const array = requestArray.map((relatedItemId) => axios.request({
+        url: `/products/${relatedItemId}`,
+        method: 'get',
+      })
+        .then((result) => result.data));
+      Promise.all(array)
+        .then((values) => {
+          responseArray.push(...values);
+          setRelatedItems(responseArray);
+        });
+    } else {
+      setRelatedItems(responseArray);
+    }
+  } else {
+    axios.request({
+      url: `/products/${productID}/related`,
+      method: 'get',
+    })
+      .then((response) => {
+        const uniqueResponse = [...new Set(response.data)];
+        localArraysOfRelated[productID] = uniqueResponse;
+        sessionStorage.setItem('ls_arraysOfRelated', JSON.stringify(localArraysOfRelated));
+
+
+        const responseArray = [];
+        const requestArray = [];
+
+        uniqueResponse.forEach((uniqueRelatedItemID) => {
+          if (localRelateditems[uniqueRelatedItemID]) {
+            responseArray.push(localRelateditems[uniqueRelatedItemID]);
+          } else {
+            requestArray.push(uniqueRelatedItemID);
+          }
+        });
+        if (requestArray.length !== 0) {
+          const array = requestArray.map((relatedItemId) => axios.request({
+            url: `/products/${relatedItemId}`,
+            method: 'get',
+          })
+            .then((result) => result.data));
+          Promise.all(array)
+            .then((values) => {
+              responseArray.push(...values);
+              setRelatedItems(responseArray);
+            });
+        } else {
+          setRelatedItems(responseArray);
+        }
+      });
+  }
 }
 
 export {
