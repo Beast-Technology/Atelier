@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const controllers = require('./controllers/index.js');
 
-
+// -- Compression -- //
 router.get('*.js', (req, res, next) => {
   req.url += '.gz';
   res.set('Content-Encoding', 'gzip');

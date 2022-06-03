@@ -17,16 +17,22 @@ const middle = {
 
 const rightArrow = {
   position: 'absolute',
-  fontSize: '30px',
-  top: '50%',
-  right: '0',
-  zIndex: '1',
+  height: 80,
+  width: 17,
+  fontSize: 30,
+  top: 260,
+  right: 0,
+  zIndex: 1,
+  borderRadius: 5,
 };
+
 const leftArrow = {
   position: 'absolute',
-  fontSize: '30px',
-  top: '50%',
-  zIndex: '1',
+  height: 80,
+  fontSize: 30,
+  top: 260,
+  zIndex: 1,
+  borderRadius: 5,
 };
 
 
@@ -43,6 +49,7 @@ export default function DefaultView({
 
   const RightArrow = (
     <button
+      id="mainPhotoCarousel-button"
       style={rightArrow}
       onClick={() => {
         setIndex(index + 1);
@@ -55,6 +62,7 @@ export default function DefaultView({
 
   const LeftArrow = (
     <button
+      id="mainPhotoCarousel-button"
       style={leftArrow}
       onClick={() => {
         setIndex(index - 1);
@@ -72,6 +80,7 @@ export default function DefaultView({
         <div id="gallery-inner" style={inner}>
           {photos.map((photo) => (
             <img
+              className="mainPhotoCarousel"
               fetchpriority="high"
               alt="current style of product"
               width="700"
