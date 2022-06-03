@@ -7,6 +7,7 @@ import SocialMedia from './SocialMedia.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
+import './ProductOverview.css';
 
 function ProductOverview(
   {
