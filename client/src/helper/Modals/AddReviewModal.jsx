@@ -14,9 +14,9 @@ export default function AddReviewModal({ productID, productName }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('/reviews', {body, name, email, product_id: productID})
+    axios.post('/reviews', { body, name, email, product_id: productID })
       .then(() => { console.log('success!') })
-      .then(() => { document.getElementById('modal').style.display = 'none' })
+      .then(() => { document.getElementById('modal').style.display = 'none'; })
       .catch((err) => { alert(err) });
   }
 

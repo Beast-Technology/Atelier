@@ -57,12 +57,6 @@
   margin-top: 24px;
 }
 
-/* Add Review */
-.modal-review {
-  /* overflow: scroll; */
-  max-height: 80%;
-}
-
 /* Checkboxes for Add Review */
 
 .modal-review .container {

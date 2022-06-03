@@ -28,9 +28,9 @@ function ReviewsList({ reviews, meta, onClick, setModal }) {
       <table className="reviewsList">
         <tbody>
           {
-            (reviews || []).map((review, index) => (
-              <tr>
-                <ReviewTile review={review} key={index} />
+            (reviews || []).map((review) => (
+              <tr key={review.review_id}>
+                <ReviewTile review={review} />
               </tr>
             ))
           }
