@@ -72,8 +72,10 @@ export default function DefaultView({
         <div id="gallery-inner" style={inner}>
           {photos.map((photo) => (
             <img
+              fetchpriority="high"
               alt="current style of product"
               width="700"
+              height="600"
               key={photo.url}
               src={photo.url}
               onClick={() => setShowExpanded(true)}

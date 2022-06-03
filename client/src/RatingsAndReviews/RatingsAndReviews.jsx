@@ -43,14 +43,16 @@ function RatingsAndReviews({ setModal }) {
 
   return (
     <section id="reviews">
-      <h2>Ratings and Reviews</h2>
-      <div className="mainPage">
-        <div>
-          <RatingBreakdown meta={meta} />
-          <ProductBreakdown meta={meta} />
-        </div>
-        <div className="right">
-          <ReviewsList reviews={reviews} meta={meta} setModal={setModal} onClick={onClickMoreReviews} />
+      <div className="section-container">
+        <h2>Ratings and Reviews</h2>
+        <div className="mainPage">
+          <div>
+            <RatingBreakdown meta={meta} />
+            <ProductBreakdown meta={meta} />
+          </div>
+          <div className="right">
+            <ReviewsList reviews={reviews} meta={meta} setModal={setModal} onClick={onClickMoreReviews} />
+          </div>
         </div>
       </div>
     </section>

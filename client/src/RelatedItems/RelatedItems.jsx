@@ -46,27 +46,29 @@ function RelatedItems({
 
   return (
     <section id="RelatedItems">
-      <h2 className="heading heading-secondary">RELATED ITEMS</h2>
-      <div ref={ref}>
-        <CompareModal
-          showModal={showModal}
+      <div className="section-container">
+        <h2 className="heading heading-secondary">RELATED ITEMS</h2>
+        <div ref={ref}>
+          <CompareModal
+            showModal={showModal}
+            currentProduct={product}
+            clickedItem={clickedItem}
+          />
+        </div>
+
+        <RelatedProductsContainer
+          productID={productID}
+          setProductID={setProductID}
+          relatedItems={relatedItems}
+          setShow={setShow}
+          setClickedItem={setClickedItem}
+        />
+        <br />
+        <YourOutfitContainer
           currentProduct={product}
-          clickedItem={clickedItem}
+          style={style}
         />
       </div>
-
-      <RelatedProductsContainer
-        productID={productID}
-        setProductID={setProductID}
-        relatedItems={relatedItems}
-        setShow={setShow}
-        setClickedItem={setClickedItem}
-      />
-      <br />
-      <YourOutfitContainer
-        currentProduct={product}
-        style={style}
-      />
     </section>
   );
 }
