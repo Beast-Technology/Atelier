@@ -9,6 +9,9 @@ export default function Navbar() {
           Beast
         </a>
         <div className="navigation-menu">
+          <div>
+            <ion-icon name="search-outline" style={{width: "30px", height: "30px"}}></ion-icon>
+          </div>
           <ul>
             <li>
               <a href="#reviews">Reviews</a>
@@ -20,9 +23,12 @@ export default function Navbar() {
               <a href="#RelatedItems">Related</a>
             </li>
           </ul>
-        </div>
-        <div>
-          <ion-icon name="person-circle-outline" style={{width: "30px", height: "30px"}}></ion-icon>
+          <div>
+            <ion-icon name="cart-outline" style={{width: "30px", height: "30px"}}></ion-icon>
+          </div>
+          <div>
+            <ion-icon name="person-circle-outline" style={{width: "30px", height: "30px"}}></ion-icon>
+          </div>
         </div>
       </nav>
     </div>
