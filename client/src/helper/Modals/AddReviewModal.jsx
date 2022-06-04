@@ -49,11 +49,11 @@ export default function AddReviewModal({ productID, productName }) {
           <label>Do you recommend this product? *
             <div className="recommendContainer">
               <label className="container">Yes
-                <input type="checkbox" />
+                <input type="radio" name="recommend" />
                 <span className="checkmark"></span>
               </label>
               <label className="container">No
-                <input type="checkbox" />
+                <input type="radio" name="recommend" />
                 <span className="checkmark"></span>
               </label>
             </div>
@@ -67,7 +67,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="size" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -76,7 +76,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="size" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -85,7 +85,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="size" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -94,7 +94,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="size" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -103,7 +103,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="size" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -118,7 +118,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="width" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -127,7 +127,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="width" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -136,7 +136,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="width" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -145,7 +145,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="width" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -154,7 +154,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="width" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -169,7 +169,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="comfort" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -178,7 +178,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="comfort" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -187,7 +187,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="comfort" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -196,7 +196,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="comfort" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -205,7 +205,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="comfort" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -220,7 +220,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="quality" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -229,7 +229,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="quality" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -238,7 +238,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="quality" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -247,7 +247,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="quality" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -256,7 +256,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="quality" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -271,7 +271,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="length" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -280,7 +280,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="length" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -289,7 +289,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="length" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -298,7 +298,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="length" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -307,7 +307,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="length" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -322,7 +322,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">1
-                      <input type="checkbox" />
+                      <input type="radio" name="fit" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -331,7 +331,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">2
-                      <input type="checkbox" />
+                      <input type="radio" name="fit" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -340,7 +340,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">3
-                      <input type="checkbox" />
+                      <input type="radio" name="fit" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -349,7 +349,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">4
-                      <input type="checkbox" />
+                      <input type="radio" name="fit" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
@@ -358,7 +358,7 @@ export default function AddReviewModal({ productID, productName }) {
                 <div className="charNums">
                   <div>
                     <label className="container">5
-                      <input type="checkbox" />
+                      <input type="radio" name="fit" />
                       <span className="checkmark"></span>
                     </label>
                   </div>
