@@ -5,6 +5,7 @@ import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import ProductOverview from './ProductOverview/ProductOverview.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import Modal from './helper/Modals/Modal.jsx';
+import Navigation from './Navigation/Navigation.jsx';
 
 import { getMeta, getProduct, getStyles } from './axiosCalls.js';
 import { MetaContext } from './context.js';
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <div>
+      <Navigation />
       <MetaContext.Provider value={meta}>
         <ProductOverview
           product={product}
