@@ -18,26 +18,30 @@ function ProductOverview(
     <section
       id="product-overview"
     >
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px' }}>
-        <ImageGallery
-          photos={style.photos}
-          product={product}
-        />
-        <div className="product-info-container">
-          <ProductInformation
-            style={style}
+      <div className="section-container">
+        <div style={
+          { display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px' }
+        }>
+          <ImageGallery
+            photos={style.photos}
             product={product}
           />
-          <SocialMedia />
-          <StyleSelector
-            selectedStyle={style}
-            styles={styles}
-            setStyle={setStyle}
-          />
-          <AddToCart skus={style.skus} />
+          <div className="product-info-container">
+            <ProductInformation
+              style={style}
+              product={product}
+            />
+            <SocialMedia />
+            <StyleSelector
+              selectedStyle={style}
+              styles={styles}
+              setStyle={setStyle}
+            />
+            <AddToCart skus={style.skus} />
+          </div>
         </div>
+        <ProductDescription product={product} />
       </div>
-      <ProductDescription product={product} />
     </section>
   );
 }

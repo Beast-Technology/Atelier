@@ -7,7 +7,6 @@ export default function ProductDescription({ product }) {
     <div className="product-description">
 
       <div style={{
-        borderRight: '2px solid black',
         paddingRight: '20px',
       }}
       >
