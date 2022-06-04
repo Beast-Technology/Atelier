@@ -11,13 +11,13 @@ export default function Navbar() {
         <div className="navigation-menu">
           <ul>
             <li>
-              <a href="reviews">Reviews</a>
+              <a href="#reviews">Reviews</a>
             </li>
             <li>
-              <a href="questions">Questions</a>
+              <a href="#section-qanda">Questions</a>
             </li>
             <li>
-              <a href="related">Related</a>
+              <a href="#RelatedItems">Related</a>
             </li>
           </ul>
         </div>
