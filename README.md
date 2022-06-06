@@ -6,6 +6,11 @@ First install dependencies:
 ```sh
 npm install
 ```
+Create ENV file in ROOT folder (make sure this matches .gitignore name):
+```sh
+TOKEN=“your Github TOKEN”
+API_URL=“https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp”
+```
 
 To build the Webpack:
 
