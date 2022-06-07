@@ -11,6 +11,7 @@ export default function AddReviewModal({ productID, productName }) {
 
   const [recommend, setRecommend] = useState('');
   const [characteristic, setCharacteristic] = useState({ Comfort: null, Size: null, Width: null, Quality: null, Length: null, Fit: null });
+  const [characteristicId, setCharacteristicId] = useState({'135221': null, '135219': null, '135220': null, '135222': null });
   const [starsRating, setStarsRating] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
@@ -32,7 +33,7 @@ export default function AddReviewModal({ productID, productName }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('/reviews', { recommend, summary, body, name, email, product_id: productID })
+    axios.post('/reviews', { recommend, characteristic, starsRating, summary, body, name, email, photos, product_id: productID })
       .then(() => { console.log('success!') })
       .then(() => { document.getElementById('modal').style.display = 'none'; })
       .catch((err) => { alert(err) });
@@ -64,6 +65,39 @@ export default function AddReviewModal({ productID, productName }) {
     setEmail(e.target.value);
   }
 
+  const ratingStrings = {
+    'Size-1': 'A size too small',
+    'Size-2': 'Half a size too small',
+    'Size-3': 'Perfect',
+    'Size-4': '1/2 a size too long',
+    'Size-5': 'A size too wide',
+    'Width-1': 'Too narrow',
+    'Width-2': 'Slightly narrow',
+    'Width-3': 'Perfect',
+    'Width-4': 'Slightly Wide',
+    'Width-5': 'Too wide',
+    'Comfort-1': 'Uncomfortable',
+    'Comfort-2': 'Slightly uncomfortable',
+    'Comfort-3': 'Ok',
+    'Comfort-4': 'Comfortable',
+    'Comfort-5': 'Perfect',
+    'Quality-1': 'Poor',
+    'Quality-2': 'Below average',
+    'Quality-3': 'What I expected',
+    'Quality-4': 'Pretty great',
+    'Quality-5': 'Perfect',
+    'Length-1': 'Runs short',
+    'Length-2': 'Runs slightly short',
+    'Length-3': 'Perfect',
+    'Length-4': 'Runs slightly long',
+    'Length-5': 'Runs long',
+    'Fit-1': 'Runs tight',
+    'Fit-2': 'Runs slightly tight',
+    'Fit-3': 'Perfect',
+    'Fit-4': 'Runs slightly long',
+    'Fit-5': 'Runs long',
+  };
+
   return (
     <div className="modal-box modal-review">
       <header>
@@ -91,17 +125,20 @@ export default function AddReviewModal({ productID, productName }) {
           </label>
 
           <label>Characteristics *
-              {console.log(metaAdd.characteristics)}
+              {console.log(metaAdd)}
               {(Object.keys(metaAdd.characteristics || {})).map((charac) => (
                 <label key={metaAdd.characteristics.id}>
                   <div className="charCategory">{charac}</div>
                   <div className="charContainer">
                     {[1, 2, 3, 4, 5].map((num) => (
-                      <div className="charNums">
-                        <label className="container">{num}
-                          <input type="radio" name={charac} onClick={() => handleCharacteristicChange({charac, num})}/>
-                          <span className="checkmark"></span>
-                        </label>
+                      <div>
+                        <div className="charNums">
+                          <label className="container">{num}
+                            <input type="radio" name={charac} onClick={() => handleCharacteristicChange({charac, num})}/>
+                            <span className="checkmark"></span>
+                          </label>
+                        </div>
+                        <span>{ratingStrings[`${charac}-${num}`]}</span>
                       </div>
                     ))}
                   </div>
@@ -109,316 +146,6 @@ export default function AddReviewModal({ productID, productName }) {
               ))}
 
           </label>
-
-          {/* <label>Characteristics *
-
-            <label>
-              <div className="charCategory">Size</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="size" onClick={handleCharacteristicChange} />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>A size too small</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="size" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Half a size too small</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="size" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="size" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>1/2 a size too big</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="size" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>A size too wide</span>
-                </div>
-              </div>
-            </label>
-
-            <label>
-              <div className="charCategory">Width</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="width" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Too narrow</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="width" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Slightly narrow</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="width" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="width" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Slightly wide</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="width" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Too wide</span>
-                </div>
-              </div>
-            </label>
-
-            <label>
-              <div className="charCategory">Comfort</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="comfort" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Uncomfortable</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="comfort" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Slightly uncomfortable</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="comfort" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Ok</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="comfort" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Comfortable</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="comfort" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-              </div>
-            </label>
-
-            <label>
-              <div className="charCategory">Quality</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="quality" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Poor</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="quality" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Below average</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="quality" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>What I expected</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="quality" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Pretty great</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="quality" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-              </div>
-            </label>
-
-            <label>
-              <div className="charCategory">Length</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="length" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs short</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="length" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs slightly short</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="length" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="length" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs slightly long</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="length" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs long</span>
-                </div>
-              </div>
-            </label>
-
-            <label>
-              <div className="charCategory">Fit</div>
-              <div className="charContainer">
-                <div className="charNums">
-                  <div>
-                    <label className="container">1
-                      <input type="radio" name="fit" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs tight</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">2
-                      <input type="radio" name="fit" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs slightly tight</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">3
-                      <input type="radio" name="fit" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Perfect</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">4
-                      <input type="radio" name="fit" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs slightly long</span>
-                </div>
-                <div className="charNums">
-                  <div>
-                    <label className="container">5
-                      <input type="radio" name="fit" />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                  <span>Runs long</span>
-                </div>
-              </div>
-            </label>
-
-          </label> */}
 
           <label>Review Summary *
             <input  name="asker_name" type="text" placeholder="Write your summary here..." onChange={handleSummaryChange} />

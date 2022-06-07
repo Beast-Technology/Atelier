@@ -16,20 +16,46 @@ module.exports = {
     };
 
     axios.get(req.originalUrl, config)
-      .then(response => {
+      .then((response) => {
         res.send(response.data.results);
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
       });
   },
+
   meta: (req, res) => {
     axios.get(req.originalUrl)
-      .then(response => {
+      .then((response) => {
         res.send(response.data);
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
+      });
+  },
+
+  addReview: (req, res) => {
+    console.log(req.body);
+    const config = {
+      params: {
+        product_id: req.query.product_id,
+        rating: req.query.rating,
+        summary: req.query.summary,
+        body: req.query.body,
+        recommend: req.query.recommend,
+        name: req.query.name,
+        email: req.query.email,
+        photos: req.query.photos,
+        characteristics: req.query.characteristics,
+      },
+    };
+
+    axios.post(req.originalUrl, config)
+      .then(() => {
+        res.status(201).send('Success');
       })
-  }
-}
+      .catch((err) => {
+        res.send(err);
+      });
+  },
+};

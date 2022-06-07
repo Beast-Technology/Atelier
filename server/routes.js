@@ -26,6 +26,7 @@ router.post('/qa/questions/:question_id/answers', controllers.qanda.addAnswers);
 // -- Ratings and Reviews -- //
 // router.get('/reviews/', controllers.reviews.data);
 router.get('/reviews/meta/', controllers.reviews.meta);
+router.post('/reviews', controllers.reviews.addReview);
 
 
 module.exports = router;
