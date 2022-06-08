@@ -48,8 +48,6 @@ function RatingsAndReviews({ setModal }) {
 
   return (
     <section id="reviews">
-      {console.log(someReviews)}
-      {/* {console.log(meta)} */}
       <div className="section-container">
         <h2>Ratings and Reviews</h2>
         <div className="mainPage">

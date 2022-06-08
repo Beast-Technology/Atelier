@@ -35,21 +35,6 @@ module.exports = {
   },
 
   addReview: (req, res) => {
-    console.log(req.body);
-    // const config = {
-    //   params: {
-    //     product_id: req.query.product_id,
-    //     rating: req.query.rating,
-    //     summary: req.query.summary,
-    //     body: req.query.body,
-    //     recommend: req.query.recommend,
-    //     name: req.query.name,
-    //     email: req.query.email,
-    //     photos: req.query.photos,
-    //     characteristics: req.query.characteristics,
-    //   },
-    // };
-
     axios.post(req.body)
       .then(() => {
         res.status(201).send('Success');
@@ -58,4 +43,21 @@ module.exports = {
         res.send(err);
       });
   },
+
+  updateHelpful: (req, res) => {
+    const config = {
+      params: {
+        review_id: req.query.review_id,
+      },
+    };
+
+    axios.put(req.originalUrl, config)
+      .then(() => {
+        res.status(200).send("Updated");
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  },
 };
+

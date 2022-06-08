@@ -125,7 +125,6 @@ export default function AddReviewModal({ productID, productName }) {
           </label>
 
           <label>Characteristics *
-              {console.log(metaAdd)}
               {(Object.keys(metaAdd.characteristics || {})).map((charac) => (
                 <label key={metaAdd.characteristics.id}>
                   <div className="charCategory">{charac}</div>
