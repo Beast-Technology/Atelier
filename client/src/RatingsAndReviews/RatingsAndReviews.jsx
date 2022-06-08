@@ -12,21 +12,6 @@ function RatingsAndReviews({ setModal }) {
   const [someReviews, setSomeReviews] = useState([]);
   const [meta, setMeta] = useState([]);
   const [selected, setSelected] = useState('Relevant');
-  // const [pageUp, setPageUp] = useState(1);
-
-  // useEffect(() => {
-  //   axios.get('/reviews', {
-  //     params: {
-  //       product_id: 40344,
-  //       page: pageUp,
-  //       count: 2,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       setReviews((currState) => { return currState.concat(res.data.results); });
-  //     })
-  //     .catch((err) => { console.log(err); });
-  // }, [pageUp]);
 
   useEffect(() => {
     axios.get('/reviews', {
@@ -63,7 +48,7 @@ function RatingsAndReviews({ setModal }) {
 
   return (
     <section id="reviews">
-      {console.log(reviews)}
+      {console.log(someReviews)}
       {/* {console.log(meta)} */}
       <div className="section-container">
         <h2>Ratings and Reviews</h2>

@@ -160,6 +160,10 @@
   margin-right: 2px;
 }
 
+.photos {
+  display: flex;
+}
+
 .photos .photo {
   height: 6rem;
   width: 6rem;

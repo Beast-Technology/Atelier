@@ -36,21 +36,21 @@ module.exports = {
 
   addReview: (req, res) => {
     console.log(req.body);
-    const config = {
-      params: {
-        product_id: req.query.product_id,
-        rating: req.query.rating,
-        summary: req.query.summary,
-        body: req.query.body,
-        recommend: req.query.recommend,
-        name: req.query.name,
-        email: req.query.email,
-        photos: req.query.photos,
-        characteristics: req.query.characteristics,
-      },
-    };
+    // const config = {
+    //   params: {
+    //     product_id: req.query.product_id,
+    //     rating: req.query.rating,
+    //     summary: req.query.summary,
+    //     body: req.query.body,
+    //     recommend: req.query.recommend,
+    //     name: req.query.name,
+    //     email: req.query.email,
+    //     photos: req.query.photos,
+    //     characteristics: req.query.characteristics,
+    //   },
+    // };
 
-    axios.post(req.originalUrl, config)
+    axios.post(req.body)
       .then(() => {
         res.status(201).send('Success');
       })
