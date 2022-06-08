@@ -29,11 +29,10 @@ const useDetectOutsideClick = (el, initialState) => {
   return [isActive, setIsActive];
 };
 
-function Sorter() {
+function Sorter({ setSelected, selected }) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(useDetectOutsideClick(dropdownRef, false));
-  const [category, setCategory] = useState(['Relative', 'Helpful', 'Newest']);
-  const [selected, setSelected] = useState(category[0]);
+  const [category, setCategory] = useState(['Relevant', 'Helpful', 'Newest']);
 
   const onClick = () => setIsActive(!isActive);
 

@@ -5,15 +5,14 @@ const StarSelect = ({ selected = false, onClick = f => f }) => (
   <div className={selected ? "star selected" : "star"} onClick={onClick} />
 );
 
-export const StarRatingSelect = ({ totalStars }) => {
-  const [starsSelected, selectStar] = useState(0);
+export const StarRatingSelect = ({ totalStars, starsRating, setStarsRating }) => {
   return (
     <div className="star-rating">
       {[...Array(totalStars)].map((n, i) => (
         <StarSelect
           key={i}
-          selected={i < starsSelected}
-          onClick={() => selectStar(i + 1)}
+          selected={i < starsRating}
+          onClick={() => setStarsRating(i + 1)}
         />
       ))}
     </div>

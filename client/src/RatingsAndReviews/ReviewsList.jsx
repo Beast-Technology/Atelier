@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import Sorter from './Sorter.jsx';
 
-function ReviewsList({ reviews, meta, onClick, setModal }) {
+function ReviewsList({ someReviews, reviews, meta, onClick, setModal, setSelected, selected }) {
   const [totalReviews, setTotalReviews] = useState(0);
 
   useEffect(() => {
@@ -22,13 +22,13 @@ function ReviewsList({ reviews, meta, onClick, setModal }) {
       <h3>
         <div className="totalReviews">
           <span>{`${totalReviews} reviews, sorted by`}</span>
-          <Sorter />
+          <Sorter setSelected={setSelected} selected={selected} />
         </div>
       </h3>
       <table className="reviewsList">
         <tbody>
           {
-            (reviews || []).map((review) => (
+            (someReviews || []).map((review) => (
               <tr key={review.review_id}>
                 <ReviewTile review={review} />
               </tr>

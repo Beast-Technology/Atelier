@@ -8,22 +8,25 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 
 function RatingsAndReviews({ setModal }) {
   const [reviews, setReviews] = useState([]);
+  const [currIdx, setCurrIdx] = useState(2);
+  const [someReviews, setSomeReviews] = useState([]);
   const [meta, setMeta] = useState([]);
-  const [pageUp, setPageUp] = useState(1);
+  const [selected, setSelected] = useState('Relevant');
 
   useEffect(() => {
     axios.get('/reviews', {
       params: {
+        sort: selected,
         product_id: 40344,
-        page: pageUp,
-        count: 2,
+        count: 10000,
       },
     })
       .then((res) => {
-        setReviews((currState) => { return currState.concat(res.data.results); });
+        setReviews(res.data.results);
+        setSomeReviews(res.data.results.slice(0, 2));
       })
       .catch((err) => { console.log(err); });
-  }, [pageUp]);
+  }, [selected]);
 
   useEffect(() => {
     axios.get('/reviews/meta', {
@@ -38,7 +41,9 @@ function RatingsAndReviews({ setModal }) {
   }, []);
 
   const onClickMoreReviews = () => {
-    setPageUp(pageUp + 1);
+    const index = currIdx + 2;
+    setCurrIdx(index);
+    setSomeReviews(reviews.slice(0, index));
   };
 
   return (
@@ -51,7 +56,15 @@ function RatingsAndReviews({ setModal }) {
             <ProductBreakdown meta={meta} />
           </div>
           <div className="right">
-            <ReviewsList reviews={reviews} meta={meta} setModal={setModal} onClick={onClickMoreReviews} />
+            <ReviewsList
+              reviews={reviews}
+              someReviews={someReviews}
+              meta={meta}
+              setModal={setModal}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={onClickMoreReviews}
+            />
           </div>
         </div>
       </div>
