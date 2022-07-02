@@ -1,8 +1,6 @@
 # Atelier
+Front-end development of e-commerce product details page.  
 
-![]()
-![]()
-![]()
 ## App Preview
 <br />
 <div align="center"><br />
@@ -16,10 +14,6 @@
   <img src="https://media.giphy.com/media/an9pK8iG46eMUEwc2r/giphy.gif"/><br />
 </div>
   
-## Description
-
-Front-end development of e-commerce product details page.
-
 ## Components and Contributors
 
 Products: Junsu Park  
