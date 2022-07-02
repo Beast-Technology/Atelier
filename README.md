@@ -16,7 +16,7 @@ https://github.com/junsupark94
 Reviews: John Ong  
 https://github.com/itsjohnong  
 
-Questions and Answers: Spencer Han
+Questions and Answers: Spencer Han  
 https://github.com/Lesson9  
 
 Related Products: Alex Krut  
