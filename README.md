@@ -7,7 +7,7 @@
 <br />
 <div align="center"><br />
   <h3 align="center">Overview</h3>
-  <img width=400 src="https://media.giphy.com/media/Iyj5TrEpJGo0rIJmGI/giphy.gif"/><br />
+  <img src="https://media.giphy.com/media/Iyj5TrEpJGo0rIJmGI/giphy.gif"/><br />
   
   <h3 align="center">Image Gallery and Product Details</h3>
   <img src="https://media.giphy.com/media/e0ZD4T800cDXLhpkNA/giphy.gif"/><br />
