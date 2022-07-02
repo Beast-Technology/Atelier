@@ -1,9 +1,21 @@
 # Atelier
 
-![](https://media.giphy.com/media/Iyj5TrEpJGo0rIJmGI/giphy.gif)
-![](https://media.giphy.com/media/e0ZD4T800cDXLhpkNA/giphy.gif)
-![](https://media.giphy.com/media/an9pK8iG46eMUEwc2r/giphy.gif)
-
+![]()
+![]()
+![]()
+## App Preview
+<br />
+<div align="center"><br />
+  <h3 align="center">Overview</h3>
+  <img width=400 src="https://media.giphy.com/media/Iyj5TrEpJGo0rIJmGI/giphy.gif"/><br />
+  
+  <h3 align="center">Image Gallery and Product Details</h3>
+  <img src="https://media.giphy.com/media/e0ZD4T800cDXLhpkNA/giphy.gif"/><br />
+  
+  <h3 align="center">Reviews, Questions & Answers, Related Products</h3>
+  <img src="https://media.giphy.com/media/an9pK8iG46eMUEwc2r/giphy.gif"/><br />
+</div>
+  
 ## Description
 
 Front-end development of e-commerce product details page.
