@@ -1,3 +1,9 @@
+/* eslint-disable react/no-danger */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 import AnswerList from './AnswerList.jsx';
 import Helpful from './Helpful.jsx';
@@ -8,8 +14,8 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
   const [question_body, setQuestion_body] = useState(q.question_body);
 
   function markQuestionHelpful() {
-    axios.put(`/qa/questions/${q.question_id}/helpful`)
-      .catch((err) => {alert(err)});
+    axios.put(`${process.env.API_URL}/qa/questions/${q.question_id}/helpful`)
+      .catch((err) => { alert(err); });
 
     const qStatus = JSON.parse(localStorage.getItem('qStatus'));
     qStatus[q.question_id] = true;
@@ -34,7 +40,7 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
           <p className="question-title" dangerouslySetInnerHTML={createMarkup(q.question_body)} />
 
           <div className="question-actions">
-            <Helpful target={'question'} id={q.question_id} count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
+            <Helpful target="question" id={q.question_id} count={q.question_helpfulness} onMarkHelpful={markQuestionHelpful} />
             |
             <span onClick={handleAddAnswer} className="underline">Add Answers</span>
           </div>
@@ -43,5 +49,5 @@ export default function QAListEntry({ q, setModal, setphotoModalURL }) {
 
       <AnswerList answers={q.answers} setphotoModalURL={setphotoModalURL} />
     </li>
-  )
+  );
 }

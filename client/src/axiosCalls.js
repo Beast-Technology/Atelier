@@ -1,28 +1,34 @@
 import axios from 'axios';
 
-
+const { API_URL, TOKEN } = process.env;
+axios.defaults.baseURL = API_URL;
+axios.defaults.headers.common.Authorization = TOKEN;
 
 // --------------------- get/set information for a single product- API call ------------------- //
 
-
 function getProduct(productID, setProduct) {
-  axios.request({
-    url: `/products/${productID}`,
-    method: 'get',
-  })
+  axios
+    .request({
+      url: `/products/${productID}`,
+      method: 'get',
+    })
     .then((response) => {
+      console.log('response.data', response.data);
       setProduct(response.data);
     });
 }
 // --------------------- get/set default style and styles for a single product - API call ------------------- //
 
 function getStyles(productID, setStyle, setStyles) {
-  axios.request({
-    url: `/products/${productID}/styles`,
-    method: 'get',
-  })
+  axios
+    .request({
+      url: `/products/${productID}/styles`,
+      method: 'get',
+    })
     .then((response) => {
-      let defaultStyle = response.data.results.find((style) => style['default?']);
+      let defaultStyle = response.data.results.find(
+        (style) => style['default?'],
+      );
       if (defaultStyle === undefined) {
         [defaultStyle] = response.data.results;
       }
@@ -34,17 +40,18 @@ function getStyles(productID, setStyle, setStyles) {
 // --------------------- get/set metadata for single a product- API call ------------------- //
 
 function getMeta(productID, setMeta) {
-  axios.get('/reviews/meta', {
-    params: {
-      product_id: productID,
-    },
-  })
+  axios
+    .get('/reviews/meta', {
+      params: {
+        product_id: productID,
+      },
+    })
     .then((res) => {
       const { ratings } = res.data;
       let sum = 0;
       let total = 0;
       Object.keys(ratings).forEach((rating) => {
-        sum += (parseInt(rating, 10) * parseInt(ratings[rating], 10));
+        sum += parseInt(rating, 10) * parseInt(ratings[rating], 10);
         total += parseInt(ratings[rating], 10);
       });
       setMeta((sum / total).toFixed(2));
@@ -69,29 +76,32 @@ function getRelated(productID, setRelatedItems) {
       }
     });
     if (requestArray.length !== 0) {
-      const array = requestArray.map((relatedItemId) => axios.request({
-        url: `/products/${relatedItemId}`,
-        method: 'get',
-      })
+      const array = requestArray.map((relatedItemId) => axios
+        .request({
+          url: `/products/${relatedItemId}`,
+          method: 'get',
+        })
         .then((result) => result.data));
-      Promise.all(array)
-        .then((values) => {
-          responseArray.push(...values);
-          setRelatedItems(responseArray);
-        });
+      Promise.all(array).then((values) => {
+        responseArray.push(...values);
+        setRelatedItems(responseArray);
+      });
     } else {
       setRelatedItems(responseArray);
     }
   } else {
-    axios.request({
-      url: `/products/${productID}/related`,
-      method: 'get',
-    })
+    axios
+      .request({
+        url: `/products/${productID}/related`,
+        method: 'get',
+      })
       .then((response) => {
         const uniqueResponse = [...new Set(response.data)];
         localArraysOfRelated[productID] = uniqueResponse;
-        sessionStorage.setItem('ls_arraysOfRelated', JSON.stringify(localArraysOfRelated));
-
+        sessionStorage.setItem(
+          'ls_arraysOfRelated',
+          JSON.stringify(localArraysOfRelated),
+        );
 
         const responseArray = [];
         const requestArray = [];
@@ -104,16 +114,16 @@ function getRelated(productID, setRelatedItems) {
           }
         });
         if (requestArray.length !== 0) {
-          const array = requestArray.map((relatedItemId) => axios.request({
-            url: `/products/${relatedItemId}`,
-            method: 'get',
-          })
+          const array = requestArray.map((relatedItemId) => axios
+            .request({
+              url: `/products/${relatedItemId}`,
+              method: 'get',
+            })
             .then((result) => result.data));
-          Promise.all(array)
-            .then((values) => {
-              responseArray.push(...values);
-              setRelatedItems(responseArray);
-            });
+          Promise.all(array).then((values) => {
+            responseArray.push(...values);
+            setRelatedItems(responseArray);
+          });
         } else {
           setRelatedItems(responseArray);
         }

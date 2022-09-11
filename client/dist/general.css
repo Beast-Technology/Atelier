@@ -24,6 +24,10 @@ body {
   padding: 32px;
 }
 
+.expanded-photo {
+  max-width: 80vw;
+}
+
 p {
   color: #343a40;
   font-size: 1.6rem;

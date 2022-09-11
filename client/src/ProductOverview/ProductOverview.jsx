@@ -20,8 +20,11 @@ function ProductOverview(
     >
       <div className="section-container">
         <div style={
-          { display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px' }
-        }>
+          {
+            display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '20px',
+          }
+        }
+        >
           <ImageGallery
             photos={style.photos}
             product={product}

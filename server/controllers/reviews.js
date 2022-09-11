@@ -1,9 +1,8 @@
 const axios = require('axios');
-require("dotenv").config();
 
-const {API_URL, TOKEN} = process.env;
+const { API_URL, TOKEN } = process.env;
 axios.defaults.baseURL = API_URL;
-axios.defaults.headers.common['Authorization'] = TOKEN;
+axios.defaults.headers.common.Authorization = TOKEN;
 
 module.exports = {
   data: (req, res) => {
@@ -15,7 +14,8 @@ module.exports = {
       },
     };
 
-    axios.get(req.originalUrl, config)
+    axios
+      .get(req.originalUrl, config)
       .then((response) => {
         res.send(response.data.results);
       })
@@ -25,7 +25,8 @@ module.exports = {
   },
 
   meta: (req, res) => {
-    axios.get(req.originalUrl)
+    axios
+      .get(req.originalUrl)
       .then((response) => {
         res.send(response.data);
       })
@@ -35,7 +36,8 @@ module.exports = {
   },
 
   addReview: (req, res) => {
-    axios.post(req.body)
+    axios
+      .post(req.body)
       .then(() => {
         res.status(201).send('Success');
       })
@@ -51,13 +53,13 @@ module.exports = {
       },
     };
 
-    axios.put(req.originalUrl, config)
+    axios
+      .put(req.originalUrl, config)
       .then(() => {
-        res.status(200).send("Updated");
+        res.status(200).send('Updated');
       })
       .catch((err) => {
         res.send(err);
       });
   },
 };
-

@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 
 const axios = require('axios');
@@ -9,9 +12,11 @@ export default function AddQuestionModal({ productID, productName }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('/qa/questions', {body, name, email, product_id: productID})
-      .then(() => { document.getElementById('modal').style.display = 'none' })
-      .catch((err) => { alert(err) });
+    axios.post(`${process.env.API_URL}/qa/questions`, {
+      body, name, email, product_id: productID,
+    })
+      .then(() => { document.getElementById('modal').style.display = 'none'; })
+      .catch((err) => { alert(err); });
   }
 
   function handleQuestionChange(e) {
@@ -34,9 +39,9 @@ export default function AddQuestionModal({ productID, productName }) {
       </header>
 
       <main>
-        <form className="modal-form" onSubmit={handleSubmit} >
+        <form className="modal-form" onSubmit={handleSubmit}>
           <label>Your Question *
-            <textarea className="modal-input" onChange={handleQuestionChange} name="question_body" maxLength="1000" placeholder="Write your question here..." required></textarea>
+            <textarea className="modal-input" onChange={handleQuestionChange} name="question_body" maxLength="1000" placeholder="Write your question here..." required />
           </label>
 
           <label>Nickname *
@@ -53,5 +58,5 @@ export default function AddQuestionModal({ productID, productName }) {
         </form>
       </main>
     </div>
-  )
+  );
 }

@@ -14,7 +14,7 @@ function YourOutfitcard({
   // --------------------- render individual card meta on related item id change ------------------- //
 
   useEffect(() => {
-    axios.get('/reviews/meta', {
+    axios.get(`${process.env.API_URL}/reviews/meta`, {
       params: {
         product_id: yourOutfitItem.id,
       },

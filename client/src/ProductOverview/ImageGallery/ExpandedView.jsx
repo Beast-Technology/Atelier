@@ -65,6 +65,7 @@ export default function ExpandedView({
         <div>
           {LeftArrow}
           <img
+            className="expanded-photo"
             src={photos[index].url}
             onClick={() => {
               setShowExpanded(false);

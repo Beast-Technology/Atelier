@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PhotoUploader from './PhotoUploader.jsx';
 import { StarRatingSelect } from '../Stars.jsx';
@@ -10,8 +13,12 @@ export default function AddReviewModal({ productID, productName }) {
   const [metaAdd, setMetaAdd] = useState([]);
 
   const [recommend, setRecommend] = useState('');
-  const [characteristic, setCharacteristic] = useState({ Comfort: null, Size: null, Width: null, Quality: null, Length: null, Fit: null });
-  const [characteristicId, setCharacteristicId] = useState({'135221': null, '135219': null, '135220': null, '135222': null });
+  const [characteristic, setCharacteristic] = useState({
+    Comfort: null, Size: null, Width: null, Quality: null, Length: null, Fit: null,
+  });
+  const [characteristicId, setCharacteristicId] = useState({
+    135221: null, 135219: null, 135220: null, 135222: null,
+  });
   const [starsRating, setStarsRating] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
@@ -20,7 +27,7 @@ export default function AddReviewModal({ productID, productName }) {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-    axios.get('/reviews/meta', {
+    axios.get(`${process.env.API_URL}/reviews/meta`, {
       params: {
         product_id: 40344,
       },
@@ -33,10 +40,12 @@ export default function AddReviewModal({ productID, productName }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('/reviews', { recommend, characteristic, starsRating, summary, body, name, email, photos, product_id: productID })
-      .then(() => { console.log('success!') })
+    axios.post(`${process.env.API_URL}/reviews`, {
+      recommend, characteristic, starsRating, summary, body, name, email, photos, product_id: productID,
+    })
+      .then(() => { console.log('success!'); })
       .then(() => { document.getElementById('modal').style.display = 'none'; })
-      .catch((err) => { alert(err) });
+      .catch((err) => { alert(err); });
   }
 
   function handleCharacteristicChange({ charac, num }) {
@@ -115,43 +124,43 @@ export default function AddReviewModal({ productID, productName }) {
             <div className="recommendContainer">
               <label className="container">Yes
                 <input type="radio" name="recommend" value="true" onClick={handleRecommendChange} />
-                <span className="checkmark"></span>
+                <span className="checkmark" />
               </label>
               <label className="container">No
                 <input type="radio" name="recommend" value="false" onClick={handleRecommendChange} />
-                <span className="checkmark"></span>
+                <span className="checkmark" />
               </label>
             </div>
           </label>
 
           <label>Characteristics *
-              {(Object.keys(metaAdd.characteristics || {})).map((charac) => (
-                <label key={metaAdd.characteristics.id}>
-                  <div className="charCategory">{charac}</div>
-                  <div className="charContainer">
-                    {[1, 2, 3, 4, 5].map((num) => (
-                      <div>
-                        <div className="charNums">
-                          <label className="container">{num}
-                            <input type="radio" name={charac} onClick={() => handleCharacteristicChange({charac, num})}/>
-                            <span className="checkmark"></span>
-                          </label>
-                        </div>
-                        <span>{ratingStrings[`${charac}-${num}`]}</span>
+            {(Object.keys(metaAdd.characteristics || {})).map((charac) => (
+              <label key={metaAdd.characteristics.id}>
+                <div className="charCategory">{charac}</div>
+                <div className="charContainer">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <div>
+                      <div className="charNums">
+                        <label className="container">{num}
+                          <input type="radio" name={charac} onClick={() => handleCharacteristicChange({ charac, num })} />
+                          <span className="checkmark" />
+                        </label>
                       </div>
-                    ))}
-                  </div>
-                </label>
-              ))}
+                      <span>{ratingStrings[`${charac}-${num}`]}</span>
+                    </div>
+                  ))}
+                </div>
+              </label>
+            ))}
 
           </label>
 
           <label>Review Summary *
-            <input  name="asker_name" type="text" placeholder="Write your summary here..." onChange={handleSummaryChange} />
+            <input name="asker_name" type="text" placeholder="Write your summary here..." onChange={handleSummaryChange} />
           </label>
 
           <label>Review Body *
-            <textarea  onChange={handleBodyChange} name="question_body" maxLength="1000" placeholder="Write your body here..." required></textarea>
+            <textarea onChange={handleBodyChange} name="question_body" maxLength="1000" placeholder="Write your body here..." required />
           </label>
 
           <label>Upload Photos *
@@ -172,5 +181,5 @@ export default function AddReviewModal({ productID, productName }) {
         </form>
       </main>
     </div>
-  )
+  );
 }

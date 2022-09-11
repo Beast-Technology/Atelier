@@ -14,7 +14,7 @@ function RatingsAndReviews({ setModal }) {
   const [selected, setSelected] = useState('Relevant');
 
   useEffect(() => {
-    axios.get('/reviews', {
+    axios.get(`${process.env.API_URL}/reviews`, {
       params: {
         sort: selected,
         product_id: 40344,
@@ -29,7 +29,7 @@ function RatingsAndReviews({ setModal }) {
   }, [selected]);
 
   useEffect(() => {
-    axios.get('/reviews/meta', {
+    axios.get(`${process.env.API_URL}/reviews/meta`, {
       params: {
         product_id: 40344,
       },

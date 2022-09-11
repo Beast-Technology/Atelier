@@ -1,7 +1,10 @@
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
+dotenv.config();
 
 module.exports = {
   mode: 'development',
@@ -30,6 +33,9 @@ module.exports = {
   plugins: [
     new CompressionPlugin({
       algorithm: 'gzip',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
     }),
   ],
 };

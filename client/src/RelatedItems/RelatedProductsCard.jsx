@@ -13,7 +13,7 @@ function RelatedProductsCard({
   // --------------------- render individual card styles on related item id change ------------------- //
 
   useEffect(() => {
-    axios.get(`/products/${relatedItem.id}/styles`)
+    axios.get(`${process.env.API_URL}/products/${relatedItem.id}/styles`)
       .then((response) => {
         let defaultStyleData = response.data.results.find((style) => style['default?']);
         if (defaultStyleData === undefined) {
@@ -30,7 +30,7 @@ function RelatedProductsCard({
   // --------------------- render individual card meta on related item id change ------------------- //
 
   useEffect(() => {
-    axios.get('/reviews/meta', {
+    axios.get(`${process.env.API_URL}/reviews/meta`, {
       params: {
         product_id: relatedItem.id,
       },

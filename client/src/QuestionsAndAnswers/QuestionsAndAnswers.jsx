@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import QASearch from './QASearch.jsx';
 import QAList from './QAList.jsx';
@@ -22,18 +24,18 @@ function QuestionsAndAnswers({ productID, setModal }) {
     if (keyword.length >= 3) {
       const results = qaData
         .filter(
-          (q) => q.question_body.toLowerCase().includes(keyword.toLowerCase())
+          (q) => q.question_body.toLowerCase().includes(keyword.toLowerCase()),
         )
         .map(
           (q) => {
-            let newQ = JSON.parse(JSON.stringify(q));
+            const newQ = JSON.parse(JSON.stringify(q));
             newQ.question_body = newQ.question_body.replace(
               new RegExp(keyword, 'gi'),
-              (match) => `<mark class="search-match">${match}</mark>`
-            )
+              (match) => `<mark class="search-match">${match}</mark>`,
+            );
             return newQ;
-          }
-        )
+          },
+        );
       setQs(results);
       setDisplayQs(results.slice(0, 2));
     } else {
@@ -48,7 +50,7 @@ function QuestionsAndAnswers({ productID, setModal }) {
   }
 
   useEffect(() => {
-    axios.get('/qa/questions', { params: { product_id: productID, count: 100 } })
+    axios.get(`${process.env.API_URL}/qa/questions`, { params: { product_id: productID, count: 100 } })
       .then((res) => res.data.results.sort((a, b) => b.question_helpfulness - a.question_helpfulness))
       .then((sortedResults) => {
         setQAData(sortedResults);
@@ -65,8 +67,8 @@ function QuestionsAndAnswers({ productID, setModal }) {
           const aStatus = {};
           sortedResults.forEach((q) => {
             Object.values(q.answers).forEach(
-              (a) => { aStatus[a.id] = { helpful: false, reported: false } }
-            )
+              (a) => { aStatus[a.id] = { helpful: false, reported: false }; },
+            );
           });
           localStorage.setItem('aStatus', JSON.stringify(aStatus));
         }
