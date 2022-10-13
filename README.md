@@ -6,6 +6,7 @@
   <p align="center">
             <p>Front-end development of e-commerce product details page.  
 </p>
+ <span>Deployed - [<a href="https://atelier-tech.netlify.app">LINK</a>]</span>
 
   </p>
 
