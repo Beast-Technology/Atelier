@@ -5,9 +5,7 @@ const distPath = path.resolve(path.join(__dirname, '/client'), 'dist');
 
 module.exports = {
   mode: 'development',
-  entry: [
-    './client/src/index.jsx',
-  ],
+  entry: ['./client/src/index.jsx'],
   output: {
     path: distPath,
     filename: 'main.js',
@@ -25,6 +23,10 @@ module.exports = {
         },
       },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
